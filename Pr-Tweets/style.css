@@ -1,0 +1,114 @@
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.main-container {
+  width: 400px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formulario label {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn--submit {
+  background-color: #007bff;
+}
+
+.btn--submit:hover {
+  background-color: #0056b3;
+}
+
+.btn--reset {
+  background-color: #6c757d;
+}
+
+.btn--reset:hover {
+  background-color: #5a6268;
+}
+
+.tweets-container {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f1f3f5;
+  border-radius: 8px;
+}
+
+.tweets-titulo {
+  text-align: center;
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.lista-tweets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.lista-tweets li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.borrar-tweet {
+  background: crimson;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.borrar-tweet:hover {
+  background: darkred;
+}

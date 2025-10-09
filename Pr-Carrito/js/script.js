@@ -1,0 +1,336 @@
+import * as utilities from "./helpers.js"
+
+let btnAgregar, btnVaciar, contenedorCarrito, containerCards, datos, containerCursos, cantidadProductos
+
+// Carga del DOM
+document.addEventListener("DOMContentLoaded", cargarMemoria)
+
+function cargarMemoria() {
+    btnAgregar = document.querySelector("#lista-cursos")
+    btnVaciar = document.querySelector("#vaciar-carrito")
+    contenedorCarrito = document.querySelector("#lista-carrito tbody")
+    containerCards = document.querySelectorAll(".card")
+    //containerCursos = document.querySelector("#lista-cursos")
+    cantidadProductos = document.querySelector("#cantidadDeProductos");
+    const nombreArchivo = window.location.pathname.split("/").pop();
+
+    if (nombreArchivo === "dinamico.html") {
+        // cartasDinamicas();
+        const cursos = obtenerCartasDinamicas();
+        activarBuscador(cursos);
+        renderizarCartas(cursos);
+    }
+
+    //btnBorrar = document.querySelector(".borrar-curso")
+
+    //console.log(containerCards);F
+
+    btnAgregar.addEventListener("click", (evento) => eventoCarrito(evento));
+    btnVaciar.addEventListener("click", vaciarCarrito)
+
+    pintarCarrito();
+}
+
+
+function eventoCarrito(evento) {
+    if (evento.target.classList.contains("agregar-carrito")) {
+        const card = evento.target.closest(".card")
+        //console.log("CARD EVENTO CARRITO", card);
+
+        const infoCard = utilities.obtenerDatosCurso(card);
+        const cursos = utilities.getLocalStorage();
+        const id = card.querySelector("a").getAttribute("data-id");
+
+        if (utilities.hayCursoEnCarrito(cursos, id)) {
+            actualizarHTML(id)
+            actualizarCantidadLocalStorage(cursos, id);
+            pintarCantidadDeProductos(calcularCantidadDeProductos());
+            pintarTotal(calcularTotal());
+        } else {
+            agregarCarrito(infoCard)
+        }
+    }
+}
+
+function agregarCarrito(infoCard) {
+    pintarHTML(infoCard)
+    pintarCantidadDeProductos(calcularCantidadDeProductos());
+    agregarCarritoLocalStorage(infoCard)
+    pintarTotal(calcularTotal());
+}
+
+function agregarCarritoLocalStorage(infoCard) {
+    const listaCursosLS = JSON.parse(localStorage.getItem("Cursos"));
+    if (!listaCursosLS) {
+        utilities.addLocalStorage([infoCard]);
+    }
+    else {
+        listaCursosLS.push(infoCard)
+        utilities.addLocalStorage(listaCursosLS)
+    }
+}
+
+function actualizarCantidadLocalStorage(cursos, id) {
+    const cursosLocalStorage = cursos;
+    //console.log("LOCALSTORAGE: ",cursosLocalStorage);
+    const cursoID = cursosLocalStorage.find((curso) => curso.id === id);
+    cursoID.cantidad++;
+    //console.log(cursoID);
+    utilities.addLocalStorage(cursosLocalStorage);
+}
+
+
+
+function actualizarHTML(card) {
+    const idImagen = card;
+    //console.log("ID IMAGEN: ", idImagen);
+
+    const cursosCarrito = contenedorCarrito.querySelectorAll("tr");
+    //console.log("ID CURSOS: ", cursosCarrito);
+
+    cursosCarrito.forEach((curso) => {
+        if (curso.querySelector("a").getAttribute("data-id") === idImagen) {
+            const cantidadCursos = curso.querySelector("#cantidad").textContent;
+            const numeroCurso = Number(cantidadCursos);
+            const numeroActualizado = numeroCurso + 1;
+            curso.querySelector("#cantidad").innerHTML = `${numeroActualizado}`;
+        }
+    })
+}
+
+function pintarCarrito() {
+    const productosCarritos = utilities.getLocalStorage();
+    //console.log("PRODUCTOS CARRITOS: ", productosCarritos);
+    if (productosCarritos) {
+        productosCarritos.forEach(element => {
+            //console.log("ELEMENTO", element);
+            pintarHTML(element);
+        });
+        pintarTotal(calcularTotal());
+        pintarCantidadDeProductos(calcularCantidadDeProductos());
+        const btnBorrar = document.querySelector("tbody")
+        //console.log(btnBorrar);
+        btnBorrar.addEventListener("click", (evento) => deleteLocalStorage(evento))
+    }
+}
+
+function calcularTotal() {
+    const productosLocalStorage = utilities.getLocalStorage();
+
+    const totalCarrito = productosLocalStorage.reduce((total, producto) => {
+        return total + (Number(producto.precio.slice(1)) * Number(producto.cantidad));
+    }, 0);
+
+    return totalCarrito;
+}
+
+// function calcularTotal() {
+//     let total = 0;
+//     const productosCarritos = contenedorCarrito.querySelectorAll("tr");
+
+//     productosCarritos.forEach((curso) => {
+//         const cantidadQuery = curso.querySelector("#cantidad");
+//         if (cantidadQuery !== null) {
+//             const cantidad = Number(cantidadQuery.textContent);
+//             const precioString = curso.querySelector("#precio").textContent;
+//             const precio = Number(precioString.slice(1));
+//             console.log(precio, "PRECIO");
+
+//             total += cantidad * precio;
+//         }
+//     })
+//     return total;
+// }
+
+function pintarHTML(contenedor) {
+    //console.log("FUNCION PINTAR HTML: ", contenedor);
+    return contenedorCarrito.innerHTML += `<tr><td><img src="${contenedor.imagen}"></img></td><td>${contenedor.nombre}</td><td id=precio>${contenedor.precio}</td><td id=cantidad>${contenedor.cantidad}</td><td><a href=# class="borrar-curso" data-id=${contenedor.id}>X</a></td></tr>`
+}
+
+function deleteLocalStorage(evento) {
+    const cursos = utilities.getLocalStorage()
+    let id = 0;
+    const cantidadCursos = evento.target.closest("tr").querySelector("#cantidad");
+    const cantidadNumber = Number(cantidadCursos.textContent);
+    if (evento.target.classList.contains("borrar-curso")) {
+        id = evento.target.closest("tr").querySelector("a").getAttribute("data-id")
+        console.log(id);
+
+        if (cantidadNumber > 1) {
+            const cursoID = utilities.getCursoLocalStorage(cursos, id);
+            cursoID.cantidad--;
+            utilities.addLocalStorage(cursos);
+            const cantidadActualizado = cantidadNumber - 1;
+            cantidadCursos.innerHTML = `${cantidadActualizado}`;
+        } else {
+            cursos.splice(utilities.buscarCursoPorID(cursos, id), 1);
+            utilities.borrarHTMLCarrito(evento);
+            utilities.addLocalStorage(cursos);
+        }
+        pintarTotal(calcularTotal());
+        pintarCantidadDeProductos(calcularCantidadDeProductos());
+    }
+}
+
+function vaciarCarrito() {
+    utilities.borrarHTML(contenedorCarrito);
+    localStorage.clear()
+    pintarTotal(calcularTotal());
+    pintarCantidadDeProductos(calcularCantidadDeProductos());
+    utilities.mostrarDialog();
+}
+
+function pintarTotal(total) {
+    const tfoot = contenedorCarrito.closest("table").querySelector("tfoot");
+    const totalFoot = tfoot.querySelector("td");
+    totalFoot.textContent = `Total: ${total}`;
+}
+
+function calcularCantidadDeProductos() {
+    const productosCarritos = contenedorCarrito.querySelectorAll("tr");
+    let cantidad = 0;
+    productosCarritos.forEach((curso) => {
+        const cantidadQuery = curso.querySelector("#cantidad");
+        if (cantidadQuery !== null) {
+            cantidad += Number(cantidadQuery.textContent);
+        }
+    })
+    return cantidad;
+}
+
+function pintarCantidadDeProductos(cantidad) {
+    cantidadProductos.querySelector("p").textContent = cantidad;
+}
+
+async function obtenerCartasDinamicas() {
+    const datos = '../data/data.json';
+    try {
+        const respuesta = await fetch(datos)
+        const cursos = await respuesta.json()
+        return cursos;
+    } catch (error) {
+        console.error("Error al cargar cursos desde JSON:", error)
+    }
+}
+
+async function renderizarCartas(cursos) {
+    btnAgregar.innerHTML = `<h1 id="encabezado" class="encabezado">Cursos En Línea</h1>`;
+
+    let fila;
+    const cursosAwait = await cursos;
+    cursosAwait.forEach((curso, index) => {
+        // Crear una nueva fila cada 3 cursos
+        if (index % 3 === 0) {
+            fila = document.createElement("div");
+            fila.classList.add("row");
+            btnAgregar.appendChild(fila);
+        }
+
+        const columna = document.createElement("div");
+        columna.classList.add("four", "columns");
+
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+                <img src="${curso.imagen}" class="imagen-curso u-full-width" />
+                <div class="info-card">
+                <h4>${curso.titulo}</h4>
+                <p>${curso.autor}</p>
+                <img src="img/estrellas.png" />
+                <p class="precio">${curso.precio_original} <span class="u-pull-right">${curso.precio_descuento}</span></p>
+                <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="${curso.id}">Agregar Al Carrito</a>
+                </div>
+            `;
+
+        columna.appendChild(card);
+        fila.appendChild(columna);
+    });
+}
+
+// async function cartasDinamicas() {
+//     const datos = '../data/data.json';
+
+//     try {
+//         const respuesta = await fetch(datos);
+//         const cursos = await respuesta.json();
+
+//         const containerCursos = document.querySelector("#lista-cursos");
+
+//         let fila;
+
+//         cursos.forEach((curso, index) => {
+//             // Crear una nueva fila cada 3 cursos
+//             if (index % 3 === 0) {
+//                 fila = document.createElement("div");
+//                 fila.classList.add("row");
+//                 containerCursos.appendChild(fila);
+//             }
+
+//             const columna = document.createElement("div");
+//             columna.classList.add("four", "columns");
+
+//             const card = document.createElement("div");
+//             card.classList.add("card");
+//             card.innerHTML = `
+//                 <img src="${curso.imagen}" class="imagen-curso u-full-width" />
+//                 <div class="info-card">
+//                 <h4>${curso.titulo}</h4>
+//                 <p>${curso.autor}</p>
+//                 <img src="img/estrellas.png" />
+//                 <p class="precio">${curso.precio_original} <span class="u-pull-right">${curso.precio_descuento}</span></p>
+//                 <a href="#" class="u-full-width button-primary button input agregar-carrito" data-id="${curso.id}">Agregar Al Carrito</a>
+//                 </div>
+//             `;
+
+//             columna.appendChild(card);
+//             fila.appendChild(columna);
+//         });
+//     } catch (error) {
+//         console.error("Error al cargar cursos desde JSON:", error);
+//     }
+// }
+
+
+
+/*async function activarBuscador(cursos) {
+    // const formulario = document.querySelector("#busqueda");
+    const input = document.querySelector("#buscador");
+    const cursosAwait = await cursos;
+    // if (!input || !formulario) return;
+
+    // Evitamos que el formulario recargue la página o haga POST
+    // formulario.addEventListener("submit", (e) => e.preventDefault());
+
+    // Escucha cada vez que el usuario escribe algo
+    input.addEventListener("input", (evento) => {
+        const texto = evento.target.value.toLowerCase().trim();
+
+        cursosFiltrados = cursosAwait.filter(curso =>
+            curso.titulo.toLowerCase().includes(texto) ||
+            curso.autor.toLowerCase().includes(texto)
+        );
+        renderizarCartas(cursosFiltrados);
+    });
+}*/
+
+async function activarBuscador(cursos) {
+    const input = document.querySelector("#buscador");
+    if (!input) return; // asegurarnos de que exista el input !! esto lo podemos quitar 
+
+    const cursosAwait = await cursos; // esperamos a que la promesa se resuelva
+
+    // Escucha cada vez que el usuario escribe algo
+    input.addEventListener("input", (evento) => {
+        const texto = evento.target.value.toLowerCase().trim();
+
+        // Filtramos los cursos según el texto escrito
+        const cursosFiltrados = cursosAwait.filter(curso =>
+            curso.titulo.toLowerCase().includes(texto) ||
+            curso.autor.toLowerCase().includes(texto)
+        );
+
+        // Pintamos los cursos filtrados
+        renderizarCartas(cursosFiltrados);
+    });
+}
+
