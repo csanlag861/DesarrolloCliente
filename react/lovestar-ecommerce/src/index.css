@@ -7,9 +7,16 @@
 
 @font-face {
   font-family: "Archivo-Normal";
-  src: url('./assets/fonts/Archivo-Normal.ttf') format("truetype");
+  src: url('./assets/fonts/Archivo-Regular.otf') format("truetype");
   font-weight: 400;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "Archivo-Italic";
+  src: url('./assets/fonts/Archivo-Italic.otf') format("truetype");
+  font-weight: 400;
+  font-style: italic;
 }
 
 /*
@@ -64,21 +71,26 @@ body {
 }
 
 .container{
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 2rem 0;
 }
 
 /* TO DO*/
-.contador {}
+.contador {
+  p {
+    font-family: "Archivo-Italic", sans-serif;
+  }
+}
 
 .text-lovestar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
 
   h1{
     font-family: "CabinetGrotesk-Bold", sans-serif;
@@ -90,5 +102,5 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 50%;
 }
