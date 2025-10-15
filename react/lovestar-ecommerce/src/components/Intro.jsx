@@ -6,8 +6,8 @@ const Intro = () => {
         <Contador />
       </div>
       <div className="text-lovestar">
-        <h1>Lovestar</h1>
-        <p>ENTRAR</p>
+        <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
+        <p>Entrar</p>
       </div>
       <div className="footer">
         <p>'A LOVESTORY'</p>

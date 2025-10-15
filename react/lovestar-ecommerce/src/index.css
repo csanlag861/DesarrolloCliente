@@ -92,9 +92,8 @@ body {
   justify-content: space-between;
   width: 80%;
 
-  h1{
-    font-family: "CabinetGrotesk-Bold", sans-serif;
-    font-size: 200px;
+  img{
+    width: 60%;
   }
 }
 
