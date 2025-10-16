@@ -19,7 +19,7 @@ const App = () => {
         <Intro intro={intro} />
         <div className="skills">
           {skills.map((itemSkill) => (
-            <Skill skill={itemSkill} />
+            <Skill skill={itemSkill} key={itemSkill.skill} />
           ))}
         </div>
       </div>

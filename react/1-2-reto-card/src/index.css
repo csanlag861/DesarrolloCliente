@@ -63,14 +63,11 @@ body {
   font-family: "Inter", sans-serif;
   color: var(--color-text);
   font-weight: 400;
-  background: var(--color-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .container {
   background-color: #FFFFF2;
+  margin: 0 auto; /* PARA CENTRAR */
   min-height: 100vh;
   width: 600px;
   display: flex;
@@ -91,8 +88,6 @@ body {
 
 .imagen {
   display: flex;
-  align-items: baseline;
-
   img {
     width: 100%;
     object-fit: contain;
@@ -121,7 +116,6 @@ body {
 
 .skill-text{
   display: flex;
-  flex-direction: row;
   gap: 4px;
   h3{
     font-size: 18px;
