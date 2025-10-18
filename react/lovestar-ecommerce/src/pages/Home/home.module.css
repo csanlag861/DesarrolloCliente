@@ -1,0 +1,12 @@
+body {
+    background-color: var(--white-color);
+    font-family: "Archivo-Normal", sans-serif;
+    color: var(--black-color);
+    font-size: 16px;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+}

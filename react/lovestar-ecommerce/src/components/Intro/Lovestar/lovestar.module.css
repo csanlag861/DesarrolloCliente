@@ -1,0 +1,10 @@
+.text-lovestar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+
+  img{
+    width: 60%;
+  }
+}
