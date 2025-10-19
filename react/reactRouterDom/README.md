@@ -71,21 +71,26 @@ Es decir, en nuestro APP irán todas las rutas a todas nustras vistas, y en caso
   }
 
 - Usaremos REM la mayor parte del tiempo en las siguientes propiedades:
- - Padding
- - Gap
- - Font-size *
- - Margin *
+- Padding
+- Gap
+- Font-size \*
+- Margin \*
 
 - Etiquetas HTML utiles:
- - Header
- - Footer
- - Main
- - Section
- - Article
- - Aside
- - Nav
- - Div
- - Span
- - Button
- - a
- - Form
+- Header
+- Footer
+- Main
+- Section
+- Article
+- Aside
+- Nav
+- Div
+- Span
+- Button
+- a
+- Form
+
+- Si queremos entrar un elemento en el centro de la página, usamos:
+  { margin: 0 auto; }
+
+

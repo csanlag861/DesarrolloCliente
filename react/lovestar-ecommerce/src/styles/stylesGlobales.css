@@ -1,11 +1,21 @@
 @font-face {
-    font-family: "CabinetGrotesk-Bold";
-    src: url('./assets/fonts/CabinetGrotesk-Regular.otf');
+    font-family: "CabinetGrotesk-Regular";
+    src: url('/fonts/CabinetGrotesk-Regular.otf') format("opentype");
 }
 
 @font-face {
     font-family: "Archivo-Normal";
-    src: url('./assets/fonts/Archivo-Regular.otf') format("truetype");
+    src: url('/fonts/Archivo-Regular.otf') format("opentype");
+}
+
+@font-face {
+    font-family: "Archivo-SemiBold";
+    src: url('/fonts/Archivo-SemiBold.otf') format("opentype");
+}
+
+@font-face {
+    font-family: "CabinetGrotesk-Bold";
+    src: url('/fonts/CabinetGrotesk-Bold.otf') format("opentype");
 }
 
 /*
@@ -41,7 +51,7 @@ html {
 
 /* BODY LO RELATIVO A LA TIPOGRAFÍA */
 body {
-    font-family: "Archivo-Normal", sans-serif;
+    /* font-family: "Archivo-Normal", sans-serif; */
     line-height: 1;
     font-weight: 400;
     color: var(--black-color)

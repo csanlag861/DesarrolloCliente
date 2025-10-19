@@ -1,6 +1,8 @@
 .contador {
   padding: 2rem 0;
   p {
-    font-family: "Archivo-Italic", sans-serif;
+    font-family: "Archivo-Normal", sans-serif;
+    font-style: italic;
+    font-size: 24px;
   }
 }

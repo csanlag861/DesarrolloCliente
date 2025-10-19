@@ -4,7 +4,22 @@
   justify-content: space-between;
   width: 80%;
 
-  img{
+  img {
     width: 60%;
+  }
+
+  p {
+    font-family: "CabinetGrotesk-Bold", sans-serif;
+    font-size: 120px;
+    color: var(--black-color);
+  }
+
+  a{
+    color: var(--black-color);
+    text-decoration-line: none;
+  }
+  
+  a:hover{
+    text-decoration-line: underline;
   }
 }
