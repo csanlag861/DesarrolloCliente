@@ -1,16 +1,13 @@
 import styleHeader from "./header.module.css";
+import Navigation from "./Navigation/Navigation";
+import { Link } from "react-router-dom";
 
-function Header (){
+function Header() {
     return (
         <header className={`${styleHeader.header} ${styleHeader["background-header"]}`}>
-            <span>Logo</span>
-            <nav>
-                <ul className={styleHeader["container-nav"]}>
-                    <li>Login</li>
-                    <li>Registro</li>
-                    <li>Contacto</li>
-                </ul>
-            </nav>
+            <span>
+                <Link to="/">Logo</Link></span>
+            <Navigation />
         </header>
     )
 }

@@ -18,6 +18,7 @@ body {
 :root {
   --primary-background: #007bff;
   --primary-hover: #0056b3;
+  --primary-active: #042f5d;
 
   --secondary-background: #6c757d;
   --secondary-hover: #5a6268;
