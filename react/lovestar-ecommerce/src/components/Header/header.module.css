@@ -89,8 +89,16 @@
     text-transform: uppercase;
     border-bottom: 1px solid var(--black-color);
 
-    p {
+    a {
         font-family: "Archivo-Regular", sans-serif;
         font-weight: 600;
+        color: var(--black-color);
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+    a.active{
+        color: var(--active-text);
     }
 }

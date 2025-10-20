@@ -1,5 +1,7 @@
 import stylesHeader from "./header.module.css";
 
+import { NavLink, Link } from "react-router-dom";
+
 const Header = () => {
   const marqueeText = (
     <>
@@ -29,7 +31,9 @@ const Header = () => {
           <p>Contacto</p>
         </div>
         <div className={stylesHeader.logo}>
-          <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
+          <Link to="/Home">
+            <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
+          </Link>
         </div>
         <div className={stylesHeader.opciones}>
           <p>Idioma</p>
@@ -39,7 +43,7 @@ const Header = () => {
         </div>
       </div>
       <nav className={stylesHeader.nav}>
-        <p>Tienda</p>
+        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Tienda</NavLink>
         <p>Galería</p>
         <p>Editorial</p>
         <p>Membership</p>
