@@ -51,7 +51,7 @@ html {
 
 /* BODY LO RELATIVO A LA TIPOGRAFÍA */
 body {
-    /* font-family: "Archivo-Normal", sans-serif; */
+    font-family: "Archivo-Normal", sans-serif;
     line-height: 1;
     font-weight: 400;
     color: var(--black-color)
