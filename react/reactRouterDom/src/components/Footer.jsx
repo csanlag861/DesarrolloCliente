@@ -1,4 +1,5 @@
 import clasesFooter from "./footer.module.css";
+import SocialLinks from "./SocialLinks/SocialLinks"
 
 function Footer() {
     return (
@@ -6,6 +7,7 @@ function Footer() {
             <span>Logo</span>
             <span>Cosas</span>
             <span>Redes Sociales</span>
+            <SocialLinks/>
         </footer>
     )
 }
