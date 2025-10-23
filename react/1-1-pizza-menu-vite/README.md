@@ -1,16 +1,79 @@
-# React + Vite
+# MOVIDA REACT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Instalación y puesta en ejecución en desarrollo
 
-Currently, two official plugins are available:
+- Con vite:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - npm create vite@latest
+  - npm run dev
 
-## React Compiler
+- De la forma nativa:
+  - npx create-react-app@5 pizza-menu
+  - npm start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Component composition
 
-## Expanding the ESLint configuration
+- En app lo más limpio posible: Header-menu-footer
+- Tal que se van creando subcomponentes funcionales con props, por ejemplo: order en footer
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Reusabilidad - Props
+
+- Uso de props para hacer un componente reusable, y saber destructurar ese props.
+
+## Uso de map y key en map
+
+- map: declarativo, devuelve un array, no muta el estado-array, es más legible (1 sola línea), recomendado por React Docs
+- forEecha: imperativo, no devuelve nada, si muta el estado-array (push), es ménos legible (varias líneas), no recomendado por React Docs: https://react.dev
+- Cada vez que se usa map para renderizar una lista de componentes hay que pasarle un key para que React pueda identificar ese componente en el DOM de forma unívoca en cada renderización
+- Map se puede usar con llaves o paréntesis, ejemplo:
+
+  ```React
+    #Map con paréntesis - lleva un return implícito
+    {pizzaData.map((itemPizza) => (
+            <Pizza key={itemPizza.name} pizza={itemPizza} loquesea="hjfafa" />
+          ))}
+  ```
+
+  ```React
+    #Map con llave - hay que especificar el return
+    {pizzaData.map((itemPizza) => {
+            return <Pizza key={itemPizza.name} pizza={itemPizza} loquesea="hjfafa" /> }
+          )}
+  ```
+
+## Renderización condicional tanto para los estilos CSS como para los bloques JSX:
+
+- Operadore ternario si hay else tbe => ? ::
+- Operador lógico si solo hay un if: &&
+- múltiples returns
+
+## Extensión react developers tools
+
+- para ver árbol de componentes
+
+## Fragmentos de React
+
+- Para envolver los nodos a devolver en un único nodo
+
+  ```React
+  return(<>
+        <Header />
+        <Menu />
+        <Footer />
+
+  </>);
+
+  ```
+
+- Esto es lo mismo
+
+  ```React
+  import {Fragment} from "react";
+  <Fragment>
+        <Header />
+        <Menu />
+        <Footer />
+
+  </Fragment>
+
+  ```
