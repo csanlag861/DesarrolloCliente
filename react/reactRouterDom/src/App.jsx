@@ -8,6 +8,8 @@ import Registro from "./pages/Registro"
 import Contacto from "./pages/Contacto"
 import BigLayout from "./pages/BigLayout"
 import ProductDetail from "./pages/ProductDetail"
+import PrivateRoute from "./pages/protected/PrivateRoutes"
+import Dashboard from "./pages/Dashboard"
 
 import { Route, Routes } from "react-router-dom";
 
@@ -22,6 +24,11 @@ function App() {
           <Route path="/registro" element={<Registro />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="home/:productId" element={<ProductDetail />} />
+          <Route path="dashboard" element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          } />
         </Route>
       </Routes >
     </>
