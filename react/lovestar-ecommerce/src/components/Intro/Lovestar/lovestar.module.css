@@ -17,6 +17,7 @@
   a{
     color: var(--black-color);
     text-decoration-line: none;
+    cursor: pointer;
   }
   
   a:hover{
