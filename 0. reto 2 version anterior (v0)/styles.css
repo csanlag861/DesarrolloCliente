@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 1px solid red;
+}
+
+body {
+    line-height: 1.4;
+    font-family: system-ui, sans-serif;
+}
+
+.article {
+    width: 825px;
+    margin: 50px auto;
+    border: 2px solid black;
+    position: relative;
+}
+
+.article--title {
+    text-align: center;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: rgb(34, 34, 34);
+    padding: 15px 0;
+    position: relative;
+    background-color: darkgoldenrod;
+    width: 60%;
+    margin: 0 auto;
+    &::after{
+        content: "TOP";
+        display: inline-block;
+        background-color: yellow;
+        font-size: 16px 0px;
+        font-weight: bold;
+        padding: 5px 10px;
+        color: black;
+        position: absolute;
+        right: -20px;
+        top: -20px;
+    }
+}
+
+
+.article--precio {
+    font-size: 24px;
+}
+
+.article--free {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgb(34, 34, 34);
+    margin-bottom: 20px;
+}
+
+.article--moreinf {
+    display: inline-block;
+    margin-bottom: 15px;
+
+    &:link,
+    &:visited {
+        color: black;
+    }
+
+    &:hover,
+    &:active {
+        text-decoration: none;
+    }
+}
+
+.article--tituloproductdetails {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.article--lista {
+    list-style: square;
+    margin-left: 20px;
+}
+
+.btn {
+    width: 100%;
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 12px 24px;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+        color: black;
+        background-color: white;
+        border-top: 4px solid black;
+    }
+}
+
+.btn--like {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+}
