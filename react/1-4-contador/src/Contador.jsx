@@ -4,11 +4,13 @@ const Contador = () => {
     const [contador, setContador] = useState(0);
 
     const handleIncrementar = () => {
-        setContador(contador+1);
+        setContador((contadorActual) => contadorActual +1);
+        setContador((contadorActual) => contadorActual +1);
     }
-
+    
     const handleDecrementar = () => {
-        setContador(contador-1);
+        setContador((contadorActual) => contadorActual -1);
+        setContador((contadorActual) => contadorActual -1);
     }
 
     const handleReset = () => {
