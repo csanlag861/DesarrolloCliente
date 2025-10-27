@@ -1,6 +1,11 @@
-.hero{
-  img{
-    width: 100%;
-    object-fit: contain;
+.hero {
+  width: 100%;
+
+  .imagen {
+    background-image: url(/img/hero-001.webp);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 100vh;
   }
 }

@@ -7,6 +7,31 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr;
     height: 100vh;
+}
+
+.mask {
+    mask-image: url("/img/lovestar-black.svg");
+    mask-position: center 50%;
+    mask-repeat: no-repeat;
+    mask-size: 50px;
+    background-color: var(--black-color);
+    position: fixed;
+    inset: 0;
+
+    &.animated {
+        animation: lock-reveal 3s forwards ease-in-out;
+    }
+
+    &.unlocked {
+        position: relative;
+        mask-size: 2000vh;
+    }
+}
+
+@keyframes lock-reveal {
+    100% {
+        mask-size: 500vh;
+    }
 }

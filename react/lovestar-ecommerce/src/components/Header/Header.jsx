@@ -9,8 +9,6 @@ const Header = () => {
       <img src="img/lovestarlogo.svg" alt="Logo de Lovestar" />
       <p>¡Únete al club!</p>
       <img src="img/lovestarlogo.svg" alt="Logo de Lovestar" />
-      <p>Envío gratis pedidos nacionales +100€</p>
-      <img src="img/lovestarlogo.svg" alt="Logo de Lovestar" />
     </>
   );
 

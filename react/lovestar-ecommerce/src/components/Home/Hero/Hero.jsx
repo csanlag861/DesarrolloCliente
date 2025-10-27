@@ -4,7 +4,7 @@ const Hero = () => {
 
     return (
         <div className={stylesHero.hero}>
-            <img src="img/herogif.gif" alt="Animación del Logo de Lovestar" />
+            <div className={stylesHero.imagen}></div>
         </div>
     )
 }

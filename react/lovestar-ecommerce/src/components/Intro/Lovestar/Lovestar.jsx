@@ -24,7 +24,7 @@ const ScrambleLogo = () => {
         },
         duration: 2.5,
         ease: "power2.out",
-        delay: 0.5,
+        delay: 0.2,
       }
     );
   }, []);
