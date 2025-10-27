@@ -1,4 +1,5 @@
 import stylesHeader from "./header.module.css";
+import { Icon } from "@iconify/react";
 
 import { NavLink, Link } from "react-router-dom";
 
@@ -33,9 +34,9 @@ const Header = () => {
             <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
           </Link>
         </div>
-        <div className={stylesHeader.opciones}>
-          <div className={stylesHeader.circle}></div>
-          <div className={stylesHeader.circle}></div>
+        <div className={stylesHeader["social-links"]}>
+          <Icon icon="ic:baseline-account-circle"/>
+          <Icon icon="ion:cart" />
         </div>
       </div>
       <nav className={stylesHeader.nav}>

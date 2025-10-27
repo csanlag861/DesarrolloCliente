@@ -65,12 +65,17 @@
     }
 }
 
-.opciones {
+.social-links {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    margin: 0px 120px 0px 0px;
+    margin-right: 120px;
+
+    svg{
+        width: 24px;
+        height: 24px;
+    }
 }
 
 .circle {
