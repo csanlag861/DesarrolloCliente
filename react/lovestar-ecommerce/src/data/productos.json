@@ -1,0 +1,95 @@
+[
+    {
+        "id": 1,
+        "nombre": "Beanie Lovestory Badge",
+        "precio": "20,00",
+        "categoria": "Gorro",
+        "membership": false
+    },
+    {
+        "id": 2,
+        "nombre": "Beanie Lovestory Script",
+        "precio": "20,00",
+        "colores": [
+            "Azul",
+            "Rojo"
+        ],
+        "categoria": "Gorro",
+        "membership": false
+    },
+    {
+        "id": 3,
+        "nombre": "Beanie A LOVESTORY.",
+        "precio": "20,00",
+        "categoria": "Gorro",
+        "membership": false
+    },
+    {
+        "id": 4,
+        "nombre": "Beanie Chrome Lovestar",
+        "precio": "10,00",
+        "categoria": "Gorro",
+        "membership": false
+    },
+    {
+        "id": 5,
+        "nombre": "Hoodie Chrome Lovestar",
+        "precio": "20,00",
+        "talla": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "categoria": "Sudadera",
+        "membership": false
+    },
+    {
+        "id": 6,
+        "nombre": "Hoodie Lovestar",
+        "precio": "15,00",
+        "talla": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "colores": [
+            "Negro",
+            "Blanco"
+        ],
+        "categoria": "Sudadera"
+    },
+    {
+        "id": 7,
+        "nombre": "Knit Face Mask - Love Rules The World",
+        "precio": "20,00",
+        "talla": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "colores": [],
+        "categoria": "Jersey",
+        "membership": true
+    },
+    {
+        "id": 8,
+        "nombre": "SHIRT LOVESTARFC",
+        "precio": "40,00",
+        "talla": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
+        "colores": [],
+        "categoria": "Camiseta",
+        "informacion": "Novedad"
+    }
+]
