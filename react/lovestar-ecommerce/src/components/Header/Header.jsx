@@ -34,8 +34,6 @@ const Header = () => {
           </Link>
         </div>
         <div className={stylesHeader.opciones}>
-          <p>Idioma</p>
-          <div className={stylesHeader.circle}></div>
           <div className={stylesHeader.circle}></div>
           <div className={stylesHeader.circle}></div>
         </div>

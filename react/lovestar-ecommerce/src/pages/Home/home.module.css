@@ -11,7 +11,7 @@ body {
     height: 100vh;
 }
 
-.mask {
+/* .mask {
     mask-image: url("/img/lovestar-black.svg");
     mask-position: center 50%;
     mask-repeat: no-repeat;
@@ -34,4 +34,4 @@ body {
     100% {
         mask-size: 500vh;
     }
-}
+} */
