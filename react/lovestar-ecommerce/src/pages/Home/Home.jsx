@@ -1,5 +1,5 @@
 import Hero from "../../components/Home/Hero/Hero";
-import HomeStyles from "./home.module.css";
+import stylesHome from "./home.module.css";
 import { useEffect, useRef } from "react";
 
 function Home() {
@@ -12,7 +12,7 @@ function Home() {
     }
   }, []); */
   return (
-    <div className={HomeStyles.container}>
+    <div className={stylesHome.container}>
       <Hero />
     </div>
 /*     <div  className={HomeStyles.container}>

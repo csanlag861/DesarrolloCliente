@@ -9,7 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import BigLayout from "./pages/BigLayout/BigLayout";
 
 function App() {
-  return <div className="container">
+  return <>
     <Routes>
       <Route path="/" element={<Intro />} />
       <Route path="/" element={<BigLayout />}>
@@ -18,7 +18,7 @@ function App() {
 
       </Route>
     </Routes>
-  </div>;
+  </>;
 }
 
 export default App;

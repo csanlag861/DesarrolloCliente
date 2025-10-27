@@ -26,8 +26,8 @@ const Header = () => {
       </div>
       <div className={stylesHeader.centro}>
         <div className={stylesHeader.info}>
-          <p>Sobre nosotros</p>
-          <p>Contacto</p>
+        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Sobre Nosotros</NavLink>
+        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Contacto</NavLink>
         </div>
         <div className={stylesHeader.logo}>
           <Link to="/Home">
@@ -41,9 +41,9 @@ const Header = () => {
       </div>
       <nav className={stylesHeader.nav}>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Tienda</NavLink>
-        <p>Galería</p>
-        <p>Editorial</p>
-        <p>Membership</p>
+        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Galería</NavLink>
+        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Editorial</NavLink>
+        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Membership</NavLink>
       </nav>
     </header>
   );
