@@ -9,6 +9,17 @@
 }
 
 @font-face {
+    font-family: "Archivo-Light";
+    src: url('/fonts/Archivo-Light.otf') format("opentype");
+}
+
+
+@font-face {
+    font-family: "Archivo-Medium";
+    src: url('/fonts/Archivo-Medium.otf') format("opentype");
+}
+
+@font-face {
     font-family: "Archivo-SemiBold";
     src: url('/fonts/Archivo-SemiBold.otf') format("opentype");
 }
@@ -43,8 +54,8 @@ h3: 18
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-/*     outline: 2px solid aqua;
- */}
+    /* outline: 2px solid aqua; */
+}
 
 html {
     font-size: 62.5%;
@@ -62,5 +73,9 @@ body {
     --primary-color: #E6293F;
     --white-color: #E8E8E8;
     --black-color: #171717;
+    --black-color-opacity: rgba(23, 23, 23, 0.5);
     --cta-color: #A31D2D;
+    --lovestar-light: #F7BDC3;
+    --error-color: #DF1E1E;
+    --error-light: #FFDEDE;
 }

@@ -5,10 +5,10 @@ body {
     font-size: 16px;
 }
 
-.container {
+.container-hero {
     display: grid;
     grid-template-rows: 1fr;
-    height: 100%;
+    min-height: 89vh;  /* DUDAAAAA */
 }
 
 /* .mask {

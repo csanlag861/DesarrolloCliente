@@ -6,7 +6,6 @@
     white-space: nowrap;
     width: 100%;
     height: 28px;
-    width: 100%;
     position: relative;
 
 }
@@ -61,7 +60,6 @@
     gap: 64px;
     margin: 0px 0px 0px 120px;
 
-    /* DUDAAAAAAAA!!!! SI TENGO DOS P CON LO MISMO, PUEDO JUNTARLOS LOS DOS? */
     p {
         font-family: "Archivo-Regular", sans-serif;
         font-weight: 600;
@@ -82,6 +80,7 @@
 
         &:hover {
             color: var(--primary-color);
+            cursor: pointer;
         }
     }
 }

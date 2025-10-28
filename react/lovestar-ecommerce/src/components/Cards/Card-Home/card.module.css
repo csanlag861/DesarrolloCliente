@@ -1,0 +1,39 @@
+.card {
+    width: 307px;
+    height: 388px;
+    border: 2px solid var(--black-color);
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+/* 
+    &:hover img {
+        transform: scale(1.04);
+    } */
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transition: background-color .3s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--white-color);
+        font-family: "Archivo-Medium", sans-serif;
+    }
+
+    &:hover::after {
+        content: "SHOP NOW";
+        cursor: pointer;
+        background-color: var(--black-color-opacity);
+        opacity: 1;
+    }
+}

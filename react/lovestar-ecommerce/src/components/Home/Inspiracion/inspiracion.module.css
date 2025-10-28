@@ -1,0 +1,43 @@
+.inspiracion {
+    margin: 128px 64px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+
+
+    h2 {
+        font-family: "Archivo-Medium", sans-serif;
+        font-weight: 500;
+    }
+
+    .inspiracion__cards {
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+
+        position: relative;
+
+
+        width: max-content;
+
+        animation: scroll-left 60s ease-out infinite;
+        &:hover {
+            animation-play-state: paused;
+        }
+    }
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
