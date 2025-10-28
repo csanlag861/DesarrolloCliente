@@ -73,9 +73,14 @@ body {
     --primary-color: #E6293F;
     --white-color: #E8E8E8;
     --black-color: #171717;
+
     --black-color-opacity: rgba(23, 23, 23, 0.5);
-    --cta-color: #A31D2D;
+    
     --lovestar-light: #F7BDC3;
+    --black-active: #6A6D6E;
+    
+    --cta-color: #A31D2D;
+
     --error-color: #DF1E1E;
     --error-light: #FFDEDE;
 }
