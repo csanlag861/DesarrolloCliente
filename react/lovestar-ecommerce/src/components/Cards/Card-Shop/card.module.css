@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    cursor: pointer;
 
     .imagen {
         width: 100%;
@@ -17,29 +18,41 @@
         img {
             height: 280px;
             width: 280px;
+
+            &:hover {
+                transform: scaleX(-1);
+            }
         }
+
+
     }
 
-    .text{
+    .text {
         display: flex;
         flex-direction: column;
         gap: 8px;
 
-        h3{
+        h3 {
             font-family: "Archivo-SemiBold", sans-serif;
             font-size: 16px;
         }
 
-        .precio{
+        .precio {
             color: var(--black-active);
             font-size: 12px;
             font-family: "Archivo-SemiBold", sans-serif;
         }
 
-        .talla{
+        .talla {
             font-family: "Archivo-Medium", sans-serif;
             font-size: 12px;
             word-spacing: 8px;
+        }
+
+        .colores {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     }
 }

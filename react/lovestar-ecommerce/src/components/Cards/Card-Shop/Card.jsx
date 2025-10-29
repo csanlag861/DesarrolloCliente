@@ -5,9 +5,6 @@ const Card = ({ card }) => {
     width: "10px",
     height: "10px",
     borderRadius: "1000px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
     gap: "4px"
   };
   return (
@@ -19,12 +16,15 @@ const Card = ({ card }) => {
         <h3>{card.nombre}</h3>
         <p className={styleCard.precio}>€{card.precio}</p>
         <p className={styleCard.talla}>{card.talla}</p>
-        {card.colores.map((color, id) => (
-          <div
-            key={id}
-            style={{ ...styleColor, backgroundColor: color }}
-          ></div>
-        ))}
+        <div className={styleCard.colores}>
+          {card.colores.map((color, id) => (
+
+            <div
+              key={id}
+              style={{ ...styleColor, backgroundColor: color }}
+            ></div>
+          ))}
+        </div>
       </div>
     </div>
   );

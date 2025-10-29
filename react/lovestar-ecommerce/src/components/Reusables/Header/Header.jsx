@@ -26,8 +26,8 @@ const Header = () => {
       </div>
       <div className={`${stylesHeader.centro}`}>
         <div className={stylesHeader.info}>
-        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Sobre Nosotros</NavLink>
-        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Contacto</NavLink>
+          <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Sobre Nosotros</NavLink>
+          <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Contacto</NavLink>
         </div>
         <div className={stylesHeader.logo}>
           <Link to="/Home">
@@ -35,7 +35,9 @@ const Header = () => {
           </Link>
         </div>
         <div className={stylesHeader["social-links"]}>
-          <Icon icon="ic:baseline-account-circle"/>
+          <Link to="/Login">
+            <Icon icon="ic:baseline-account-circle" />
+          </Link>
           <Icon icon="ion:cart" />
         </div>
       </div>
