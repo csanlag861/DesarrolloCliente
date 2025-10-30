@@ -96,7 +96,7 @@
                     outline: none;
                 }
 
-                &:invalid{
+                &:invalid {
                     border: 2px solid var(--error-color);
                     background-color: var(--error-light);
                 }
@@ -154,10 +154,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
 
         svg {
             width: 25px;
             height: 25px;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
         }
     }
 }

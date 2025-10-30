@@ -1,5 +1,6 @@
 import stylesLogin from "./login.module.css";
 import LoginForm from "../../components/Forms/Login/Login";
+import SigInForm from "../../components/firebase/SigInForm";
 
 import { Link } from "react-router-dom";
 
@@ -14,7 +15,8 @@ function Login() {
             </div>
             <div className={stylesLogin.form}>
                 <LoginForm />
-            </div>
+{/*                 <SigInForm />
+ */}            </div>
         </div>
     );
 }

@@ -1,12 +1,33 @@
 import stylesRegister from "./register.module.css";
+import { useState } from "react";
+import { signInWithGooglePopup } from "../../../utils/firebase";
 
 import { Link } from "react-router-dom";
 
 import { Icon } from "@iconify/react";
 
 function RegisterForm() {
+    const [user, setUser] = useState("");
+    const [passwd, setPasswd] = useState("");
+
+
+    const handleUser = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const handlePasswd = (event) => {
+        setPasswd(event.target.value);
+    }
+
+    const handleGoogle = async () => {
+        try {
+            const res = await signInWithGooglePopup();
+        } catch (error) {
+            console.error("Error a la hora de hacer login con Google", error);
+        }
+    }
     return (
-        <form action>
+        <form action="">
             <div className={stylesRegister.form}>
                 <div className={stylesRegister.logo}>
                     <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
@@ -37,7 +58,9 @@ function RegisterForm() {
                     </Link>
                 </div>
                 <div className={stylesRegister.google}>
-                    <Icon icon="material-icon-theme:google" />
+                    <button type="button" onClick={handleGoogle}>
+                        <Icon icon="material-icon-theme:google" />
+                    </button>
                 </div>
             </div>
         </form>
