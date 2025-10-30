@@ -36,11 +36,11 @@ const LoginForm = () => {
                 <div className={stylesLogin.inputs}>
                     <p>INICIAR SESIÓN</p>
                     <div className={stylesLogin.nombre}>
-                        <p>Nombre de Usuario</p>
+                        <label>Nombre de Usuario</label>
                         <input type="text" name="username" placeholder="Nombre de Usuario" onChange={handleUser} required />
                     </div>
                     <div className={stylesLogin.password}>
-                        <p>Contraseña</p>
+                        <label>Contraseña</label>
                         <input type="password" name="password" placeholder="Contraseña" onChange={handlePasswd} required />
                     </div>
                     <input type="submit" value="INICIAR SESIÓN" />

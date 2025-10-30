@@ -35,19 +35,19 @@ function RegisterForm() {
                 <div className={stylesRegister.inputs}>
                     <p>REGISTRATE</p>
                     <div className={stylesRegister.input}>
-                        <p>Nombre y Apellidos</p>
+                        <label>Nombre y Apellidos</label>
                         <input type="text" name="nombreYapellidos" placeholder="Nombre y Appelidos" required />
                     </div>
                     <div className={stylesRegister.input}>
-                        <p>Nombre de Usuario</p>
+                        <label>Nombre de Usuario</label>
                         <input type="text" name="username" placeholder="Nombre de Usuario" required />
                     </div>
                     <div className={stylesRegister.input}>
-                        <p>Email</p>
+                        <label>Email</label>
                         <input type="email" name="email" placeholder="Email" required />
                     </div>
                     <div className={stylesRegister.input}>
-                        <p>Contraseña</p>
+                        <label>Contraseña</label>
                         <input type="password" name="password" placeholder="Contraseña" required />
                     </div>
                     <input type="submit" value="REGISTRARME" />

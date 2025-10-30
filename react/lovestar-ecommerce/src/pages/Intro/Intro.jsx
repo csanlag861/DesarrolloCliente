@@ -5,8 +5,8 @@ import stylesIntro from "./intro.module.css";
 
 import useRedireccion from "../../components/Intro/Lovestar/useRedireccion";
 function Intro () {
-  useRedireccion();
-  return (
+/*   useRedireccion();
+ */  return (
     <div className={stylesIntro.container}>
         <Contador />
         <Lovestar />
