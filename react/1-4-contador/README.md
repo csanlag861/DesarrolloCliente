@@ -1,16 +1,46 @@
-# React + Vite
+# CONTADOR REACT - ENTENDIENDO EL HOOK USESTATE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## React no actualiza el estado de forma inmediata
 
-Currently, two official plugins are available:
+```React
+   setContador(contador + 1);
+   console.log(contador);
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
 
-## React Compiler
+## Este console no muestra el valor actualizado del contador, marca un cambio pendiente y planifica una nueva renderización
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```React
+   setContador(contador + 1);
+   setContador(contador + 1);
 
-## Expanding the ESLint configuration
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## El resultado no es 2 sino que 1, esto pasa porque React usa el mismo valor en ambas llamadas ya que aun no ha renderizado
+
+Lo que hace React, es poner en un batch, los diferentes de cambios de estado para solo hacer una renderización mas eficiente
+
+Entonces, como le decimos a React, que use en cada llamada, el valor de contador, como si hubiera hecho una renderización, pues haciendo uso de callback o funciones flecha:
+
+```React
+    setContador((contadorPrevio) => contadorPrevio + 1);
+    setContador((contadorPrevio) => contadorPrevio + 1);
+
+```
+
+## En este ejemplo, cuando se hace click en incrementar, el valor de contador no cambia inmediatamente
+
+React marca el estado como pendiente de actualización
+El console.log se ejecuta antes de que React vuelva a renderizar el conmponente
+
+Una vez que se ha renderizado el componente, se ejecuta el primer console.log y alli se ve el estado contador actualizado
+
+```React
+    const [contador, setContador] = useState(0);
+    console.log("contador actualizado", contador);
+    function increment() {
+        setContador((contadorPrevious) => contadorPrevious + 1);
+        console.log("contador no actualizado", contador);
+    }
+
+```
