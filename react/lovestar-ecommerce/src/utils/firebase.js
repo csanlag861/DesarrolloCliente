@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { getFirestore, getDoc, doc } from 'firebase/firestore';
+import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAHGbi5Tv95LkAFN1bsOV3PiRIDcAQbvrI",
@@ -25,3 +25,35 @@ googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export const signInWithGooglePopup = () =>
     signInWithPopup(auth, googleProvider);
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  try {
+    if (!email || !password) return;
+    const response = await signInWithEmailAndPassword(auth, email, password);
+    const user = response.user;
+
+    const userData = await getUser(user.uid);
+    return userData;
+  } catch (error) {
+    console.error("Error al iniciar sesión:", error);
+  }
+};
+
+export const getUser = async (uid) => {
+  try {
+    const userDoc = await getDoc(doc(db, "users", uid));
+
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      return userData;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  return await createUserWithEmailAndPassword(auth, email, password);
+};

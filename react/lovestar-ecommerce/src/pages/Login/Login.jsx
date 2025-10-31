@@ -14,9 +14,9 @@ function Login() {
                 </Link>
             </div>
             <div className={stylesLogin.form}>
-                <LoginForm />
-{/*                 <SigInForm />
- */}            </div>
+                {/*                 <LoginForm />
+ */}                <SigInForm />
+            </div>
         </div>
     );
 }
