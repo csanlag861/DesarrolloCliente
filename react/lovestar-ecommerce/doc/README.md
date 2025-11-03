@@ -86,10 +86,10 @@ useEffect(() => {
 
 ---
 
-# [FIREBASE](./3.Firebase.md)
+# [FIREBASE](./Firebase.md)
 
 # FILOSOFANDO CON LA IA SOBRE LA VIDA Y REACT
 
-1. [controlled form versus Uncontrolled form](./2.ControlledUncontrolledForm.md)
+1. [controlled form versus Uncontrolled form](./ControlledUncontrolledForm.md)
 
 ---
