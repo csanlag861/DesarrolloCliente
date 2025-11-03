@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { signInWithGooglePopup } from "../../utils/firebase";
+import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utils/firebase";
 import { validation } from "../../utils/validationForm";
+
 import { useDebouncedCallback } from "use-debounce";
 
 import FormInput from "./FormInput";
@@ -45,11 +46,22 @@ function SigInForm() {
 
     const handleGoogle = async () => {
         try {
-            const res = await signInWithGooglePopup();
-            console.log(res);
-
+            const resAuth = await signInWithGooglePopup();
+            console.log(resAuth);
+            const resDB = await createUserDocumentFromAuth(resAuth.user, {rol:"admin"});
+            console.log(resDB);
         } catch (error) {
             console.error("Error a la hora de hacer login con Google", error);
+        }
+    }
+
+    const handleSubmit =  async (event) => {
+        event.preventDefault();
+        try {
+            const res = await signInAuthUserWithEmailAndPassword(email, passwd);
+            console.log(res);
+        } catch (error) {
+            console.error("Error al hacer login con email y passwd", error);
         }
     }
     return (

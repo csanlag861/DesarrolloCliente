@@ -1,6 +1,7 @@
 import stylesRegister from "./register.module.css";
 import { Link } from "react-router-dom";
 import RegisterForm from "../../components/Forms/Register/Register";
+import SigUpForm from "../../components/firebase/SignUpForm";
 
 function Register() {
     return (
@@ -11,7 +12,9 @@ function Register() {
                 </Link>
             </div>
             <div className={stylesRegister.form}>
-                <RegisterForm />
+                {/*                 <RegisterForm />
+ */}
+        <SigUpForm />
             </div>
         </div>
     );
