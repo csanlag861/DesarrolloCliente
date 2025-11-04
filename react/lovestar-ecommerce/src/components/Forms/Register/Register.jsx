@@ -1,27 +1,94 @@
 import stylesRegister from "./register.module.css";
-import { useState } from "react";
+import { useRef, useState , useContext} from "react";
 import { signInWithGooglePopup } from "../../../utils/firebase";
-
+import { useDebouncedCallback } from "use-debounce";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 function RegisterForm() {
-    const [user, setUser] = useState("");
-    const [passwd, setPasswd] = useState("");
+   const navigate = useNavigate()
+;    const emailRef = useRef(null);
+    const displayNameRef = useRef(null);
+    const passwordRef = useRef(null);
+    const confirmPasswordRef = useRef(null);
 
+    const [serverError, setServerError] = useState(null);
 
-    const handleUser = (event) => {
-        setEmail(event.target.value);
-    }
+    const [errors, setErrors] = useState({
+        email: null,
+        password: null,
+        displayName: null,
+    });
 
-    const handlePasswd = (event) => {
-        setPasswd(event.target.value);
-    }
+    const debounceEmail = useDebouncedCallback(() => {
+        setErrors((prev) => ({
+            ...prev,
+            email: validation.isValidEmail(emailRef.current.value)
+                ? null
+                : "Email incorrecto",
+        }));
+    }, 3000);
+
+    const debouncePasswd = useDebouncedCallback(() => {
+        setErrors((prev) => ({
+            ...prev,
+            password: validation.isValidPassword(passwordRef.current.value)
+                ? null
+                : "Contraseña incorrecta",
+        }));
+    }, 3000);
+
+    const handleSignUp = async (event) => {
+        event.preventDefault();
+        if (serverError) setServerError(null);
+
+        const name = displayNameRef.current.value.trim();
+        if (!name) {
+            setErrors((prev) => ({
+                ...prev,
+                displayName: "Nombre no puede estar vacío",
+            }));
+            return;
+        }
+
+        if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+            setErrors((prev) => ({
+                ...prev,
+                password: "Las contraseñas no coinciden",
+            }));
+            return;
+        }
+
+        try {
+            const { user } = await createAuthUserWithEmailAndPassword(
+                emailRef.current.value,
+                passwordRef.current.value
+            );
+
+            await createUserDocumentFromAuth(user, {
+                displayName: displayNameRef.current.value,
+                rol: "user",
+            });
+
+            console.log("User created:", user);
+        } catch (error) {
+            if (error.code === "auth/email-already-in-use") {
+                setServerError("El email ya está registrado");
+            } else if (error.code === "auth/weak-password") {
+                setServerError("La contraseña es demasiado débil");
+            } else {
+                setServerError("Error inesperado al registrar usuario");
+                console.error(error);
+            }
+        }
+    };
 
     const handleGoogle = async () => {
         try {
             const res = await signInWithGooglePopup();
+            navigate("/tienda");
+
         } catch (error) {
             console.error("Error a la hora de hacer login con Google", error);
         }

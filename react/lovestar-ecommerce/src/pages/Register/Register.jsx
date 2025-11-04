@@ -12,10 +12,9 @@ function Register() {
                 </Link>
             </div>
             <div className={stylesRegister.form}>
-                {/*                 <RegisterForm />
- */}
-        <SigUpForm />
-            </div>
+                <RegisterForm />
+                {/*         <SigUpForm />
+ */}            </div>
         </div>
     );
 }

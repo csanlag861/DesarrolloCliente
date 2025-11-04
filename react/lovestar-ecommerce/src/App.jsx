@@ -7,6 +7,7 @@ import Tienda from "./pages/Tienda/Tienda";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 
+
 import { Route, Routes } from 'react-router-dom';
 import BigLayout from "./pages/BigLayout/BigLayout";
 
