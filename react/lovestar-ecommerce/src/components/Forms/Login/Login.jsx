@@ -1,5 +1,5 @@
 import stylesLogin from "./login.module.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { signInWithGooglePopup } from "../../../utils/firebase";
 
 import FormInput from "../Input/Input";
@@ -9,24 +9,28 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 const LoginForm = () => {
-  const [user, setUser] = useState("");
-  const [passwd, setPasswd] = useState("");
+  const userNameRef = useRef(null);
+  const passwordRef = useRef(null);
 
-  const handleUser = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswd = (event) => {
-    setPasswd(event.target.value);
-  };
+  const [serverError, setServerError] = useState(null);
 
   const handleGoogle = async () => {
     try {
-      const res = await signInWithGooglePopup();
+      const resAuth = await signInWithGooglePopup();
     } catch (error) {
       console.error("Error a la hora de hacer login con Google", error);
     }
-  };
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await signInAuthUserWithEmailAndPassword(email, passwd);
+      console.log(res);
+    } catch (error) {
+      console.error("Error al hacer login con email y passwd", error);
+    }
+  }
 
   return (
     <form>
@@ -40,7 +44,6 @@ const LoginForm = () => {
             id="username"
             type="text"
             ref={userNameRef}
-            error={errors.userName}
             required
           />
 
@@ -49,12 +52,10 @@ const LoginForm = () => {
             id="password"
             type="password"
             ref={passwordRef}
-            onChange={debouncePasswd}
-            error={errors.password}
             required
           />
 
-          <button className="sheen" type="submit">
+          <button className="sheen" type="submit" onClick={handleSubmit}>
             ENTRAR
           </button>
         </div>
@@ -65,7 +66,7 @@ const LoginForm = () => {
           </Link>
         </div>
         <div className={stylesLogin.google}>
-          <button type="button" onClick={handleGoogle}>
+          <button onClick={handleGoogle}>
             <Icon icon="material-icon-theme:google" />
           </button>
         </div>

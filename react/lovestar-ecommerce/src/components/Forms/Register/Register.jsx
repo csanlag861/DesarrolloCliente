@@ -1,7 +1,6 @@
 import stylesRegister from "./register.module.css";
 import '/src/styles/styleReusables.css';
 
-
 import { signInWithGooglePopup } from "../../../utils/firebase";
 import { validation } from "../../../utils/validationForm";
 
