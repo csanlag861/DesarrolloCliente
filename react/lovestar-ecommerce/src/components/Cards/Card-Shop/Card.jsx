@@ -1,6 +1,10 @@
 import styleCard from "./card.module.css";
 
+import { useState } from "react";
+
 const Card = ({ card }) => {
+  const [hover, setHover] = useState(false);
+
   const styleColor = {
     width: "10px",
     height: "10px",
@@ -10,7 +14,13 @@ const Card = ({ card }) => {
   return (
     <div className={styleCard.card}>
       <div className={styleCard.imagen}>
-        <img src={card.url} alt={card.alt} />
+        
+        <img 
+         src={hover ? card.url_r : card.url}
+         onMouseEnter={() => {setHover(true)}}
+         onMouseLeave={() => {setHover(false)}}
+         alt={card.alt} />
+
       </div>
       <div className={styleCard.text}>
         <h3>{card.nombre}</h3>

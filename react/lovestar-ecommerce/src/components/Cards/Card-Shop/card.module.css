@@ -1,3 +1,11 @@
+.image-back{
+    opacity: 0;
+}
+
+.image-front{
+    opacity: 1;
+}
+
 .card {
     width: 284px;
     height: 435px;
@@ -18,10 +26,6 @@
         img {
             height: 280px;
             width: 280px;
-
-            &:hover {
-                transform: scaleX(-1);
-            }
         }
 
 

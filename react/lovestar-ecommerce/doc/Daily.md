@@ -47,3 +47,16 @@ signInAuthUserWithEmailAndPassword(
 
 
 Ahora le estás pasando exactamente lo que Firebase necesita: el email y contraseña escritos por el usuario.
+
+```jsx
+currentUser?.rol == "admin"
+```
+“Si currentUser existe (no es null ni undefined), entonces comprueba si su propiedad rol es igual a "admin".”
+
+```jsx
+const isAuth = !!currentUser
+```
+
+Como currentUser ya es una expresión booleana por sí misma (si existe → truthy, si no → falsy), puedes hacer simplemente:
+
+👉 el doble !! convierte cualquier valor en true o false.

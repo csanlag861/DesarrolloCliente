@@ -7,6 +7,7 @@ const productos = [
         "categoria": "Gorro",
         "membership": false,
         "url": "img/productos/BEANIE-001.png",
+        "url_r": "img/productos/BEANIE-001-2.png",
         "alt": "Beanie Lovestory Badge",
     },
     {
@@ -20,6 +21,7 @@ const productos = [
         "categoria": "Gorro",
         "membership": false,
         "url": "img/productos/BEANIE-002.png",
+        "url_r": "img/productos/BEANIE-002-2.png",
         "alt": "Beanie Lovestory Scipt",
     },
     {
@@ -30,6 +32,7 @@ const productos = [
         "categoria": "Gorro",
         "membership": false,
         "url": "img/productos/BEANIE-003.png",
+        "url_r": "img/productos/BEANIE-003-2.png",
         "alt": "Beanie A LOVESTORY",
     },
     {
@@ -40,6 +43,7 @@ const productos = [
         "categoria": "Gorro",
         "membership": false,
         "url": "img/productos/BEANIE-004.png",
+        "url_r": "img/productos/BEANIE-004-2.png",
         "alt": "Beanie Chrome Lovestar",
     },
     {
@@ -57,6 +61,7 @@ const productos = [
         "categoria": "Sudadera",
         "membership": false,
         "url": "img/productos/HOODIE-001.png",
+        "url_r": "img/productos/HOODIE-001-2.png",
         "alt": "Hoodie Chrome Lovestar",
     },
     {
@@ -77,6 +82,7 @@ const productos = [
         "categoria": "Sudadera",
         "membership": false,
         "url": "img/productos/HOODIE-002.png",
+        "url_r": "img/productos/HOODIE-002-2.png",
         "alt": "Hoodie Lovestar",
     },
     {
@@ -94,6 +100,7 @@ const productos = [
         "categoria": "Jersey",
         "membership": true,
         "url": "img/productos/KNIT-001.png",
+        "url_r": "img/productos/KNIT-001-2.png",
         "alt": "Knit Face Mask",
     },
     {
@@ -112,6 +119,7 @@ const productos = [
         "informacion": "Novedad",
         "membership": true,
         "url": "img/productos/LOVESTARFC-001.png",
+        "url_r": "img/productos/LOVESTARFC-001-2.png",
         "alt": "SHIRT LOVESTARFC",
     }
 ]

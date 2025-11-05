@@ -58,7 +58,7 @@ const Header = () => {
         </div>
         <div className={stylesHeader["social-links"]}>
           {currentUser?.rol == "admin" &&
-            <NavLink to="/admin">
+            <NavLink to="/lovestar">
               <Icon icon="eos-icons:admin" />
             </NavLink>
           }

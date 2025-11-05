@@ -6,6 +6,10 @@ import Home from "./pages/Home/Home";
 import Tienda from "./pages/Tienda/Tienda";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import Admin from "./pages/Admin/Admin";
+
+import PrivateRoute from "./pages/protected/PrivateRoutes";
+import LoginRoute from "./pages/protected/LoginRoutes";
 
 
 import { Route, Routes } from 'react-router-dom';
@@ -21,11 +25,27 @@ function App() {
       <Route path="/" element={<BigLayout />}>
         <Route path="/Home" element={<Home />} />
         <Route path="/Tienda" element={<Tienda />} />
+
+        <Route path="/lovestar" element={
+          <PrivateRoute>
+            <Admin />
+          </PrivateRoute>
+        } />
       </Route>
 
-      <Route path="/Login" element={<Login />} />
-      <Route path="/Register" element={<Register />} />
-      
+      <Route path="/Login" element={
+        <LoginRoute>
+          <Login />
+        </LoginRoute>
+      } />
+      <Route path="/Register" element={
+        <LoginRoute>
+          <Register />
+        </LoginRoute>
+      } />
+
+
+
     </Routes>
     <ToastContainer position="top-center" autoClose={2000} />
   </>;
