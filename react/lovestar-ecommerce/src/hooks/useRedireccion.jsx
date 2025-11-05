@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const useRedireccion = () => {
+const useRedireccion = (timeout=5) => {
     const navigate = useNavigate();
     useEffect(() => {
         const time = setTimeout(() => {
             navigate("/home");
-        }, 5000);
+        }, timeout*1000);
 
         return () => clearTimeout(time);
-    }, [navigate])
+    }, [navigate, timeout])
 }
 
 export default useRedireccion;

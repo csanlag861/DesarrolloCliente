@@ -3,7 +3,29 @@ import { Icon } from "@iconify/react";
 
 import { NavLink, Link } from "react-router-dom";
 
+import { signOutUser } from "../../../utils/firebase"
+
+import { UserContext } from "../../../context/ContextUser";
+import { useContext } from "react";
+
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
+
 const Header = () => {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const handleLogout = async () => {
+    try {
+      const res = await signOutUser();
+      setCurrentUser(null);
+      toast.success("Sesión cerrada correctamente.")
+    } catch (error) {
+      toast.error("Error al cerrar sesión.")
+      console.error("Error en el Logout", error);
+    }
+  }
+
   const marqueeText = (
     <>
       <p>Envío gratis pedidos internacionales +200€</p>
@@ -35,9 +57,19 @@ const Header = () => {
           </Link>
         </div>
         <div className={stylesHeader["social-links"]}>
+          {currentUser?.rol == "admin" &&
+            <NavLink to="/admin">
+              <Icon icon="eos-icons:admin" />
+            </NavLink>
+          }
+
+
+
+
           <Link to="/Login">
             <Icon icon="ic:baseline-account-circle" />
           </Link>
+          {currentUser && <Icon icon="material-symbols:logout" onClick={handleLogout} />}
           <Icon icon="ion:cart" />
         </div>
       </div>

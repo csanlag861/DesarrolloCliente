@@ -1,8 +1,10 @@
 import stylesRegister from "./register.module.css";
 import '/src/styles/styleReusables.css';
 
-import { signInWithGooglePopup } from "../../../utils/firebase";
+import { signInWithGooglePopup, createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../../utils/firebase";
 import { validation } from "../../../utils/validationForm";
+
+import { useNavigate } from "react-router-dom";
 
 import { useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
@@ -12,6 +14,8 @@ import { Icon } from "@iconify/react";
 import FormInput from "../Input/Input";
 
 function RegisterForm() {
+  const navigate = useNavigate();
+
   const emailRef = useRef(null);
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
@@ -43,8 +47,8 @@ function RegisterForm() {
   }, 3000);
 
   const handleSignUp = async (event) => {
-    event.preventDefault();
-    if (serverError) setServerError(null);
+/*     event.preventDefault();
+ */    if (serverError) setServerError(null);
 
     const name = userNameRef.current.value.trim();
     if (!name) {
@@ -63,10 +67,13 @@ function RegisterForm() {
 
       await createUserDocumentFromAuth(user, {
         displayName: userNameRef.current.value,
-        rol: "user",
       });
 
-      console.log("User created:", user);
+      setTimeout(() => {
+        navigate("/home")
+
+      }, 1000)
+
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         setServerError("El email ya está registrado");
@@ -81,13 +88,18 @@ function RegisterForm() {
 
   const handleGoogle = async () => {
     try {
-      const res = await signInWithGooglePopup();
+      const {user} = await signInWithGooglePopup();
+      await createUserDocumentFromAuth(user);
+      
+      setTimeout(() => {
+        navigate("/home")
+      }, 1000)
     } catch (error) {
       console.error("Error a la hora de hacer login con Google", error);
     }
   };
   return (
-    <form action="">
+    <form action={handleSignUp}>
       <div className={stylesRegister.form}>
         <div className={stylesRegister.logo}>
           <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />

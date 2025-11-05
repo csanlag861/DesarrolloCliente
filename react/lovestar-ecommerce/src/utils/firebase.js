@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDoc, doc, setDoc } from 'firebase/firestore';
-import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAHGbi5Tv95LkAFN1bsOV3PiRIDcAQbvrI",
@@ -36,6 +36,7 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
     return userData;
   } catch (error) {
     console.error("Error al iniciar sesión:", error);
+    throw error;
   }
 };
 
@@ -75,6 +76,8 @@ export const createUserDocumentFromAuth = async (
         displayName,
         email,
         createdAt,
+        rol: "user",
+        descuento: true,
         ...additionalInformation,
       });
     } catch (error) {

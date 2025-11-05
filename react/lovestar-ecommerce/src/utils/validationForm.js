@@ -5,7 +5,7 @@ const isValidEmail = (email) => {
 
 const isValidPassword = (password) => {
   // Define los criterios de validación
-  const minLength = 8; // Longitud mínima
+  const minLength = 2; // Longitud mínima
 /*   const hasUpperCase = /[A-Z]/.test(password); // Al menos una mayúscula
   const hasLowerCase = /[a-z]/.test(password); // Al menos una minúscula
   const hasNumbers = /\d/.test(password); // Al menos un número

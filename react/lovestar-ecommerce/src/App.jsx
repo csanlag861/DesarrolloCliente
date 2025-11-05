@@ -11,6 +11,8 @@ import Register from "./pages/Register/Register";
 import { Route, Routes } from 'react-router-dom';
 import BigLayout from "./pages/BigLayout/BigLayout";
 
+import { ToastContainer } from 'react-toastify';
+
 function App() {
   return <>
     <Routes>
@@ -20,9 +22,12 @@ function App() {
         <Route path="/Home" element={<Home />} />
         <Route path="/Tienda" element={<Tienda />} />
       </Route>
+
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
+      
     </Routes>
+    <ToastContainer position="top-center" autoClose={2000} />
   </>;
 }
 

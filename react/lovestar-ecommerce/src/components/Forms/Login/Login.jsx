@@ -1,49 +1,62 @@
 import stylesLogin from "./login.module.css";
 import { useState, useRef } from "react";
-import { signInWithGooglePopup } from "../../../utils/firebase";
+import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../../utils/firebase";
 
 import FormInput from "../Input/Input";
-
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { Icon } from "@iconify/react";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
-  const userNameRef = useRef(null);
+  const navigate = useNavigate();
+
+  const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
   const [serverError, setServerError] = useState(null);
 
   const handleGoogle = async () => {
     try {
-      const resAuth = await signInWithGooglePopup();
+      const { user } = await signInWithGooglePopup();
+      await createUserDocumentFromAuth(user);
+      
+      setTimeout(() => {
+        navigate("/home")
+      }, 1000)
     } catch (error) {
       console.error("Error a la hora de hacer login con Google", error);
     }
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    /*     event.preventDefault(); */
     try {
-      const res = await signInAuthUserWithEmailAndPassword(email, passwd);
-      console.log(res);
+      const email = emailRef.current.value;
+      const password = passwordRef.current.value;
+      await signInAuthUserWithEmailAndPassword(email, password);
+      toast.success("Usuario logeado con éxito.")
+
+      setTimeout(() => {
+        navigate("/home")
+      }, 1000)
     } catch (error) {
       console.error("Error al hacer login con email y passwd", error);
     }
   }
 
   return (
-    <form>
+    <form action={handleSubmit}>
       <div className={stylesLogin.form}>
         <div className={stylesLogin.logo}>
           <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
         </div>
         <div className={stylesLogin.inputs}>
           <FormInput
-            label="Nombre de Usuario"
-            id="username"
+            label="Email"
+            id="email"
             type="text"
-            ref={userNameRef}
+            ref={emailRef}
             required
           />
 
