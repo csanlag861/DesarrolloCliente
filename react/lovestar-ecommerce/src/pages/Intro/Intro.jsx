@@ -3,7 +3,7 @@ import Lovestar from "../../components/Intro/Lovestar/Lovestar";
 import Footer from "../../components/Intro/Footer/Footer";
 import stylesIntro from "./intro.module.css";
 
-import useRedireccion from "../../components/Intro/Lovestar/useRedireccion";
+import useRedireccion from "../../hooks/useRedireccion";
 function Intro () {
   useRedireccion();
   return (

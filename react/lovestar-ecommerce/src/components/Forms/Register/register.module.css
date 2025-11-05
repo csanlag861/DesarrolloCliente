@@ -1,12 +1,13 @@
 .form {
     width: 432px;
-    height: 600px;
+    height: 640px;
     background-color: var(--white-color);
     border-radius: 8px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     .logo {
         width: 214px;
@@ -23,87 +24,11 @@
         flex-direction: column;
         gap: 24px;
 
-        p {
+        h3 {
             font-family: "Archivo-SemiBold", sans-serif;
-            font-size: 16px;
         }
 
-        .input {
-
-            p {
-                font-family: "Archivo-Light", sans-serif;
-                font-size: 16px;
-                margin-bottom: 4px;
-            }
-
-            input[type="text"] {
-                background-color: var(--white-color);
-                width: 100%;
-                height: 37px;
-                border: 2px solid var(--black-color);
-                border-radius: 4px;
-                padding: 12px;
-                color: var(--black-color);
-                font-family: "Archivo-Light", sans-serif;
-
-                &::placeholder {
-                    color: var(--black-active);
-                    font-family: "Archivo-Light", sans-serif;
-                }
-
-                &:focus {
-                    outline: none;
-                }
-            }
-
-            input[type="password"] {
-                background-color: var(--white-color);
-                width: 100%;
-                height: 37px;
-                border: 2px solid var(--black-color);
-                border-radius: 4px;
-                padding: 12px;
-                color: var(--black-color);
-                font-family: "Archivo-Light", sans-serif;
-
-                &::placeholder {
-                    color: var(--black-active);
-                    font-family: "Archivo-Light", sans-serif;
-                }
-
-                &:focus {
-                    outline: none;
-                }
-            }
-
-
-            input[type="email"] {
-                background-color: var(--white-color);
-                width: 100%;
-                height: 37px;
-                border: 2px solid var(--black-color);
-                border-radius: 4px;
-                padding: 12px;
-                color: var(--black-color);
-                font-family: "Archivo-Light", sans-serif;
-
-                &::placeholder {
-                    color: var(--black-active);
-                    font-family: "Archivo-Light", sans-serif;
-                }
-
-                &:focus {
-                    outline: none;
-                }
-
-                &:invalid {
-                    border: 2px solid var(--error-color);
-                    background-color: var(--error-light);
-                }
-            }
-        }
-
-        input[type="submit"] {
+        button {
             background-color: var(--primary-color);
             border: none;
             cursor: pointer;
@@ -112,6 +37,9 @@
             font-family: "Archivo-Normal", sans-serif;
             letter-spacing: .1rem;
             color: var(--white-color);
+
+            display: block;
+            position: relative;
 
             &:hover {
                 background-color: var(--cta-color);
@@ -138,7 +66,6 @@
             }
         }
 
-
         a {
             text-decoration: none;
         }
@@ -164,6 +91,7 @@
         button {
             cursor: pointer;
             border: none;
+            background-color: var(--white-color);
         }
     }
 }

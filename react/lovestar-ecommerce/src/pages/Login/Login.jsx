@@ -4,21 +4,20 @@ import SigInForm from "../../components/firebase/SigInForm";
 
 import { Link } from "react-router-dom";
 
-
 function Login() {
-    return (
-        <div className={stylesLogin.login}>
-            <div className={stylesLogin.logo}>
-                <Link to="/Home">
-                    <img src="./img/lovestarlogo.svg" alt="Logo de Lovestar" />
-                </Link>
-            </div>
-            <div className={stylesLogin.form}>
-                {/*                 <LoginForm />
- */}                <SigInForm />
-            </div>
-        </div>
-    );
+  return (
+    <div className={stylesLogin.login}>
+      <div className={stylesLogin.logo}>
+        <Link to="/Home">
+          <img src="./img/lovestarlogo.svg" alt="Logo de Lovestar" />
+        </Link>
+      </div>
+      <div className={stylesLogin.form}>
+        <LoginForm />
+        {/* <SigInForm /> */}
+      </div>
+    </div>
+  );
 }
 
 export default Login;
