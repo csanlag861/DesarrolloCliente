@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+    width: 540px;
+    height: 571px;
+
+    .text {
+        text-align: center;
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        color: var(--white-color);
+
+        h1 {
+            font-size: 48px;
+            font-family: "CabinetGrotesk-Bold";
+        }
+
+        p {
+            font-size: 24px;
+
+        }
+    }
+
+    .form {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+
+        label {
+            color: var(--white-color);
+        }
+
+        input {
+            background-color: var(--black-color);
+            border: 1px solid var(--white-color);
+            color: var(--white-color);
+        }
+    }
+
+    .btns {
+        margin-top: 48px;
+        display: flex;
+        gap: 64px;
+        justify-content: center;
+
+
+        button {
+            width: 146px;
+            height: 53px;
+            cursor: pointer;
+
+            font-size: 16px;
+            letter-spacing: .1rem;
+            background-color: var(--white-color);
+            color: var(--black-color);
+            border: none;
+
+            &:hover {
+                background-color: var(--black-color);
+                color: var(--white-color);
+                border: 1px solid var(--white-color);
+            }
+
+        }
+
+        button[type="button"] {
+            color: var(--white-color);
+            background-color: var(--black-color);
+            border: 1px solid var(--white-color);
+
+            &:hover{
+                border: none;
+                background-color: var(--white-color);
+                color: var(--black-color);
+            }
+        }
+    }
+}

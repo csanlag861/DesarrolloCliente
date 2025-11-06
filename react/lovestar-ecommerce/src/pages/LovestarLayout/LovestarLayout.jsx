@@ -5,10 +5,11 @@ import { Outlet } from "react-router-dom";
 
 function BigLayout() {
   return (
-    <div className={stylesBigLayout.container}>
-      <Header />
-      <Outlet />
+      <div className={stylesBigLayout.container}>
+        <Header />
+        <Outlet />
     </div>
+
   );
 }
 

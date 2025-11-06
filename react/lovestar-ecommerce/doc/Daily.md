@@ -5,8 +5,10 @@
 - Que el usuario que sea miembro tenga otro footer / mas ropa.
 - Que el usuario que no tenga el descuento tenga otro footer.
 - BigLayout para el header del Login, Register y Membership.
-- Comenzar la vista Membership.
+- Hacer que 
 - Comenzar la vista Sobre Nosotros (acordeon).
+- Refactorizar los distintos botones que hay.
+- Header Sticky (-> overflow-y)
 
 
 ### 💡 Ideas / Notas
@@ -15,6 +17,36 @@
 
 ### 💻 Fragmentos de código / Soluciones técnicas
 > Fragmentos relevantes o ejemplos de código que resolvieron un problema.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,6 +2,6 @@
     display: grid;
     grid-template-rows: auto 1fr;
     min-height: 100vh;
-    background-color: var(--primary-color);
     justify-items: center;
+    background: linear-gradient(to bottom, var(--primary-color), #ffffff00) ;
 }

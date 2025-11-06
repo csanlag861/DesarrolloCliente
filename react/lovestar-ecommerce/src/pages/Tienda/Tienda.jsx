@@ -25,9 +25,11 @@ function Tienda() {
 
         // ?¿¿?
         const dataProducts = snapshot.docs.map((doc) => ({
-          id: doc.id,
           ...doc.data(),
+          id: doc.id,
         }));
+
+        console.log(dataProducts);
 
         setProductos(dataProducts);
       } catch (error) {
