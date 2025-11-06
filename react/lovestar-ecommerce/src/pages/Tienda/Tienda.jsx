@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../utils/firebase";
 
@@ -8,7 +8,11 @@ import Card from "../../components/Cards/Card-Shop/Card";
 import { Icon } from "@iconify/react";
 import { toast } from "react-toastify";
 
+import { UserContext } from "../../context/ContextUser";
+
 function Tienda() {
+  const { currentUser } = useContext(UserContext);
+
   const [productos, setProductos] = useState([]);
   const [showSearch, setShowSearch] = useState(false);
   const [filter, setFilter] = useState("");
@@ -37,9 +41,11 @@ function Tienda() {
   const handleSearch = () => setShowSearch(!showSearch);
 
   // AQUI TENGO LOS VALORES RECIENTES O TENGO QUE HACER UN PREVIOUS?
-  const filterProducts = productos.filter((prod) =>
+const filterProducts = productos.filter(
+  (prod) =>
+    (!prod.membership || currentUser?.rol === "Miembro") &&
     prod.nombre?.toLowerCase().includes(filter.toLowerCase())
-  );
+);
 
   return (
     <main>
@@ -70,14 +76,14 @@ function Tienda() {
         )}
       </div>
       <section className={stylesTienda.cards}>
-        {filterProducts.length > 0 ? (
+        {(filterProducts.length > 0 ? (
           filterProducts.map((prod, id) => <Card key={id} card={prod} />)
         ) : (
           <div className={stylesTienda.noProducts}>
-            <Icon icon="material-symbols:error"/>
+            <Icon icon="material-symbols:error" />
             <p>No hay productos para mostrar.</p>
           </div>
-        )}
+        ))}
       </section>
     </main>
   );

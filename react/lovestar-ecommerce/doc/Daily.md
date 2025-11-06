@@ -1,3 +1,19 @@
+# 🧾 Daily Log - Proyecto Ecommerce
+
+
+### 🚧 Pendiente / Por hacer
+- Que el usuario que sea miembro tenga otro footer / mas ropa.
+- Que el usuario que no tenga el descuento tenga otro footer.
+- BigLayout para el header del Login, Register y Membership.
+- Comenzar la vista Membership.
+- Comenzar la vista Sobre Nosotros (acordeon).
+
+
+### 💡 Ideas / Notas
+- Cuando un usuario logeado intenta acceder a la ruta */lovestar*, redirige al **login**, pero en realidad debería redirigir a **home**.
+
+
+
 # ERROR IMPORTANTE CON EL useRef.
 
 Excelente pregunta 👏
@@ -60,3 +76,5 @@ const isAuth = !!currentUser
 Como currentUser ya es una expresión booleana por sí misma (si existe → truthy, si no → falsy), puedes hacer simplemente:
 
 👉 el doble !! convierte cualquier valor en true o false.
+
+### DAILY
