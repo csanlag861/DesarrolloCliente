@@ -9,6 +9,7 @@ main {
         p {
             position: relative;
             cursor: pointer;
+
             &::after {
                 content: "";
                 position: absolute;
@@ -34,6 +35,15 @@ main {
             }
         }
 
+        svg {
+            width: 24px;
+            height: 24px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
     }
 
     .cards {
@@ -41,8 +51,67 @@ main {
         height: 100%;
         padding-top: 32px;
 
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 32px;
+    }
+}
+
+.buscador {
+    margin-top: 18px;
+
+    .search {
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        max-height: 100px;
+
+        display: flex;
+        justify-content: center;
+
+        input {
+            width: 60%;
+            height: 32px;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--black-color);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s ease;
+            font-family: "Archivo-Light", sans-serif;
+            background-color: var(--white-colo);
+
+            &:focus {
+                border: 1px solid var(--primary-color);
+            }
+        }
+
+        &.hidden {
+            max-height: 0;
+        }
+    }
+}
+
+
+.noProducts {
+    display: flex;
+    width: 100%;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: var(--primary-color);
+    font-size: 24px;
+}
+
+/* @media (max-width: 900px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+} */
+
+@media (max-width: 600px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
     }
 }

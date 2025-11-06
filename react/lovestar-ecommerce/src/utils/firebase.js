@@ -16,7 +16,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 export const auth = getAuth();
 /* patrón singleton // instancia singleton que se usan durante todo el ciclo de vida */
-export const db = getFirestore();
+export const db = getFirestore(firebaseApp);
 
 /* conexion a google */
 const googleProvider = new GoogleAuthProvider();

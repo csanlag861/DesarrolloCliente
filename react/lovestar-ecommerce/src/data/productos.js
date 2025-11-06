@@ -9,6 +9,7 @@ const productos = [
         "url": "img/productos/BEANIE-001.png",
         "url_r": "img/productos/BEANIE-001-2.png",
         "alt": "Beanie Lovestory Badge",
+        "stock": 10,
     },
     {
         "id": 2,
@@ -23,6 +24,7 @@ const productos = [
         "url": "img/productos/BEANIE-002.png",
         "url_r": "img/productos/BEANIE-002-2.png",
         "alt": "Beanie Lovestory Scipt",
+        "stock": 10,
     },
     {
         "id": 3,
@@ -34,6 +36,7 @@ const productos = [
         "url": "img/productos/BEANIE-003.png",
         "url_r": "img/productos/BEANIE-003-2.png",
         "alt": "Beanie A LOVESTORY",
+        "stock": 10,
     },
     {
         "id": 4,
@@ -45,6 +48,7 @@ const productos = [
         "url": "img/productos/BEANIE-004.png",
         "url_r": "img/productos/BEANIE-004-2.png",
         "alt": "Beanie Chrome Lovestar",
+        "stock": 10,
     },
     {
         "id": 5,
@@ -63,6 +67,7 @@ const productos = [
         "url": "img/productos/HOODIE-001.png",
         "url_r": "img/productos/HOODIE-001-2.png",
         "alt": "Hoodie Chrome Lovestar",
+        "stock": 10,
     },
     {
         "id": 6,
@@ -84,6 +89,7 @@ const productos = [
         "url": "img/productos/HOODIE-002.png",
         "url_r": "img/productos/HOODIE-002-2.png",
         "alt": "Hoodie Lovestar",
+        "stock": 10,
     },
     {
         "id": 7,
@@ -102,6 +108,7 @@ const productos = [
         "url": "img/productos/KNIT-001.png",
         "url_r": "img/productos/KNIT-001-2.png",
         "alt": "Knit Face Mask",
+        "stock": 10,
     },
     {
         "id": 8,
@@ -121,6 +128,7 @@ const productos = [
         "url": "img/productos/LOVESTARFC-001.png",
         "url_r": "img/productos/LOVESTARFC-001-2.png",
         "alt": "SHIRT LOVESTARFC",
+        "stock": 10,
     }
 ]
 

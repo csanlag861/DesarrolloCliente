@@ -1,14 +1,15 @@
-.image-back{
+.image-back {
     opacity: 0;
 }
 
-.image-front{
+.image-front {
     opacity: 1;
 }
 
 .card {
     width: 284px;
     height: 435px;
+
 
     display: flex;
     flex-direction: column;
