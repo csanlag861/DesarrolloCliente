@@ -6,11 +6,6 @@ import SigUpForm from "../../components/firebase/SignUpForm";
 function Register() {
     return (
         <div className={stylesRegister.login}>
-            <header className={stylesRegister.logo}>
-                <Link to="/Home">
-                    <img src="./img/lovestarlogo.svg" alt="Logo de Lovestar" />
-                </Link>
-            </header>
             <main className={stylesRegister.form}>
                 <RegisterForm />
                 {/*         <SigUpForm />

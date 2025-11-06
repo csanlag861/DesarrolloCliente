@@ -11,7 +11,7 @@ const Hero = () => {
                     <p>Conoce la nuestra: <b><i>"A Lovestory."</i></b></p>
                 </div>
                 <div className={stylesHero.btn}>
-                    <div className={stylesHero["btn__shopnow"]}>
+                    <div className={`${stylesHero["btn__shopnow"]} sheen`}>
                         <Link to="/Tienda">
                             SHOP NOW
                         </Link>

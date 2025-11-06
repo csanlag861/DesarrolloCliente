@@ -32,7 +32,7 @@ const Footer = () => {
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Tienda</NavLink>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Galería</NavLink>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Editorial</NavLink>
-        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Membership</NavLink>
+        <NavLink to="/Membership" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Membership</NavLink>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Sobre Nosotros</NavLink>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Contacto</NavLink>
         </nav>

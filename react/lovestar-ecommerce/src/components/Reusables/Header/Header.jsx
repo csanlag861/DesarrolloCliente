@@ -62,10 +62,6 @@ const Header = () => {
               <Icon icon="eos-icons:admin" />
             </NavLink>
           }
-
-
-
-
           <Link to="/Login">
             <Icon icon="ic:baseline-account-circle" />
           </Link>
@@ -77,7 +73,7 @@ const Header = () => {
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Tienda</NavLink>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Galería</NavLink>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Editorial</NavLink>
-        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Membership</NavLink>
+        <NavLink to="/Membership" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Membership</NavLink>
       </nav>
     </header>
   );

@@ -7,11 +7,6 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <div className={stylesLogin.login}>
-      <header className={stylesLogin.logo}>
-        <Link to="/Home">
-          <img src="./img/lovestarlogo.svg" alt="Logo de Lovestar" />
-        </Link>
-      </header>
       <main className={stylesLogin.form}>
         <LoginForm />
         {/* <SigInForm /> */}

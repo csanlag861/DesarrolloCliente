@@ -4,7 +4,7 @@ main {
 
     .filtros {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
 
         p {
             position: relative;
@@ -50,6 +50,7 @@ main {
         width: 100%;
         height: 100%;
         padding-top: 32px;
+        padding-bottom: 32px;
 
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -69,19 +70,20 @@ main {
         justify-content: center;
 
         input {
-            width: 60%;
+            width: 100%;
             height: 32px;
             padding: 0.6rem 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--black-color);
+            border: none;
+            border-bottom: 1px solid var(--black-color);
             font-size: 1rem;
             outline: none;
             transition: all 0.2s ease;
             font-family: "Archivo-Light", sans-serif;
-            background-color: var(--white-colo);
+            background-color: var(--white-color);
 
             &:focus {
-                border: 1px solid var(--primary-color);
+                border: none;
+                border-bottom: 1px solid var(--primary-color);
             }
         }
 
@@ -109,9 +111,9 @@ main {
     }
 } */
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .cards {
         flex-direction: column;
         align-items: center;
     }
-}
+} */

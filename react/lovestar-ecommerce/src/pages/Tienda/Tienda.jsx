@@ -43,7 +43,7 @@ function Tienda() {
   // AQUI TENGO LOS VALORES RECIENTES O TENGO QUE HACER UN PREVIOUS?
 const filterProducts = productos.filter(
   (prod) =>
-    (!prod.membership || currentUser?.rol === "Miembro") &&
+    (!prod.membership || (currentUser?.rol === "miembro" || currentUser?.rol === "admin")) &&
     prod.nombre?.toLowerCase().includes(filter.toLowerCase())
 );
 
