@@ -5,10 +5,11 @@
 - Que el usuario que sea miembro tenga otro footer / mas ropa.
 - Que el usuario que no tenga el descuento tenga otro footer.
 - BigLayout para el header del Login, Register y Membership.
-- Hacer que 
+- Hacer que se reflejen los datos en la card
 - Comenzar la vista Sobre Nosotros (acordeon).
 - Refactorizar los distintos botones que hay.
 - Header Sticky (-> overflow-y)
+- Filtro en la tienda ?¿¿?¿
 
 
 ### 💡 Ideas / Notas

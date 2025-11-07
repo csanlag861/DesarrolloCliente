@@ -18,15 +18,15 @@ import LovestarLayout from "./pages/LovestarLayout/LovestarLayout";
 
 import { ToastContainer } from "react-toastify";
 
-// import { useEffect } from "react";
-// import { uploadProducts } from "./utils/uploadProducts";
+/* import { useEffect } from "react";
+import { uploadProducts } from "./utils/uploadProducts"; */
 
 function App() {
-  // useEffect(()  => {
-  //   const upload = async () => uploadProducts();
-
-  //   upload();
-  // }, [])
+  /*   useEffect(() => {
+      const upload = async () => uploadProducts();
+  
+      upload();
+    }, []) */
 
   return (
     <>
@@ -69,9 +69,7 @@ function App() {
           <Route
             path="/Membership"
             element={
-              <LoginRoute>
-                <Membership />
-              </LoginRoute>
+              <Membership />
             }
           />
         </Route>

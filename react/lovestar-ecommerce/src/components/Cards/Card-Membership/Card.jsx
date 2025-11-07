@@ -1,5 +1,7 @@
 import { useState } from "react";
 import stylesCard from "./card.module.css";
+import { useContext } from "react";
+import { CardContext } from "../../../context/ContextCard";
 
 export default function Card({
   image,
@@ -13,6 +15,9 @@ export default function Card({
   imageLoading,
   getDomain,
 }) {
+
+  const { cardData } = useContext(CardContext);
+
   const [isIconHovered, setIsIconHovered] = useState(false);
   const [hoveredLinkIndex, setHoveredLinkIndex] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -61,6 +66,14 @@ export default function Card({
             transformStyle: "preserve-3d",
           }}
         >
+          
+{/* ESTILOS DE MI CARD */}
+          <div>
+        <h3>{cardData?.username || "Nombre de usuario"}</h3>
+        <h3>{cardData?.email || "Email"}</h3>
+        <p>{cardData?.birthday || "Fecha de nacimiento"}</p>
+        <p>{cardData?.telefono || "Teléfono"}</p>
+          </div>
 
           {showLight && window.innerWidth > 768 && !isSafari && (
             <div

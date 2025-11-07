@@ -16,6 +16,7 @@ function Tienda() {
   const [productos, setProductos] = useState([]);
   const [showSearch, setShowSearch] = useState(false);
   const [filter, setFilter] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -25,12 +26,12 @@ function Tienda() {
 
         // ?¿¿?
         const dataProducts = snapshot.docs.map((doc) => ({
-          ...doc.data(),
           id: doc.id,
+          ...doc.data(),
         }));
 
         console.log(dataProducts);
-
+        setIsLoading(false);
         setProductos(dataProducts);
       } catch (error) {
         toast.error("Error al obtener productos");
@@ -40,14 +41,18 @@ function Tienda() {
     getProducts();
   }, []);
 
+  useEffect(() => {
+    isLoading && toast.success("Cargando productos");
+  }, [isLoading])
+
   const handleSearch = () => setShowSearch(!showSearch);
 
   // AQUI TENGO LOS VALORES RECIENTES O TENGO QUE HACER UN PREVIOUS?
-const filterProducts = productos.filter(
-  (prod) =>
-    (!prod.membership || (currentUser?.rol === "miembro" || currentUser?.rol === "admin")) &&
-    prod.nombre?.toLowerCase().includes(filter.toLowerCase())
-);
+  const filterProducts = productos.filter(
+    (prod) =>
+      (!prod.membership || (currentUser?.rol === "miembro" || currentUser?.rol === "admin")) &&
+      prod.nombre?.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <main>
@@ -64,9 +69,8 @@ const filterProducts = productos.filter(
       <div className={stylesTienda.buscador}>
         {showSearch && (
           <div
-            className={`${stylesTienda.search} ${
-              !showSearch ? stylesTienda.hidden : ""
-            }`}
+            className={`${stylesTienda.search} ${!showSearch ? stylesTienda.hidden : ""
+              }`}
           >
             <input
               type="text"

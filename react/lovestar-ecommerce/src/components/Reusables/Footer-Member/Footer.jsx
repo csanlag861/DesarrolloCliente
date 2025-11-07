@@ -3,7 +3,7 @@ import stylesFooter from "./footer.module.css";
 import { Link, NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
-const Footer = () => {
+const FooterMember = () => {
   return (
     <footer>
       <div className={stylesFooter["footer__principal"]}>
@@ -46,4 +46,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterMember;
