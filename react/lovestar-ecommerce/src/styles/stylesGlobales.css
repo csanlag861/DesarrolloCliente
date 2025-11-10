@@ -87,3 +87,30 @@ body {
     --error-color: #DF1E1E;
     --error-light: #FFDEDE;
 }
+
+/* Cambiar color de fondo de los toasts */
+.Toastify__toast--success {
+  background: var(--black-color) !important; /* verde personalizado */
+  color:var(--white-color) !important;
+}
+
+.Toastify__toast--success .Toastify__toast-icon svg {
+  fill: var(--primary-color) !important; /* Color del icono */
+}
+
+.Toastify__progress-bar--success {
+  background: var(--primary-color) !important; /* Verde más oscuro, opcional */
+}
+
+.Toastify__toast--error {
+  background: var(--lovestar-light) !important; /* rojo personalizado */
+  color: var(--black-color) !important;
+}
+
+.Toastify__toast--error .Toastify__toast-icon svg {
+  fill: var(--black-color) !important; /* Color del icono */
+}
+
+.Toastify__progress-bar--error {
+  background: var(--black-color) !important; /* Verde más oscuro, opcional */
+}

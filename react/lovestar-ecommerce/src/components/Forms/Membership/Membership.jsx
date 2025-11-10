@@ -3,7 +3,7 @@ import FormInput from "../Input/Input"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { UserContext } from "../../../context/ContextUser"
 import { CardContext } from "../../../context/ContextCard"
 
@@ -12,12 +12,22 @@ const MembershipForm = () => {
     const { currentUser } = useContext(UserContext);
     const { cardData, setCardData } = useContext(CardContext);
 
+    useEffect(()=> {
+        if (currentUser) {
+            setCardData((prev) => ({
+                ...prev,
+                username: currentUser.username || currentUser.displayName || "",
+                email: currentUser.email || "",
+            }));
+        }
+    },[currentUser]);
+
     const handleCancelar = () => { navigate("/home") }
     const handleConf = () => { toast.success("¡Bienvenido a la familia de Lovestar!") }
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        setCardData((prev) => ({ ...prev, [name]: value }));
+        const { id, value } = event.target;
+        setCardData((prev) => ({ ...prev, [id]: value }));
     }
 
     return <div className={stylesMembership.container}>

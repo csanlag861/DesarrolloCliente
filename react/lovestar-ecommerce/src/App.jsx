@@ -17,6 +17,8 @@ import BigLayout from "./pages/BigLayout/BigLayout";
 import LovestarLayout from "./pages/LovestarLayout/LovestarLayout";
 
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 /* import { useEffect } from "react";
 import { uploadProducts } from "./utils/uploadProducts"; */

@@ -2,15 +2,15 @@
 
 
 ### 🚧 Pendiente / Por hacer
-- Que el usuario que sea miembro tenga otro footer / mas ropa.
 - Que el usuario que no tenga el descuento tenga otro footer.
-- BigLayout para el header del Login, Register y Membership.
-- Hacer que se reflejen los datos en la card
+- Arreglar la Card del Membership
 - Comenzar la vista Sobre Nosotros (acordeon).
 - Refactorizar los distintos botones que hay.
 - Header Sticky (-> overflow-y)
 - Filtro en la tienda ?¿¿?¿
-
+- Hacer funcional los distintos filtros que hay en la página Tienda.
+- Editar card para miembros.
+- Arreglar el fallo de las cards
 
 ### 💡 Ideas / Notas
 - Cuando un usuario logeado intenta acceder a la ruta */lovestar*, redirige al **login**, pero en realidad debería redirigir a **home**.
@@ -18,6 +18,7 @@
 
 ### 💻 Fragmentos de código / Soluciones técnicas
 > Fragmentos relevantes o ejemplos de código que resolvieron un problema.
+- Filtro en la tienda
 
 
 
