@@ -5,13 +5,12 @@ footer {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
     
     .footer__principal {
         display: flex;
         margin: 0px 64px;
         align-items: center;
+        justify-content: center;
         gap: 128px;
 
         .form {

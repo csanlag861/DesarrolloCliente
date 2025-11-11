@@ -10,6 +10,7 @@ function CardContextProvider({ children }) {
         username: "",
         email: "",
         birthday: "",
+        telefono: "",
     });
 
     const ctxValue = {cardData, setCardData};

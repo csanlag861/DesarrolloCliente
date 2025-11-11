@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Admin from "./pages/Admin/Admin";
 import Membership from "./pages/Membership/Membership";
+import Contacto from "./pages/Contacto/Contacto";
 
 import PrivateRoute from "./pages/protected/PrivateRoutes";
 import LoginRoute from "./pages/protected/LoginRoutes";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/" element={<BigLayout />}>
           <Route path="/Home" element={<Home />} />
           <Route path="/Tienda" element={<Tienda />} />
+          <Route path="/Contacto" element={<Contacto />} />
 
           <Route
             path="/lovestar"

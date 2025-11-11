@@ -53,10 +53,13 @@ main {
         padding-bottom: 32px;
 
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        grid-gap: 32px;
+          grid-template-columns: repeat(6, 284px);
+        
+        gap: 16px;  
     }
+
 }
+
 
 .buscador {
     margin-top: 18px;
@@ -106,6 +109,8 @@ main {
     color: var(--primary-color);
     font-size: 24px;
 }
+
+   
 
 /* @media (max-width: 900px) {
     .cards {
