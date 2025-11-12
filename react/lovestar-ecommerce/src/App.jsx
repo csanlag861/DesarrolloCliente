@@ -9,6 +9,7 @@ import Register from "./pages/Register/Register";
 import Admin from "./pages/Admin/Admin";
 import Membership from "./pages/Membership/Membership";
 import Contacto from "./pages/Contacto/Contacto";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 import PrivateRoute from "./pages/protected/PrivateRoutes";
 import LoginRoute from "./pages/protected/LoginRoutes";
@@ -40,6 +41,7 @@ function App() {
           <Route path="/Home" element={<Home />} />
           <Route path="/Tienda" element={<Tienda />} />
           <Route path="/Contacto" element={<Contacto />} />
+          <Route path="/SobreNosotros" element={<AboutUs />} />
 
           <Route
             path="/lovestar"

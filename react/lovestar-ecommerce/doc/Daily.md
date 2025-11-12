@@ -1,45 +1,56 @@
 # 🧾 Daily Log - Proyecto Ecommerce
 
-
 ### 🚧 Pendiente / Por hacer
+
+- Que el usuario que sea miembro tenga otro footer / mas ropa.
 - Que el usuario que no tenga el descuento tenga otro footer.
-- Arreglar la Card del Membership
+- BigLayout para el header del Login, Register y Membership.
+- Hacer que se reflejen los datos en la card
 - Comenzar la vista Sobre Nosotros (acordeon).
 - Refactorizar los distintos botones que hay.
 - Header Sticky (-> overflow-y)
 - Filtro en la tienda ?¿¿?¿
-- Hacer funcional los distintos filtros que hay en la página Tienda.
-- Editar card para miembros.
-- Arreglar el fallo de las cards
 
 ### 💡 Ideas / Notas
-- Cuando un usuario logeado intenta acceder a la ruta */lovestar*, redirige al **login**, pero en realidad debería redirigir a **home**.
 
+- Cuando un usuario logeado intenta acceder a la ruta _/lovestar_, redirige al **login**, pero en realidad debería redirigir a **home**.
 
 ### 💻 Fragmentos de código / Soluciones técnicas
+
 > Fragmentos relevantes o ejemplos de código que resolvieron un problema.
-- Filtro en la tienda
+👇 Ocupar todo el ancho de un elemento flex. 👇
+
+```css
+& > * {
+  flex: 1;
+}
+```
 
 
 
+### 🚀 Próximos pasos
 
+- Sobre Nosotros.
+- Filtros en la tienda.
+- Dashboard admin
+- Carrito
+- Checkout
+- Dialog
+- Detalles del producto.
 
+---
 
+- Lógica de Contacto.
+- Lógica de Membership.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
+- Responsive de Footer.
+- Responsive de Header.
+- Responsive de Home.
+- Responsive de Filtros tienda.
+- Responsive de Contacto.
+- Sticky Header.
+- Hamburguesa Header.
 
 
 
@@ -64,14 +75,12 @@ Cuando haces algo como:
 
 const emailRef = useRef();
 
-
 emailRef es un objeto con una propiedad .current.
 React usa ese objeto para guardar una referencia al elemento del DOM, por ejemplo a un <input>.
 
 Si haces esto:
 
 <input ref={emailRef} />
-
 
 entonces:
 
@@ -89,26 +98,25 @@ emailRef.current.value es el valor actual que el usuario ha escrito dentro del i
 ❌ Mal:
 signInAuthUserWithEmailAndPassword(emailRef, passwordRef);
 
-
 Esto le está pasando dos objetos ref, no los strings con email y password.
 Firebase espera cadenas de texto, así que esto puede causar errores de tipo o de red.
 
 ✅ Bien:
 signInAuthUserWithEmailAndPassword(
-  emailRef.current.value,
-  passwordRef.current.value
+emailRef.current.value,
+passwordRef.current.value
 );
-
 
 Ahora le estás pasando exactamente lo que Firebase necesita: el email y contraseña escritos por el usuario.
 
 ```jsx
-currentUser?.rol == "admin"
+currentUser?.rol == "admin";
 ```
+
 “Si currentUser existe (no es null ni undefined), entonces comprueba si su propiedad rol es igual a "admin".”
 
 ```jsx
-const isAuth = !!currentUser
+const isAuth = !!currentUser;
 ```
 
 Como currentUser ya es una expresión booleana por sí misma (si existe → truthy, si no → falsy), puedes hacer simplemente:

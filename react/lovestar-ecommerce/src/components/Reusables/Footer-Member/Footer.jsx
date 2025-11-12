@@ -33,7 +33,7 @@ const FooterMember = () => {
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Galería</NavLink>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Editorial</NavLink>
         <NavLink to="/Membership" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Membership</NavLink>
-        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Sobre Nosotros</NavLink>
+        <NavLink to="/SobreNosotros" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Sobre Nosotros</NavLink>
         <NavLink to="/Contacto" className={({ isActive }) => (isActive ? stylesFooter.active : undefined)}>Contacto</NavLink>
         </nav>
       </div>

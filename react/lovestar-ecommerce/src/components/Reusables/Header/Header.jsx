@@ -47,7 +47,7 @@ const Header = () => {
       </div>
       <div className={`${stylesHeader.centro}`}>
         <div className={stylesHeader.info}>
-          <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Sobre Nosotros</NavLink>
+          <NavLink to="/SobreNosotros" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Sobre Nosotros</NavLink>
           <NavLink to="/Contacto" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Contacto</NavLink>
         </div>
         <div className={stylesHeader.logo}>

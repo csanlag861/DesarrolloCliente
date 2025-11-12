@@ -13,12 +13,14 @@ const FormContacto = () => {
                         label="Nombre y Apellido(s)"
                         id="name"
                         type="text"
+                        placeholder="Nombre y Apellido(s)"
                         required
                     />
                     <FormInput
                         label="Email"
                         id="email"
                         type="text"
+                        placeholder="Email"
 /*                     ref={emailRef}
  */                    required
                     />
@@ -27,17 +29,19 @@ const FormContacto = () => {
                     label="Número de Pedido"
                     id="pedido"
                     type="text"
+                    placeholder="Número de Pedido"
                     required
                 />
                 <FormInput
                     label="Mensaje"
                     id="mensaje"
                     type="text"
+                    placeholder="Mensaje"
                     required
                 />
 
-                <p>También puedes contactar por email a nuestro correo: contacto.lovestar@gmail.com</p>
-                <button>Enviar</button>
+                <p>También puedes contactar por email a nuestro correo: <b><i>contacto.lovestar@gmail.com</i></b></p>
+                <button>ENVIAR</button>
             </form>
         </section>
     )

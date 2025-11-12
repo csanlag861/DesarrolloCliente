@@ -1,0 +1,22 @@
+/* main{
+    margin: 0;
+    display: inline-block;
+} */
+
+.name{
+    margin-top: 16px;
+    margin-left: 64px;
+    height: fit-content;
+
+    h1{
+        font-size: 32px;
+        font-family: "Archivo-SemiBold", sans-serif;
+    }
+}
+
+.main{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
