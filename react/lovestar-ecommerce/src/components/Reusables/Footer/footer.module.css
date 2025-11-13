@@ -5,13 +5,14 @@ footer {
 
     display: flex;
     flex-direction: column;
-    
+
     .footer__principal {
         display: flex;
         margin: 0px 64px;
         align-items: center;
         justify-content: center;
         gap: 128px;
+        flex-wrap: wrap;
 
         .form {
             width: 400px;
@@ -69,7 +70,7 @@ footer {
                 text-decoration: none;
                 transition: all .3s ease;
 
-                &:hover{
+                &:hover {
                     transform: scale(1.3);
                     -webkit-text-fill-color: var(--primary-color);
                     -webkit-text-stroke-width: .3px;
@@ -89,5 +90,47 @@ footer {
             height: 24px;
             color: var(--white-color);
         }
+    }
+}
+
+@media (max-width: 600px) {
+    footer {
+        min-height: fit-content;
+        max-height: 100%;
+        padding-top: 32px;
+
+        .footer__principal {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 16px;
+
+            .form {
+                h3 {
+                    font-size: 24px;
+                }
+            }
+
+            .member{
+                p{
+                    font-size: 10px;
+                }
+            }
+
+            .logo{
+                width: 50%;
+            }
+
+            .secciones{
+                display: flex;
+                flex-direction: row;
+                gap: 16px;
+
+                a{
+                    font-size: 18px;
+                }
+            }
+        }
+
     }
 }
