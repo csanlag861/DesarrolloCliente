@@ -54,7 +54,7 @@ h3: 18
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* outline: 2px solid aqua; */
+    outline: 2px solid aqua; 
 }
 
 html {
@@ -67,6 +67,7 @@ body {
     line-height: 1;
     font-weight: 400;
     color: var(--black-color)
+    
 }
 
 :root {
