@@ -1,20 +1,25 @@
-.hero {
-  width: 100%;
-
   .imagen {
     background-image: linear-gradient(rgba(29, 29, 29, 1), rgba(29, 29, 29, 0)), url(/img/hero-001.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100%;
+    min-height: 100vh;
+    width: auto;
+    position: relative;
+
 
 
     .imagen__text {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      padding-top: 48px;
       align-items: center;
+
+      gap: 4px;
       color: var(--white-color);
 
       h1 {
@@ -24,18 +29,19 @@
       p {
         font-size: 24px;
       }
+
+
     }
 
 
     .btn {
-      height: 80%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
 
       .btn__shopnow {
-        width: 136px;
+        width: 500px;
         height: 53px;
         background-color: var(--primary-color);
         display: flex;
@@ -48,11 +54,10 @@
           text-decoration: none;
         }
 
-        &:hover{
+        &:hover {
           background-color: var(--cta-color);
           cursor: pointer;
         }
       }
     }
   }
-}

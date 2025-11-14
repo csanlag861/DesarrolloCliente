@@ -13,9 +13,11 @@ function BigLayout() {
 
   return (
     <>
-      <Header />
       <div className={stylesBigLayout.container}>
-        <Outlet />
+        <Header />
+        <main className={stylesBigLayout.main}>
+          <Outlet />
+        </main>
         {!currentUser ? (
           <Footer />
         ) : currentUser?.rol == "user" ? (

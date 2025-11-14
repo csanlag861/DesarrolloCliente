@@ -8,9 +8,7 @@ function Home() {
 
   return (
     <>
-      <div className={stylesHome["container-hero"]}>
         <Hero />
-      </div>
         <Inpsiracion />
     </>
   );

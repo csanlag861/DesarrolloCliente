@@ -35,7 +35,7 @@ const Header = () => {
   );
 
   return (
-    <>
+    <header>
       <div className={stylesHeader.publicidad}>
         <div className={stylesHeader.marquee}>
           {marqueeText}
@@ -74,7 +74,7 @@ const Header = () => {
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Editorial</NavLink>
         <NavLink to="/Membership" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Membership</NavLink>
       </nav>
-    </>
+    </header>
   );
 };
 

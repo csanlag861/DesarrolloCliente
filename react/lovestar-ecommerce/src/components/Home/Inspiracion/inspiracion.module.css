@@ -6,11 +6,11 @@
     gap: 24px;
 
     position: relative;
-    overflow: hidden;
     white-space: nowrap;
 
 
     h2 {
+        font-size: 24px;
         font-family: "Archivo-Medium", sans-serif;
         font-weight: 500;
     }

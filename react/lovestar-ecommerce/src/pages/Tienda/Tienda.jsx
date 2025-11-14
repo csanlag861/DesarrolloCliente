@@ -55,7 +55,7 @@ function Tienda() {
   );
 
   return (
-    <main>
+    <>
       <div className={stylesTienda.filtros}>
         <p>TODO</p>
         <p>Camisetas</p>
@@ -91,7 +91,7 @@ function Tienda() {
           </div>
         ))}
       </section>
-    </main>
+    </>
   );
 }
 
