@@ -50,6 +50,11 @@
     border-bottom: 1px solid var(--black-color);
     text-transform: uppercase;
 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--white-color);
+
     img {
         height: 48px;
     }

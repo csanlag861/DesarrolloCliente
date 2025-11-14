@@ -9,15 +9,22 @@ import { useContext } from "react";
 import { UserContext } from "../../context/ContextUser";
 
 function BigLayout() {
-  const {currentUser} = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   return (
-    <div className={stylesBigLayout.container}>
+    <>
       <Header />
-      <Outlet />
-      {!currentUser ? (<Footer />) : currentUser?.rol == "user" ? (<Footer />) : (<FooterMember/>)}
-      
-    </div>
+      <div className={stylesBigLayout.container}>
+        <Outlet />
+        {!currentUser ? (
+          <Footer />
+        ) : currentUser?.rol == "user" ? (
+          <Footer />
+        ) : (
+          <FooterMember />
+        )}
+      </div>
+    </>
   );
 }
 
