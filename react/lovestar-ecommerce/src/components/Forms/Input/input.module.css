@@ -18,7 +18,7 @@
         font-family: "Archivo-Light", sans-serif;
 
         &::placeholder {
-            color: var(--black-active);
+            color: var(--white-color-opacity-active);
             font-family: "Archivo-Light", sans-serif;
         }
 
@@ -38,7 +38,7 @@
         font-family: "Archivo-Light", sans-serif;
 
         &::placeholder {
-            color: var(--black-active);
+            color: var(--white-active);
             font-family: "Archivo-Light", sans-serif;
         }
 
@@ -80,11 +80,11 @@
         border: 2px solid var(--black-color);
         border-radius: 4px;
         padding: 12px;
-        color: var(--black-color);
+        color: var(--white-color);
         font-family: "Archivo-Light", sans-serif;
 
         &::placeholder {
-            color: var(--black-active);
+            color: var(--white-active);
             font-family: "Archivo-Light", sans-serif;
         }
 
@@ -100,11 +100,11 @@
         border: 2px solid var(--black-color);
         border-radius: 4px;
         padding: 12px;
-        color: var(--black-color);
+        color: var(--white-color);
         font-family: "Archivo-Light", sans-serif;
 
         &::placeholder {
-            color: var(--black-active);
+            color: var(--white-active);
             font-family: "Archivo-Light", sans-serif;
         }
 

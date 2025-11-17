@@ -15,7 +15,6 @@ export default function Card({
   imageLoading,
   getDomain,
 }) {
-
   const { cardData } = useContext(CardContext);
 
   const [isIconHovered, setIsIconHovered] = useState(false);
@@ -33,8 +32,8 @@ export default function Card({
     const x = e.pageX - offsetLeft;
     const y = e.pageY - offsetTop;
 
-    const rotateY = ((x / offsetWidth) - 0.5) * 20;
-    const rotateX = ((y / offsetHeight) - 0.5) * -20;
+    const rotateY = (x / offsetWidth - 0.5) * 20;
+    const rotateX = (y / offsetHeight - 0.5) * -20;
 
     setTransform({ rotateX, rotateY });
     setCursorPosition({ x, y });
@@ -66,18 +65,24 @@ export default function Card({
             transformStyle: "preserve-3d",
           }}
         >
-
           {/* ESTILOS DE MI CARD */}
           <div className={stylesCard.info}>
-            <img src="img/lovestarlogo.svg" alt="" />
-            <p>{cardData?.username || "Nombre de usuario"}</p>
-            <p>{cardData?.email || "Email"}</p>
-            <p>{cardData?.birthday || "Fecha de nacimiento"}</p>
-            <p>{cardData?.telefono || "Teléfono"}</p>
-            <p><i>“¡Bienvenido al club! Disfruta de beneficios exclusivos por ser miembro.”</i></p>
+            <div className={stylesCard.top}>
+              <img src="img/lovestarlogo.svg" alt="Logo Lovestar" />
+              <h2>MEMBER PASS</h2>
+            </div>
+            <div className={stylesCard.user}>
+              <p>Nombre: {cardData?.username || "Nombre de usuario"}</p>
+              <p>Email: {cardData?.email || "Email"}</p>
+              <p>Cumpleaños: {cardData?.birthday || "Fecha de nacimiento"}</p>
+              <p>Teléfono: {cardData?.telefono || "Teléfono"}</p>
+            </div>
+            {cardData && (
+              <h3>
+                <i>“¡Bienvenido al club, {cardData?.username}!</i>
+              </h3>
+            )}
           </div>
-
-
 
           {showLight && window.innerWidth > 768 && !isSafari && (
             <div

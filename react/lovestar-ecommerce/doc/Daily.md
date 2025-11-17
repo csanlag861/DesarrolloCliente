@@ -2,11 +2,19 @@
 
 ### 🚧 Pendiente / Por hacer
 
+- Re-hacer el acordeon.
+- Filtro en la tienda.
+- Cargar más (en la tienda).
+- Hacer más productos para la tienda.
+- Grid Shop Responsive y Accesible.
+
 - Que el usuario que no tenga el descuento tenga otro footer.
-- Comenzar la vista Sobre Nosotros (acordeon).
 - Refactorizar los distintos botones que hay.
-- Header Sticky (-> overflow-y)
-- Filtro en la tienda ?¿¿?¿
+
+-- Organizar:
+
+- Decidir un día para sólo hacer responsive.
+- Decidir un día para sólo hacer lógica.
 
 ### 💡 Ideas / Notas
 
@@ -15,11 +23,18 @@
 ### 💻 Fragmentos de código / Soluciones técnicas
 
 > Fragmentos relevantes o ejemplos de código que resolvieron un problema.
-👇 Ocupar todo el ancho de un elemento flex. 👇
+> 👇 Ocupar todo el ancho de un elemento flex. 👇
 
 ```css
 & > * {
   flex: 1;
+}
+```
+
+> 👇 Para quitar el padding del primer hijo. En este caso, le quitamos el padding al div hero para que ocupe todo el ancho. 👇
+```css
+& > :first-child {
+  margin-inline: -64px;
 }
 ```
 
@@ -41,24 +56,13 @@
 - Lógica de Membership.
 
 ---
+
 - Responsive de Footer.
 - Responsive de Header.
 - Responsive de Home.
 - Responsive de Filtros tienda.
 - Responsive de Contacto.
-- Sticky Header.
 - Hamburguesa Header.
-
-
-
-
-
-
-
-
-
-
-
 
 # ERROR IMPORTANTE CON EL useRef.
 

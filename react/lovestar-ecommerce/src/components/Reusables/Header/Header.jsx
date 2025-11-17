@@ -70,7 +70,7 @@ const Header = () => {
       </div>
       <nav className={stylesHeader.nav}>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Tienda</NavLink>
-        <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Galería</NavLink>
+        <NavLink to="/Galeria" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Galería</NavLink>
         <NavLink to="/Tienda" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Editorial</NavLink>
         <NavLink to="/Membership" className={({ isActive }) => (isActive ? stylesHeader.active : undefined)}>Membership</NavLink>
       </nav>

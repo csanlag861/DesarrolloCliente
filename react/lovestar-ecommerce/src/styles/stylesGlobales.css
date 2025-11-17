@@ -54,8 +54,8 @@ h3: 18
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-/*     outline: 2px solid aqua; 
- */}
+    /* outline: 2px solid aqua;  */
+  }
 
 html {
    /*  font-size: 62.5%; */
@@ -74,8 +74,10 @@ body {
     --primary-color: #E6293F;
     --white-color: #E8E8E8;
     --black-color: #171717;
-
+    
     --black-color-opacity: rgba(23, 23, 23, 0.5);
+
+    --white-color-opacity: rgba(232, 232, 232, 0.5);
     
     --lovestar-light: #F7BDC3;
     --lovestar-light-opacity: rgb(247, 189, 195, .2);
@@ -115,3 +117,5 @@ body {
 .Toastify__progress-bar--error {
   background: var(--black-color) !important; /* Verde más oscuro, opcional */
 }
+
+:global(.gsap-panel) {}

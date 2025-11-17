@@ -45,6 +45,7 @@ const MembershipForm = () => {
                 /*                 ref={emailRef}
                  */
                 onChange={handleChange}
+                placeholder="Nombre de Usuario"
                 required
             />
             <FormInput
@@ -55,6 +56,7 @@ const MembershipForm = () => {
                 /*                 ref={emailRef}
                  */
                 onChange={handleChange}
+                placeholder="Email"
                 required
             />
             {!currentUser && <FormInput
@@ -65,6 +67,7 @@ const MembershipForm = () => {
                  */
                 value={cardData?.password}
                 onChange={handleChange}
+                placeholder="Password"
                 required
             />}
 
@@ -86,6 +89,7 @@ const MembershipForm = () => {
                  */
                 value={cardData?.telefono}
                 onChange={handleChange}
+                placeholder="Teléfono"
                 required
             />
         </div>

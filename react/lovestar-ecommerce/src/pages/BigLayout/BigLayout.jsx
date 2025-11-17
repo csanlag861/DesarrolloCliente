@@ -1,6 +1,7 @@
 import stylesBigLayout from "./biglayout.module.css";
 
 import Header from "../../components/Reusables/Header/Header";
+import Headerv2 from "../../components/Reusables/Header-v2/Header";
 import Footer from "../../components/Reusables/Footer/Footer";
 import FooterMember from "../../components/Reusables/Footer-Member/Footer";
 import { Outlet } from "react-router-dom";
@@ -14,7 +15,7 @@ function BigLayout() {
   return (
     <>
       <div className={stylesBigLayout.container}>
-        <Header />
+        <Headerv2 />
         <main className={stylesBigLayout.main}>
           <Outlet />
         </main>

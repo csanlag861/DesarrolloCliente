@@ -7,11 +7,11 @@ import useRedireccion from "../../hooks/useRedireccion";
 function Intro () {
   useRedireccion();
   return (
-    <div className={stylesIntro.container}>
+    <section className={stylesIntro.container}>
         <Contador />
         <Lovestar />
         <Footer />
-    </div>
+    </section>
   );
 };
 

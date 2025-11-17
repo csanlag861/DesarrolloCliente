@@ -1,0 +1,33 @@
+
+/* sección fullpage */
+.section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+/* contenedor de imagen (para parallax) */
+.imageWrapper {
+  position: relative;
+  width: 60%;
+  height: 60%;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* bloque texto */
+.textContent {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  color: #111;
+  max-width: 300px;
+}

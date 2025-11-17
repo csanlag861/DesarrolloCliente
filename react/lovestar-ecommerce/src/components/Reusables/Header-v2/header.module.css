@@ -1,3 +1,15 @@
+.sentinel {
+    width: 100%;
+    pointer-events: none;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
 .publicidad {
     background-color: var(--primary-color);
     text-transform: uppercase;
@@ -46,27 +58,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .2rem .5rem;
     border-bottom: 1px solid var(--black-color);
     text-transform: uppercase;
+    padding: 4px;
 
     background-color: var(--white-color);
 
     img {
-        height: 48px;
+        height: calc(48px/1.2);
     }
 
 }
 
 .info {
-    display: flex;
-    gap: 64px;
-    margin: 0px 0px 0px 120px;
+    margin-left: 120px;
 
-
-    p {
-        font-family: "Archivo-Regular", sans-serif;
-        font-weight: 600;
+    svg {
+        width: 24px;
+        height: 24px;
     }
 }
 
@@ -76,7 +85,6 @@
     justify-content: center;
     gap: 40px;
     margin-right: 120px;
-    width: 306px;
 
     svg {
         width: 24px;
@@ -100,11 +108,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3rem;
+    height: 2rem;
     gap: 64px;
     text-transform: uppercase;
     border-bottom: 1px solid var(--black-color);
     background-color: var(--white-color);
+
+    a {
+        font-size: 14px;
+    }
 
 }
 

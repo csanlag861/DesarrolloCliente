@@ -8,14 +8,12 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 
 function AboutUs() {
   return (
-    <main className={stylesAboutUs.main}>
-      <div className={stylesAboutUs.h1}>
+    <section className={stylesAboutUs.main}>
         <h1>Sobre Nosotros</h1>
-      </div>
       <div className={stylesAboutUs.acordeon}>
         <Acordeon />
       </div>
-    </main>
+    </section>
   );
 }
 

@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 
 function Login() {
   return (
-    <div className={stylesLogin.login}>
-      <main className={stylesLogin.form}>
+    <section className={stylesLogin.login}>
+      <div className={stylesLogin.form}>
         <LoginForm />
         {/* <SigInForm /> */}
-      </main>
-    </div>
+      </div>
+    </section>
   );
 }
 

@@ -3,14 +3,12 @@ import FormContacto from "../../components/Forms/Contacto/FormContacto";
 
 function Contacto() {
   return (
-    <main className={stylesContacto.main}>
-      <div className={stylesContacto.name}>
+    <section className={stylesContacto.main}>
         <h1>Contacto</h1>
-      </div>
       <div className={stylesContacto.form}>
         <FormContacto />
       </div>
-    </main>
+    </section>
   );
 }
 

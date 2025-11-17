@@ -4,14 +4,14 @@ import RegisterForm from "../../components/Forms/Register/Register";
 import SigUpForm from "../../components/firebase/SignUpForm";
 
 function Register() {
-    return (
-        <div className={stylesRegister.login}>
-            <main className={stylesRegister.form}>
-                <RegisterForm />
-                {/*         <SigUpForm />
- */}            </main>
-        </div>
-    );
+  return (
+    <section className={stylesRegister.login}>
+      <div className={stylesRegister.form}>
+        <RegisterForm />
+        {/*         <SigUpForm /> */}
+      </div>
+    </section>
+  );
 }
 
 export default Register;

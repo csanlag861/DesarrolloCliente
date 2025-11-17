@@ -110,6 +110,7 @@ function RegisterForm() {
             label="Nombre y Apellido(s)"
             id="name"
             type="text"
+            placeholder="Nombre y Apellido(s)"
             required
           />
           <FormInput
@@ -118,6 +119,7 @@ function RegisterForm() {
             type="text"
             ref={userNameRef}
             error={errors.userName}
+            placeholder="Nombre de Usuario"
             required
           />
 
@@ -128,6 +130,7 @@ function RegisterForm() {
             ref={emailRef}
             onChange={debounceEmail}
             error={errors.email}
+            placeholder="Email"
             required
           />
           <FormInput
@@ -137,6 +140,7 @@ function RegisterForm() {
             ref={passwordRef}
             onChange={debouncePasswd}
             error={errors.password}
+            placeholder="Password"
             required
           />
           <button className="sheen" type="submit">REGISTRARME</button>

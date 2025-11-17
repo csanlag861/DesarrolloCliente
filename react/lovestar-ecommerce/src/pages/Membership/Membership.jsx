@@ -6,10 +6,10 @@ import { CardContextProvider } from "../../context/ContextCard";
 function Membership() {
     return (
         <CardContextProvider>
-            <div className={stylesMembership.container}>
+            <section className={stylesMembership.container}>
                 <Card />
                 <MembershipForm />
-            </div>
+            </section>
         </CardContextProvider>
     );
 }
