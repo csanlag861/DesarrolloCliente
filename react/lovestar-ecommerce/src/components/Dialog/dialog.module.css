@@ -1,0 +1,86 @@
+dialog:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.dialog {
+    display: inline-flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    overflow: hidden;
+    width: 585px;
+    height: 390px;
+    background-color: var(--white-color);
+
+    flex-direction: row;
+
+    .imagen {
+        img {
+            width: 293px;
+            height: 100%;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+
+        .icon {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+
+            svg {
+                cursor: pointer;
+            }
+        }
+
+        img {
+            width: 20%;
+            height: 20%;
+        }
+
+        .text {
+            text-align: center;
+            h2 {
+                font-family: "Archivo-SemiBold", sans-serif;
+                font-size: 24px;
+                font-weight: 400;
+                color: var(--primary-color);
+            }
+
+            h3 {
+                font-family: "Archivo-Regular", sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                color: var(--primary-color);
+            }
+        }
+
+
+        .form__policy {
+            display: flex;
+            gap: 4px;
+            align-items: flex-start;
+
+            p {
+                font-size: 10px;
+                color: var(--black-color);
+                font-family: "Archivo-Light", sans-serif;
+            }
+        }
+    }
+
+
+    &::backdrop {
+        background: var(--black-color-opacity);
+    }
+}
