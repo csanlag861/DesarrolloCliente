@@ -1,24 +1,486 @@
-.hero {
-  position: relative;
+/* Container principal */
+.container {
+  background-color: #fafafa;
   min-height: 100vh;
+}
+
+/* Sección 1: Hero Minimal */
+.heroSection {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+
+.heroContent {
+  text-align: center;
+  max-width: 42rem;
+}
+
+.heroTitle {
+  font-size: 3.75rem;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  color: #171717;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: 1.125rem;
+  color: #737373;
+  font-weight: 300;
+  letter-spacing: 0.025em;
+}
+
+/* Sección 2: Lookbook */
+.lookbookSection {
+  min-height: 100vh;
+  padding: 5rem 1.5rem;
+}
+
+.lookbookContainer {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+.gridItem {
+  overflow: hidden;
+  border-radius: 0.125rem;
+  background-color: #e5e5e5;
+}
+
+.gridItemLarge {
+  grid-column: span 12;
+  height: 500px;
+}
+
+.gridItemMedium {
+  grid-column: span 12;
+  height: 400px;
+}
+
+.gridItemSmall {
+  grid-column: span 6;
+  height: 300px;
+}
+
+.gridItemEmpty {
+  grid-column: span 6;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.gridItemMediumAlt {
+  grid-column: span 12;
+  height: 300px;
+}
+
+.parallaxImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imagePlaceholder1 {
+  background: linear-gradient(to bottom right, #fda4af, #fcd34d);
+}
+
+.imagePlaceholder2 {
+  background: linear-gradient(to bottom right, #a5b4fc, #ddd6fe);
+}
+
+.imagePlaceholder3 {
+  background: linear-gradient(to bottom right, #5eead4, #a5f3fc);
+}
+
+.imagePlaceholder4 {
+  background: linear-gradient(to bottom right, #f9a8d4, #fda4af);
+}
+
+.imagePlaceholder5 {
+  background: linear-gradient(to bottom right, #fcd34d, #fb923c);
+}
+
+.imagePlaceholder6 {
+  background: linear-gradient(to bottom right, #d8b4fe, #fbcfe8);
+}
+
+.imageLabel {
+  color: white;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.dropLabel {
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.lookbookFooter {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.lookbookCaption {
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+/* Sección 3: Storytelling */
+.storytellingSection {
+  min-height: 100vh;
+  padding: 5rem 1.5rem;
+}
+
+.storytellingContainer {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.storytellingGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.storytellingImage {
+  height: 500px;
+  overflow: hidden;
+  border-radius: 0.125rem;
+  background-color: #e5e5e5;
+}
+
+.heartIcon {
+  width: 5rem;
+  height: 5rem;
+  color: white;
+}
+
+.storytellingText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.storytellingTitle {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  color: #171717;
+}
+
+.storytellingDrop {
+  font-size: 1.125rem;
+  color: #525252;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.storytellingDescription {
+  font-size: 1rem;
+  color: #525252;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.storytellingButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #171717;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 2rem;
+  padding: 0;
+  font-size: 1rem;
+  letter-spacing: 0.025em;
+  transition: color 0.3s;
+}
+
+.storytellingButton:hover {
+  color: #525252;
+}
+
+.buttonIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.3s;
+}
+
+.storytellingButton:hover .buttonIcon {
+  transform: translateX(0.25rem);
+}
+
+/* Sección 4: Behind the Scenes */
+.btsSection {
+  min-height: 100vh;
+  padding: 5rem 1.5rem;
+  background-color: white;
+}
+
+.btsContainer {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.btsTitle {
+  font-size: 2.25rem;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  color: #171717;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.moodboardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.moodboardItem {
+  height: 250px;
+  overflow: hidden;
+  border-radius: 0.125rem;
+}
+
+.moodItemTexture {
+  grid-column: span 1;
+}
+
+.textureBox {
+  background: linear-gradient(to bottom right, #d6d3d1, #e5e5e5);
+  padding: 1.5rem;
+}
+
+.textureLabel {
+  color: #737373;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.moodItemPolaroid {
+  grid-column: span 1;
+}
+
+.polaroidBox {
+  background: linear-gradient(to bottom right, #fef3c7, #fde68a);
+  padding: 1.5rem;
+}
+
+.polaroidInner {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.polaroidText {
+  color: #a3a3a3;
+  font-size: 0.75rem;
+}
+
+.moodItemCoords {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #171717;
+}
+
+.coordsBox {
+  text-align: center;
+}
+
+.coordsCity {
+  color: white;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.coordsLat,
+.coordsLon {
+  color: #a3a3a3;
+  font-size: 0.75rem;
+}
+
+.moodItemPalette {
+  grid-column: span 1;
   overflow: hidden;
 }
 
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%; /* más alto para que no se vea el vacío al moverlo */
-  background-image: url('tu-imagen.jpg');
-  background-size: cover;
-  background-position: center;
+.paletteBox {
+  display: flex;
+  height: 100%;
 }
 
-.content {
-  position: relative;
-  z-index: 2;
-  color: white;
+.paletteColor1 {
+  flex: 1;
+  background-color: #fb7185;
+}
+
+.paletteColor2 {
+  flex: 1;
+  background-color: #fcd34d;
+}
+
+.paletteColor3 {
+  flex: 1;
+  background-color: #818cf8;
+}
+
+.moodItemSketch {
+  grid-column: span 2;
+}
+
+.sketchBox {
+  background-color: #f5f5f5;
+}
+
+.sketchText {
+  color: #a3a3a3;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
   text-align: center;
-  margin-top: 40vh;
+  padding: 0 1.5rem;
+}
+
+.moodItemOuttake {
+  grid-column: span 2;
+}
+
+/* Sección 5: CTA Final */
+.ctaSection {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  background-color: #171717;
+}
+
+.ctaContent {
+  text-align: center;
+  max-width: 42rem;
+}
+
+.ctaTitle {
+  font-size: 2.25rem;
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.ctaSubtitle {
+  color: #a3a3a3;
+  margin-bottom: 2rem;
+  letter-spacing: 0.025em;
+}
+
+.ctaButton {
+  background-color: white;
+  color: #171717;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  letter-spacing: 0.025em;
+  transition: background-color 0.3s;
+}
+
+.ctaButton:hover {
+  background-color: #f5f5f5;
+}
+
+/* Responsive - Tablets y Desktop */
+@media (min-width: 768px) {
+  .heroTitle {
+    font-size: 4.5rem;
+  }
+
+  .lookbookSection,
+  .storytellingSection,
+  .btsSection {
+    padding: 5rem 3rem;
+  }
+
+  .gridContainer {
+    gap: 1.5rem;
+  }
+
+  .gridItemLarge {
+    grid-column: span 7;
+    height: 600px;
+  }
+
+  .gridItemMedium {
+    grid-column: span 5;
+    height: 600px;
+  }
+
+  .gridItemSmall {
+    grid-column: span 4;
+  }
+
+  .gridItemEmpty {
+    grid-column: span 4;
+  }
+
+  .gridItemMediumAlt {
+    grid-column: span 4;
+  }
+
+  .storytellingGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .storytellingImage {
+    height: 700px;
+  }
+
+  .storytellingText {
+    padding-left: 3rem;
+  }
+
+  .storytellingTitle {
+    font-size: 3.75rem;
+  }
+
+  .storytellingDescription {
+    font-size: 1.125rem;
+  }
+
+  .moodboardGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .moodItemCoords {
+    grid-column: span 1;
+  }
+
+  .ctaTitle {
+    font-size: 3rem;
+  }
 }
