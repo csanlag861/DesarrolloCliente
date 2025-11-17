@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where, orderBy, limit } from "firebase/firestore";
 import { db } from "../../utils/firebase";
 
 import stylesTienda from "./tienda.module.css";
@@ -18,19 +18,19 @@ function Tienda() {
   const [filter, setFilter] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  const [categoria, setCategoria] = useState("TODO");
+
   useEffect(() => {
     const getProducts = async () => {
       try {
         const productsRef = collection(db, "products");
         const snapshot = await getDocs(productsRef);
 
-        // ?¿¿?
         const dataProducts = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
 
-        console.log(dataProducts);
         setIsLoading(false);
         setProductos(dataProducts);
       } catch (error) {
@@ -41,13 +41,57 @@ function Tienda() {
     getProducts();
   }, []);
 
+
+
+  useEffect(() => {
+    const cargarProductos = async () => {
+
+      if (categoria === "TODO") {
+        try {
+          const productsRef = collection(db, "products");
+          const snapshot = await getDocs(productsRef);
+          const dataProducts = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+
+          setIsLoading(false);
+          setProductos(dataProducts);
+        } catch (error) {
+          console.error("Error al cargar los productos", error);
+          toast.error("Error al cargar los productos.");
+        }
+
+      } else {
+        try {
+          const productsRef = collection(db, "products");
+          const q = query(productsRef, where("categoria", "==", categoria));
+          const snapshot = await getDocs(q);
+          const dataProducts = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+
+          setIsLoading(false);
+          setProductos(dataProducts);
+        } catch (error) {
+          console.error("Error al cargar los productos", error);
+          toast.error("Error al cargar los productos.");
+        }
+      }
+    }
+
+    cargarProductos();
+  }, [categoria])
+
+
+
   useEffect(() => {
     isLoading && toast.success("Cargando productos")
   }, [isLoading])
 
   const handleSearch = () => setShowSearch(!showSearch);
 
-  // AQUI TENGO LOS VALORES RECIENTES O TENGO QUE HACER UN PREVIOUS?
   const filterProducts = productos.filter(
     (prod) =>
       (!prod.membership || (currentUser?.rol === "miembro" || currentUser?.rol === "admin")) &&
@@ -57,12 +101,12 @@ function Tienda() {
   return (
     <>
       <div className={stylesTienda.filtros}>
-        <p>TODO</p>
-        <p>Camisetas</p>
-        <p>Sudaderas</p>
-        <p>Chaquetas</p>
-        <p>Pantalones</p>
-        <p>Gorros</p>
+        <p onClick={() => setCategoria("TODO")}>TODO</p>
+        <p onClick={() => setCategoria("Camisetas")}>Camisetas</p>
+        <p onClick={() => setCategoria("Sudaderas")}>Sudaderas</p>
+        <p onClick={() => setCategoria("Jerseys")}>Jerseys</p>
+        <p onClick={() => setCategoria("Pantalones")}>Pantalones</p>
+        <p onClick={() => setCategoria("Gorros")}>Gorros</p>
         <Icon icon="proicons:filter" />
         <Icon icon="material-symbols:search" onClick={handleSearch} />
       </div>

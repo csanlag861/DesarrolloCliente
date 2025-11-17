@@ -27,7 +27,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { uploadProducts } from "./utils/uploadProducts"; */
 
 function App() {
-  /*   useEffect(() => {
+/*     useEffect(() => {
       const upload = async () => uploadProducts();
   
       upload();
