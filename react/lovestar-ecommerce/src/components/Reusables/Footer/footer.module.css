@@ -92,8 +92,63 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
+
+@media (max-width: 1650px) {
     footer {
+        justify-content: space-between;
+        min-height: fit-content;
+        padding-top: 32px;
+
+        .footer__principal {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 16px;
+
+            .form {
+                width: 80%;
+                h3 {
+                    font-size: 28px;
+                    text-align: center;
+                }
+
+
+                .member {
+                    p {
+                        font-size: 18px;
+                    }
+                }
+            }
+
+            .logo {
+                order: -1;
+                width: 80%;
+            }
+
+            .secciones {
+                display: flex;
+                flex-direction: row;
+                gap: 24px;
+                justify-items: center;
+
+                a {
+                    font-size: 20px;
+                }
+            }
+        }
+
+            .footer__icons{
+                margin-top: 12px;
+            }
+
+    }
+}
+
+
+@media (max-width: 700px) {
+    footer {
+        justify-content: space-between;
         min-height: fit-content;
         padding-top: 32px;
 
@@ -104,7 +159,7 @@ footer {
             margin-bottom: 16px;
 
             .form {
-                width: 50%;
+                width: 75%;
 
                 h3 {
                     font-size: 18px;
@@ -123,19 +178,29 @@ footer {
             }
 
             .logo {
-                width: 40%;
+                width: 80%;
+                order: -1;
             }
 
             .secciones {
                 display: grid;
                 grid-template-columns: repeat(2, 123px);
                 gap: 16px;
+                justify-items: center;
 
                 a {
-                    font-size: 18px;
+                    font-size: 14px;
                 }
             }
         }
+
+            .footer__icons{
+                margin-top: 12px;
+                svg{
+                    width: 18px;
+                    height: 18px;
+                }
+            }
 
     }
 }
