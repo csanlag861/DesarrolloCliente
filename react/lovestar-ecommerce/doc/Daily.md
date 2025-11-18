@@ -31,11 +31,30 @@
 }
 ```
 
+
 > 👇 Para quitar el padding del primer hijo. En este caso, le quitamos el padding al div hero para que ocupe todo el ancho. 👇
 ```css
 & > :first-child {
   margin-inline: -64px;
 }
+```
+
+
+> 👇 Para mostrar algo una única vez al día. 👇
+```JSX
+  useEffect(() => {
+    const hasShownToday = localStorage.getItem("showDialog");
+    const hoy = new Date().toDateString();
+
+    if (hasShownToday !== hoy) {
+      const time = setTimeout(() => {
+        setShowDialog(true);
+        localStorage.setItem("showDialog", hoy);
+      }, 1000);
+
+      return () => clearTimeout(time);
+    }
+  }, []);
 ```
 
 

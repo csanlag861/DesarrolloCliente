@@ -6,81 +6,108 @@ dialog:focus {
 }
 
 .dialog {
-    display: inline-flex;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    /* overflow: hidden; */
-    width: 585px;
-    height: 390px;
-    background-color: var(--white-color);
+    .dialogContent {
+        display: inline-flex;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        overflow: hidden;
+        width: 585px;
+        height: 390px;
+        background-color: var(--white-color);
 
-    flex-direction: row;
+        justify-content: space-between;
 
-    .imagen {
-        img {
-            width: 293px;
-            height: 100%;
+        .imagen {
+            img {
+                width: 293px;
+                height: 100%;
+            }
         }
-    }
 
-    .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        flex: 1;
-
-        .icon {
-            width: 100%;
+        .content {
             display: flex;
-            justify-content: end;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            padding: 10px;
+            gap: 16px;
 
-            svg {
-                cursor: pointer;
-            }
-        }
+            .icon {
+                width: 100%;
+                display: flex;
+                justify-content: end;
 
-        img {
-            width: 20%;
-            height: 20%;
-        }
-
-        .text {
-            text-align: center;
-            h2 {
-                font-family: "Archivo-SemiBold", sans-serif;
-                font-size: 24px;
-                font-weight: 400;
-                color: var(--primary-color);
+                svg {
+                    cursor: pointer;
+                }
             }
 
-            h3 {
-                font-family: "Archivo-Regular", sans-serif;
-                font-size: 16px;
-                font-weight: 400;
-                color: var(--primary-color);
+            img {
+                width: 20%;
+                height: 20%;
             }
-        }
+
+            .text {
+                text-align: center;
+
+                h2 {
+                    font-family: "Archivo-SemiBold", sans-serif;
+                    font-size: 24px;
+                    font-weight: 400;
+                    color: var(--primary-color);
+                }
+
+                h3 {
+                    font-family: "Archivo-Regular", sans-serif;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: var(--primary-color);
+                }
+            }
 
 
-        .form__policy {
-            display: flex;
-            gap: 4px;
-            align-items: flex-start;
+            .form__policy {
+                display: flex;
+                gap: 8px;
+                align-items: flex-start;
 
-            p {
-                font-size: 10px;
-                color: var(--black-color);
-                font-family: "Archivo-Light", sans-serif;
+                p {
+                    font-size: 10px;
+                    color: var(--black-color);
+                    font-family: "Archivo-Light", sans-serif;
+                }
+            }
+
+            .button {
+                width: 100%;
+                display: flex;
+
+                button {
+                    background-color: var(--primary-color);
+                    border: none;
+                    cursor: pointer;
+                    padding: 8px 12px;
+                    font-size: 16px;
+                    font-family: "Archivo-Normal", sans-serif;
+                    letter-spacing: .1rem;
+                    color: var(--white-color);
+
+                    display: block;
+                    flex: 1;
+
+                    &:hover {
+                        background-color: var(--cta-color);
+                    }
+                }
             }
         }
     }
 
 
     &::backdrop {
-        background: var(--black-color-opacity);
+        background: var(--black-color-opacity-8);
     }
 }
