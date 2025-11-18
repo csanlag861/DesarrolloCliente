@@ -1,22 +1,36 @@
-// import stylesGaleria from "./galeria.module.css";
+import stylesGaleria from "./galeria.module.css";
 
-// const GallerySection = ({ url, title, subtitle, variant }) => {
-//   return (
-//     <section
-//       className={`${stylesGaleria.section}`}
-//       data-panel
-//       data-variant={variant}
-//     >
-//       <div className={stylesGaleria.imageWrapper}>
-//         <img src={url} alt={title} className={stylesGaleria.image} data-img />
-//       </div>
+const GallerySection = () => {
+  return (
+      <div className={stylesGaleria.banner}>
+        <div className={stylesGaleria.slider} style={{ "--quantity": 8 }}>
+          <div className={stylesGaleria.item} style={{ "--position": 1 }}>
+            <img src="img/slider-001.webp" alt="" />
+          </div>
+          <div className={stylesGaleria.item} style={{ "--position": 2 }}>
+            <img src="img/slider-002.webp" alt="" />
+          </div>
+          <div className={stylesGaleria.item} style={{ "--position": 3 }}>
+            <img src="img/slider-003.webp" alt="" />
+          </div>
+          <div className={stylesGaleria.item} style={{ "--position": 4 }}>
+            <img src="img/slider-004.webp" alt="" />
+          </div>
+          <div className={stylesGaleria.item} style={{ "--position": 5 }}>
+            <img src="img/slider-005.webp" alt="" />
+          </div>
+          <div className={stylesGaleria.item} style={{ "--position": 6 }}>
+            <img src="img/slider-006.webp" alt="" />
+          </div>
+          <div className={stylesGaleria.item} style={{ "--position": 7 }}>
+            <img src="img/slider-007.webp" alt="" />
+          </div>
+          <div className={stylesGaleria.item} style={{ "--position": 8 }}>
+            <img src="img/slider-008.webp" alt="" />
+          </div>
+        </div>
+      </div>
+  );
+};
 
-//       <div className={stylesGaleria.textContent} data-text>
-//         <h2>{title}</h2>
-//         <p>{subtitle}</p>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default GallerySection;
+export default GallerySection;

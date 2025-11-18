@@ -11,7 +11,7 @@
         padding: 32px 64px;
         background-color: var(--white-color);
 
-        &>[class^="_hero"]:first-child {
+        &>[class^="_hero"]:first-child, &>[class^="_section"]:first-child {
             margin-inline: -64px;
             margin-block: -32px;
         }
