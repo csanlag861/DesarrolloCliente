@@ -87,7 +87,7 @@ function Tienda() {
 
 
   useEffect(() => {
-    isLoading && toast.success("Cargando productos")
+    isLoading && (toast.success("Cargando productos"))
   }, [isLoading])
 
   const handleSearch = () => setShowSearch(!showSearch);

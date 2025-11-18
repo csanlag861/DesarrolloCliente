@@ -16,6 +16,10 @@ const Header = () => {
   const sentinelRef = useRef(null);
   const [stickyHeight, setStickyHeight] = useState(0); // Placeholder para que no genere salto cuando cambie el Header.
   const [isSticky, setIsSticky] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+
+
+  const toggleNav = () => setNavOpen((prev) => !prev);
 
   const handleLogout = async () => {
     try {
@@ -91,7 +95,10 @@ const Header = () => {
             <Icon icon="ion:cart" />
           </div>
         </div>
-        <nav className={stylesHeader.nav}>
+        <button className={stylesHeader.btnMobile} onClick={toggleNav}>
+          {navOpen ? ("asdasd") : ("adasd")}
+        </button>
+        <nav className={`${stylesHeader.nav} ${navOpen && stylesHeader.navOpen}`}>
           <NavLink
             to="/Tienda"
             className={({ isActive }) =>

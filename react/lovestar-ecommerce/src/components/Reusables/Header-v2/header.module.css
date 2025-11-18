@@ -4,10 +4,30 @@
 }
 
 .sticky {
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.btnMobile {
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: none;
+
+    .iconMobileNav {
+        height: 4.8rem;
+        width: 4.8rem;
+        color: #333;
+    }
+
+    @media (max-width: 925px) {
+        .btnMobile {
+            display: block;
+            z-index: 1000;
+        }
+    }
 }
 
 .publicidad {
@@ -118,6 +138,12 @@
         font-size: 14px;
     }
 
+    &.navOpen {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+        transform: translateX(0);
+    }
 }
 
 .nav,
