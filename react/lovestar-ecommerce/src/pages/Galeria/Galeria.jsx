@@ -5,7 +5,10 @@ function Galeria() {
   return (
     <>
       <section className={stylesGaleria.section}>
-        <h2>LoveGallery</h2>
+        <div className={stylesGaleria.lovestar}>
+          <h2>LoveGallery*</h2>
+          <h3>by Lovestar.</h3>
+        </div>
         <GallerySection />
       </section>
     </>

@@ -6,15 +6,27 @@
 
   display: flex;
   flex-direction: column;
-  gap: 140px;
+  gap: 180px;
 
-  h2 {
-    font-family: "CabinetGrotesk-Bold", sans-serif;
-    font-size: 80px;
-    color: var(--white-color);
-    padding: 64px 32px;
-    text-align: center;
+  .lovestar {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    h2 {
+      font-family: "CabinetGrotesk-Bold", sans-serif;
+      font-size: 80px;
+      color: var(--white-color);
+      padding-top: 32px;
+    }
+
+    h3 {
+      font-family: "CabinetGrotesk-Regular", sans-serif;
+      font-size: 40px;
+      color: var(--white-color);
+    }
   }
+
 
 
   &:before {
