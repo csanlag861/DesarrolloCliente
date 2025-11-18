@@ -76,7 +76,8 @@ body {
     --black-color: #171717;
     
     --black-color-opacity: rgba(23, 23, 23, 0.5);
-
+    --black-color-opacity-8: rgba(23, 23, 23, 0.8);
+    
     --white-color-opacity: rgba(232, 232, 232, 0.5);
     
     --lovestar-light: #F7BDC3;

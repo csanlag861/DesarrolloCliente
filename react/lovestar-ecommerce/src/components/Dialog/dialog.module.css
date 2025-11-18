@@ -12,7 +12,7 @@ dialog:focus {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 585px;
     height: 390px;
     background-color: var(--white-color);
