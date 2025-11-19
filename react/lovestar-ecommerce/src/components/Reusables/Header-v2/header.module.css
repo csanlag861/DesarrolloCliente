@@ -10,6 +10,10 @@
     width: 100%;
 }
 
+.noSticky {
+    width: 100%;
+}
+
 .btnMobile {
     border: none;
     background: none;
@@ -176,6 +180,30 @@
         z-index: 1000;
     }
 
+    .centro {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100%;
+
+        .info {
+            margin-left: 0px;
+
+            svg {
+                display: none;
+            }
+        }
+
+        .social-links {
+            padding-left: 24px;
+            margin-right: 24px;
+
+            >svg {
+                display: none;
+            }
+        }
+    }
+
     .nav {
         /* From https://css.glass */
         background: rgba(255, 255, 255, 0.5);
@@ -185,15 +213,16 @@
         border: 1px solid rgba(255, 255, 255, 0.3);
 
 
+        position: fixed;
         width: 100%;
         height: 100vh;
-        position: absolute;
         top: 0;
         left: 0;
+        overflow-x: hidden;
+        overflow-y: hidden;
 
         display: flex;
-        align-items: end;
-        padding-right: 80px;
+        align-items: center;
         justify-content: center;
         flex-direction: column;
         opacity: 0;
@@ -201,24 +230,26 @@
         visibility: hidden;
         transition: all 0.5s ease-in;
         transform: translateX(100%);
+        gap: 24px;
 
         .navList {
             flex-direction: column;
-            gap: 4.8rem;
         }
 
         .logo {
             display: flex;
             justify-content: end;
+            margin-bottom: 32px;
+
             img {
-                height: calc(50px);
+                height: 50px;
             }
         }
 
 
         a {
             color: var(--black-color);
-            font-size: 3rem;
+            font-size: 1.5rem;
         }
 
         &.navOpen {

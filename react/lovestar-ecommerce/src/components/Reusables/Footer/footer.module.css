@@ -156,7 +156,7 @@ footer {
             display: flex;
             flex-direction: column;
             gap: 16px;
-            margin-bottom: 16px;
+            margin: 0px 40px 32px 40px;
 
             .form {
                 width: 75%;

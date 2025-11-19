@@ -58,6 +58,20 @@ const Header = () => {
     return () => observer.disconnect();
   }, []);
 
+
+  useEffect(() => {
+    if (navOpen) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    }
+
+    return () => { document.documentElement.style.overflow = ""; document.body.style.overflow = ""; }
+
+  }, [navOpen])
+
   return (
     <header>
       <div className={stylesHeader.publicidad}>
@@ -71,7 +85,7 @@ const Header = () => {
         </div>
       </div>
       {isSticky && <div style={{ height: `${stickyHeight}px` }} />}
-      <div ref={stickyRef} className={isSticky ? stylesHeader.sticky : ""}>
+      <div ref={stickyRef} className={isSticky ? stylesHeader.sticky : stylesHeader.noSticky}>
         <div className={`${stylesHeader.centro}`}>
           <div className={stylesHeader.info}>
             <Link to="/Login">
@@ -157,6 +171,28 @@ const Header = () => {
           >
             Contacto
           </NavLink>
+
+          {navOpen && (
+            <>
+              <div className={stylesHeader.info}>
+                <Link to="/Login">
+                  <Icon icon="ic:baseline-account-circle" />
+                </Link>
+                {currentUser && (
+                  <Icon icon="material-symbols:logout" onClick={handleLogout} />
+                )}
+              </div>
+
+              <div className={stylesHeader["social-links"]}>
+                {currentUser?.rol == "admin" && (
+                  <NavLink to="/lovestar">
+                    <Icon icon="eos-icons:admin" />
+                  </NavLink>
+                )}
+                <Icon icon="ion:cart" />
+              </div>
+            </>
+          )}
         </nav>
       </div>
     </header>

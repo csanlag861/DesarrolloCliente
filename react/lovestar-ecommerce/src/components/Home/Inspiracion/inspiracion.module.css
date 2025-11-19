@@ -7,12 +7,24 @@
 
     position: relative;
     white-space: nowrap;
-
+    width: 100%;
 
     h2 {
         font-size: 24px;
         font-family: "Archivo-Medium", sans-serif;
         font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+        h2 {
+            font-size: 18px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        h2 {
+            font-size: 16px;
+        }
     }
 
     .inspiracion__cards {
@@ -26,6 +38,7 @@
         width: max-content;
 
         animation: scroll-left 60s ease-out infinite;
+
         &:hover {
             animation-play-state: paused;
         }

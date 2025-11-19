@@ -17,6 +17,7 @@ function Tienda() {
   const [showSearch, setShowSearch] = useState(false);
   const [filter, setFilter] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [bandera, setBandera] = useState(true);
 
   const [categoria, setCategoria] = useState("TODO");
 
@@ -32,6 +33,7 @@ function Tienda() {
         }));
 
         setIsLoading(false);
+        setBandera(false);
         setProductos(dataProducts);
       } catch (error) {
         toast.error("Error al obtener productos");
@@ -99,7 +101,7 @@ function Tienda() {
   );
 
   return (
-    <>
+    bandera ? null : (<>
       <div className={stylesTienda.filtros}>
         <p onClick={() => setCategoria("TODO")}>TODO</p>
         <p onClick={() => setCategoria("Camisetas")}>Camisetas</p>
@@ -135,7 +137,8 @@ function Tienda() {
           </div>
         ))}
       </section>
-    </>
+    </>)
+
   );
 }
 
