@@ -16,17 +16,10 @@
     cursor: pointer;
     display: none;
 
-    .iconMobileNav {
-        height: 4.8rem;
-        width: 4.8rem;
-        color: #333;
-    }
-
-    @media (max-width: 925px) {
-        .btnMobile {
-            display: block;
-            z-index: 1000;
-        }
+    .iconMobile {
+        height: 1.5;
+        width: 1.5rem;
+        color: var(--black-color);
     }
 }
 
@@ -87,11 +80,13 @@
     img {
         height: calc(48px/1.2);
     }
-
 }
 
 .info {
+    display: flex;
+    gap: 40px;
     margin-left: 120px;
+    cursor: pointer;
 
     svg {
         width: 24px;
@@ -137,13 +132,6 @@
     a {
         font-size: 14px;
     }
-
-    &.navOpen {
-        opacity: 1;
-        pointer-events: auto;
-        visibility: visible;
-        transform: translateX(0);
-    }
 }
 
 .nav,
@@ -177,6 +165,68 @@
         &:hover {
             color: var(--primary-color);
             transition: color 0.5 ease;
+        }
+    }
+}
+
+
+@media (max-width: 925px) {
+    .btnMobile {
+        display: block;
+        z-index: 1000;
+    }
+
+    .nav {
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+
+
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        align-items: end;
+        padding-right: 80px;
+        justify-content: center;
+        flex-direction: column;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transition: all 0.5s ease-in;
+        transform: translateX(100%);
+
+        .navList {
+            flex-direction: column;
+            gap: 4.8rem;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: end;
+            img {
+                height: calc(50px);
+            }
+        }
+
+
+        a {
+            color: var(--black-color);
+            font-size: 3rem;
+        }
+
+        &.navOpen {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+            transform: translateX(-0);
+            z-index: 100;
         }
     }
 }

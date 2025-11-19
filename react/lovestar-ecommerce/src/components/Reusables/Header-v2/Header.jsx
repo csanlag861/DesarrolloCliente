@@ -93,12 +93,22 @@ const Header = () => {
               </NavLink>
             )}
             <Icon icon="ion:cart" />
+            <button className={stylesHeader.btnMobile} onClick={toggleNav}>
+              {navOpen ? (<Icon
+                className={stylesHeader.iconMobile}
+                icon="material-symbols:close"
+                width="24"
+                height="24"
+              />) : (<Icon className={stylesHeader.iconMobile} icon="material-symbols:menu" width="24" height="24" />)}
+            </button>
           </div>
         </div>
-        <button className={stylesHeader.btnMobile} onClick={toggleNav}>
-          {navOpen ? ("asdasd") : ("adasd")}
-        </button>
         <nav className={`${stylesHeader.nav} ${navOpen && stylesHeader.navOpen}`}>
+          {navOpen && (
+            <Link className={stylesHeader.logo} to="/Home">
+              <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
+            </Link>
+          )}
           <NavLink
             to="/Tienda"
             className={({ isActive }) =>

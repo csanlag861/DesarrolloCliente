@@ -2,10 +2,8 @@
 
 ### 🚧 Pendiente / Por hacer
 
-- Re-hacer el acordeon.
 - Filtro en la tienda.
 - Cargar más (en la tienda).
-- Hacer más productos para la tienda.
 - Grid Shop Responsive y Accesible.
 
 - Que el usuario que no tenga el descuento tenga otro footer.
