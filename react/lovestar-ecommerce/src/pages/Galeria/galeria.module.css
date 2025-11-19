@@ -2,17 +2,18 @@
   min-width: 100%;
   min-height: calc(100vh - 111.500px);
   max-height: 100vh;
-  background-color: var(--black-color);
-
+  background: #E8E8E8;
+  background: radial-gradient(circle, rgba(232, 232, 232, 1) 0%, rgba(230, 41, 63, 1) 40%);
   display: flex;
   flex-direction: column;
-  gap: 180px;
+  gap: 160px;
 
   .lovestar {
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: center;
+
     h2 {
       font-family: "CabinetGrotesk-Bold", sans-serif;
       font-size: 80px;
