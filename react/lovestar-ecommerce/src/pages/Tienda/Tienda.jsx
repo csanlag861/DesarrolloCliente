@@ -5,6 +5,8 @@ import { db } from "../../utils/firebase";
 import stylesTienda from "./tienda.module.css";
 import Card from "../../components/Cards/Card-Shop/Card";
 
+import {DotLoader} from "react-spinners"
+
 import { Icon } from "@iconify/react";
 import { toast } from "react-toastify";
 
@@ -101,7 +103,7 @@ function Tienda() {
   );
 
   return (
-    bandera ? null : (<>
+    bandera ? <DotLoader size={50} color="#E6293F" /> : (<>
       <div className={stylesTienda.filtros}>
         <p onClick={() => setCategoria("TODO")}>TODO</p>
         <p onClick={() => setCategoria("Camisetas")}>Camisetas</p>
