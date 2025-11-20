@@ -252,6 +252,14 @@
             font-size: 1.5rem;
         }
 
+        .info{
+            margin-left: 0px;
+        }
+
+        .social-links{
+            margin-right: 0px;
+        }
+
         &.navOpen {
             opacity: 1;
             pointer-events: auto;
