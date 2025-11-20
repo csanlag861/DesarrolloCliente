@@ -28,8 +28,6 @@
     }
   }
 
-
-
   &:before {
     content: "";
     top: -10rem;
@@ -43,6 +41,35 @@
     pointer-events: none;
     -webkit-animation: noise 1s steps(2) infinite;
     animation: noise 1s steps(2) infinite;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .section {
+    .lovestar {
+      h2 {
+        font-size: 74px;
+      }
+
+      h3 {
+        font-size: 36px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    .lovestar {
+      h2 {
+        font-size: 62px;
+      }
+
+      h3 {
+        font-size: 30px;
+      }
+    }
   }
 }
 
