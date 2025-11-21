@@ -9,9 +9,7 @@ function Intro() {
  */  return (
     <section className={stylesIntro.container}>
       <Contador />
-      <div className={stylesIntro.lov}>
-        <Lovestar />
-      </div>
+      <Lovestar />
       <Footer />
     </section>
   );

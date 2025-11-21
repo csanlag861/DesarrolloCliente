@@ -4,13 +4,4 @@
     height: 100vh;
     background-color: var(--primary-color);
     justify-items: center;
-    padding: 32px 64px;
-
-    .lov{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 }

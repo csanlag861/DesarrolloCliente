@@ -81,3 +81,21 @@
     }
   }
 }
+
+@media (max-width: 400px) {
+  .text-lovestar {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    justify-content: center;
+
+    p {
+      font-size: 72px;
+    }
+
+    a {
+      font-size: 24px;
+    }
+  }
+}
