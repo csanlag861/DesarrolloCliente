@@ -1,6 +1,6 @@
 .container {
     display: grid;
-    grid-template-rows: auto 1fr auto ;
+    grid-template-rows: auto 1fr auto;
     height: 100vh;
     background-color: var(--primary-color);
     justify-items: center;
