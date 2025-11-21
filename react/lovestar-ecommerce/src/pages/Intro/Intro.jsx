@@ -4,13 +4,15 @@ import Footer from "../../components/Intro/Footer/Footer";
 import stylesIntro from "./intro.module.css";
 
 import useRedireccion from "../../hooks/useRedireccion";
-function Intro () {
+function Intro() {
 /*   useRedireccion();
  */  return (
     <section className={stylesIntro.container}>
-        <Contador />
+      <Contador />
+      <div className={stylesIntro.lov}>
         <Lovestar />
-        <Footer />
+      </div>
+      <Footer />
     </section>
   );
 };
