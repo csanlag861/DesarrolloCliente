@@ -31,7 +31,30 @@
 
 .filtros {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 24px;
+
+    svg {
+        width: 24px;
+        height: 24px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .filtros {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.categorias {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
 
     p {
         position: relative;
@@ -61,18 +84,26 @@
             transition: color 0.5 ease;
         }
     }
-
-    svg {
-        width: 24px;
-        height: 24px;
-
-        &:hover {
-            cursor: pointer;
-        }
-    }
-
 }
 
+@media (max-width: 900px) {
+    .categorias {
+        margin-top: 24px;
+        display: flex;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .categorias {
+        width: 280px;
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-self: center;
+        justify-items: center;
+        }
+}
 
 
 .buscador {

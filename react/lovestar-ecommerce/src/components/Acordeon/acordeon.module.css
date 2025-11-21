@@ -49,6 +49,66 @@
   gap: 12px;
 }
 
+@media (max-width: 1200px) {
+  .accordion {
+    margin: 50px auto;
+  }
+
+  .number {
+    font-size: 32px;
+  }
+
+  .title,
+  .icon {
+    font-size: 28px
+  }
+
+  .content-box {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .accordion{
+    width: 95%;
+  }
+  .number {
+    font-size: 32px;
+  }
+
+  .title,
+  .icon {
+    font-size: 28px
+  }
+
+  .content-box {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .accordion {
+    width: 90%;
+  }
+
+  .number {
+    font-size: 28px;
+  }
+
+  .title,
+  .icon {
+    font-size: 24px
+  }
+
+  .content-box {
+    font-size: 18px;
+  }
+
+  .item{
+    border-bottom: 1px solid var(--black-color);
+  }
+}
+
 /* OPEN STATE */
 .open {
   border-top: 2px solid var(--primary-color);

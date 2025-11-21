@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     title: "¿Dónde nos puedes encontrar?",
-    text: "Nuestro universo está en línea: 🌐 lovestarecommerce.vercel.app, el único lugar donde encontrarás nuestras colecciones oficiales. 📱 Síguenos en Instagram y TikTok para ver drops exclusivos, sesiones detrás de cámara y próximos lanzamientos. También participamos en eventos, ferias y pop-ups seleccionados que anunciamos siempre en nuestras redes.",
+    text: "Nuestro universo está en línea: 🌐 lovestar-two.vercel.app, el único lugar donde encontrarás nuestras colecciones oficiales. 📱 Síguenos en Instagram y TikTok para ver drops exclusivos, sesiones detrás de cámara y próximos lanzamientos. También participamos en eventos, ferias y pop-ups seleccionados que anunciamos siempre en nuestras redes.",
   },
   {
     title: "¿Qué hacemos diferente?",

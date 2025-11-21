@@ -5,7 +5,7 @@ import { db } from "../../utils/firebase";
 import stylesTienda from "./tienda.module.css";
 import Card from "../../components/Cards/Card-Shop/Card";
 
-import {DotLoader} from "react-spinners"
+import { DotLoader } from "react-spinners"
 
 import { Icon } from "@iconify/react";
 import { toast } from "react-toastify";
@@ -17,6 +17,7 @@ function Tienda() {
 
   const [productos, setProductos] = useState([]);
   const [showSearch, setShowSearch] = useState(false);
+  const [showCategorias, setShowCategorias] = useState(false);
   const [filter, setFilter] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [bandera, setBandera] = useState(true);
@@ -96,6 +97,8 @@ function Tienda() {
 
   const handleSearch = () => setShowSearch(!showSearch);
 
+  const handleCategoria = () => setShowCategorias(!showCategorias);
+
   const filterProducts = productos.filter(
     (prod) =>
       (!prod.membership || (currentUser?.rol === "miembro" || currentUser?.rol === "admin")) &&
@@ -105,15 +108,18 @@ function Tienda() {
   return (
     bandera ? <DotLoader size={50} color="#E6293F" /> : (<>
       <div className={stylesTienda.filtros}>
+        <Icon icon="proicons:filter" onClick={handleCategoria} />
+        <Icon icon="material-symbols:search" onClick={handleSearch} />
+      </div>
+      {showCategorias && (<div className={stylesTienda.categorias}>
         <p onClick={() => setCategoria("TODO")}>TODO</p>
         <p onClick={() => setCategoria("Camisetas")}>Camisetas</p>
         <p onClick={() => setCategoria("Sudaderas")}>Sudaderas</p>
         <p onClick={() => setCategoria("Jerseys")}>Jerseys</p>
         <p onClick={() => setCategoria("Pantalones")}>Pantalones</p>
         <p onClick={() => setCategoria("Gorros")}>Gorros</p>
-        <Icon icon="proicons:filter" />
-        <Icon icon="material-symbols:search" onClick={handleSearch} />
-      </div>
+      </div>)}
+
       <div className={stylesTienda.buscador}>
         {showSearch && (
           <div

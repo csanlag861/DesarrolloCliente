@@ -32,12 +32,12 @@
 
     @media (max-width: 600px) {
         .main {
-            padding: 16px 38px;
+            padding: 28px 24px;
 
             &>[class^="_hero"]:first-child,
             &>[class^="_section"]:first-child {
-                margin-inline: -38px;
-                margin-block: -16px;
+                margin-inline: -24px;
+                margin-block: -28px;
             }
         }
     }

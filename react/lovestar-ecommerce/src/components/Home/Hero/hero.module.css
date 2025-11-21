@@ -1,5 +1,6 @@
-.hero{
-} /* NECESARIO PARA QUE OCUPE TODO EL ANCHO. */
+.hero {}
+
+/* NECESARIO PARA QUE OCUPE TODO EL ANCHO. */
 .imagen {
   background-image: linear-gradient(rgba(29, 29, 29, 1), rgba(29, 29, 29, 0)), url(/img/hero-001.webp);
   background-size: cover;
@@ -32,8 +33,6 @@
     p {
       font-size: 24px;
     }
-
-
   }
 
 
@@ -61,6 +60,37 @@
         background-color: var(--cta-color);
         cursor: pointer;
       }
+    }
+  }
+}
+
+@media (max-width: 925px) {
+  .imagen {
+    height: calc(100vh );
+  }
+}
+
+
+@media (max-width: 900px) {
+  .imagen {
+    height: calc(100vh - 81px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .imagen {
+    .imagen__text {
+      display: flex;
+      align-items: baseline;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .imagen {
+    .imagen__text {
+      display: flex;
+      align-items: baseline;
     }
   }
 }

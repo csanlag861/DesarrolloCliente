@@ -73,6 +73,20 @@
   }
 }
 
+@media (max-width: 400px) {
+  .section {
+    .lovestar {
+      h2 {
+        font-size: 50px;
+      }
+
+      h3 {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
 @-webkit-keyframes noise {
   to {
     transform: translate3d(-7rem, 0, 0)

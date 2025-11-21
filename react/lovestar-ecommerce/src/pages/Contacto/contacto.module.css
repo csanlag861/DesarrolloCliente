@@ -15,3 +15,10 @@
         margin-top: 24px;
     }
 }
+
+@media (max-width: 1200px) {
+    .main {
+        display: flex;
+        align-items: center;
+    }
+}
