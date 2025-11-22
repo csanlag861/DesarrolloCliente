@@ -1,0 +1,35 @@
+.pedidos {
+    width: 1280px;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    .user {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        background-color: var(--white-color-light);
+        padding: 24px 24px;
+        border-radius: 12px;
+        border: 1px solid var(--white-color-active);
+        position: relative;
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .titulo {
+            font-family: "Archivo-SemiBold", sans-serif;
+        }
+
+        .texto{
+            font-family: "Archivo-Light", sans-serif;
+            color: var(--white-color-dark);
+        }
+    }
+}
