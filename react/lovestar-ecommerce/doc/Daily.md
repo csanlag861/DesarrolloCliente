@@ -55,6 +55,11 @@
   }, []);
 ```
 
+> 👇 Comprueba si la dirección existe, si no existe pinta lo otro. 👇
+```JSX
+currentUser?.direccion || (<div> Hola</div>)
+```
+
 
 
 ### 🚀 Próximos pasos
