@@ -6,8 +6,8 @@ const LoginRoute = ({ children }) => {
     const { currentUser } = useContext(UserContext);
     const isAuth = !!currentUser;
 
-    if (isAuth) {
-        return <Navigate to="/home" />;
+    if (!isAuth) {
+        return <Navigate to="/Login" />;
     }
 
     return children;
