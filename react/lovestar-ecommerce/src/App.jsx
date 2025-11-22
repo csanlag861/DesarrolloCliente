@@ -11,6 +11,9 @@ import Membership from "./pages/Membership/Membership";
 import Contacto from "./pages/Contacto/Contacto";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Galeria from "./pages/Galeria/Galeria";
+import Perfil from "./pages/Perfil/Perfil";
+import Pedidos from "./pages/Pedidos/Pedidos";
+import Editorial from "./pages/Editorial/Editorial";
 
 import PrivateRoute from "./pages/protected/PrivateRoutes";
 import LoginRoute from "./pages/protected/LoginRoutes";
@@ -22,16 +25,15 @@ import LovestarLayout from "./pages/LovestarLayout/LovestarLayout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
-/* import { useEffect } from "react";
-import { uploadProducts } from "./utils/uploadProducts"; */
+// import { useEffect } from "react";
+// import { uploadProducts } from "./utils/uploadProducts";
 
 function App() {
-/*     useEffect(() => {
-      const upload = async () => uploadProducts();
-  
-      upload();
-    }, []) */
+  // useEffect(() => {
+  //   const upload = async () => uploadProducts();
+
+  //   upload();
+  // }, [])
 
   return (
     <>
@@ -44,6 +46,25 @@ function App() {
           <Route path="/Contacto" element={<Contacto />} />
           <Route path="/SobreNosotros" element={<AboutUs />} />
           <Route path="/Galeria" element={<Galeria />} />
+          <Route path="/Editorial" element={<Editorial />} />
+
+          <Route
+            path="/Perfil"
+            element={
+              <LoginRoute>
+                <Perfil />
+              </LoginRoute>
+            }
+          />
+
+          <Route
+            path="/Pedidos"
+            element={
+              <LoginRoute>
+                <Pedidos />
+              </LoginRoute>
+            }
+          />
 
           <Route
             path="/lovestar"
@@ -55,34 +76,11 @@ function App() {
           />
         </Route>
 
-
-
         <Route path="/" element={<LovestarLayout />}>
-          <Route
-            path="/Login"
-            element={
-              <LoginRoute>
-                <Login />
-              </LoginRoute>
-            }
-          />
-          <Route
-            path="/Register"
-            element={
-              <LoginRoute>
-                <Register />
-              </LoginRoute>
-            }
-          />
-          <Route
-            path="/Membership"
-            element={
-              <Membership />
-            }
-          />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/Membership" element={<Membership />} />
         </Route>
-
-
       </Routes>
       <ToastContainer position="top-center" autoClose={2000} />
     </>
