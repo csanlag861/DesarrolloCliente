@@ -88,7 +88,7 @@ const Header = () => {
       <div ref={stickyRef} className={isSticky ? stylesHeader.sticky : stylesHeader.noSticky}>
         <div className={`${stylesHeader.centro}`}>
           <div className={stylesHeader.info}>
-            <Link to="/Login">
+            <Link to="/Perfil">
               <Icon icon="ic:baseline-account-circle" />
             </Link>
             {currentUser && (
@@ -140,7 +140,7 @@ const Header = () => {
             Galería
           </NavLink>
           <NavLink
-            to="/Tienda"
+            to="/Editorial"
             className={({ isActive }) =>
               isActive ? stylesHeader.active : undefined
             }
