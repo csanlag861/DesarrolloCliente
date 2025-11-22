@@ -1,0 +1,24 @@
+.main {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        font-size: 32px;
+        font-family: "Archivo-SemiBold", sans-serif;
+    }
+
+    .form {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 24px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .main {
+        display: flex;
+        align-items: center;
+    }
+}
