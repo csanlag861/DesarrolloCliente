@@ -23,7 +23,7 @@ const Footer = () => {
         <div className={stylesFooter.logo}>
           <Link to="/Home">
             <img
-              src="img/alt-logo-white.svg"
+              src="/img/alt-logo-white.svg"
               alt="Logo secundario de Lovestar"
             />
           </Link>

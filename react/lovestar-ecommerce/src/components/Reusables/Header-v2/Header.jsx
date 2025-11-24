@@ -35,9 +35,9 @@ const Header = () => {
   const marqueeText = (
     <>
       <p>Envío gratis pedidos internacionales +200€</p>
-      <img src="img/lovestarlogo.svg" alt="Logo de Lovestar" />
+      <img src="/img/lovestarlogo.svg" alt="Logo de Lovestar" />
       <p>¡Únete al club!</p>
-      <img src="img/lovestarlogo.svg" alt="Logo de Lovestar" />
+      <img src="/img/lovestarlogo.svg" alt="Logo de Lovestar" />
     </>
   );
 
@@ -120,7 +120,7 @@ const Header = () => {
         <nav className={`${stylesHeader.nav} ${navOpen && stylesHeader.navOpen}`}>
           {navOpen && (
             <Link className={stylesHeader.logo} to="/Home">
-              <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
+              <img src="/img/alt-logo.svg" alt="Logo secundario de Lovestar" />
             </Link>
           )}
           <NavLink
