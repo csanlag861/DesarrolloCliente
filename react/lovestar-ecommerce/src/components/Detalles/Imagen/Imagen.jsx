@@ -29,8 +29,6 @@ function Detalles() {
   if (loading) return <p>Cargando...</p>;
   if (!product) return <p>No se han encontrado productos...</p>;
 
-  console.log("Ruta de imagen:", product?.url);
-
   return (
     <div className={stylesImagen.container}>
       {product && <img src={`/${product?.url}`} alt={product?.alt} />}

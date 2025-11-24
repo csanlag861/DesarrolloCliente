@@ -14,7 +14,7 @@ function Home() {
       const time = setTimeout(() => {
         setShowDialog(true);
         localStorage.setItem("showDialog", hoy);
-      }, 1000);
+      }, 5000);
 
       return () => clearTimeout(time);
     }
