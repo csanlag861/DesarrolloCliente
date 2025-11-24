@@ -1,11 +1,16 @@
 import { useEffect, useState, useContext } from "react";
-import { collection, getDocs, query, where, orderBy, limit } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../utils/firebase";
 
 import stylesTienda from "./tienda.module.css";
 import Card from "../../components/Cards/Card-Shop/Card";
 
-import { DotLoader } from "react-spinners"
+import { DotLoader } from "react-spinners";
 
 import { Icon } from "@iconify/react";
 import { toast } from "react-toastify";
@@ -46,16 +51,13 @@ function Tienda() {
     getProducts();
   }, []);
 
-
-
   useEffect(() => {
     const cargarProductos = async () => {
-
       if (categoria === "TODO") {
         try {
           const productsRef = collection(db, "products");
           const snapshot = await getDocs(productsRef);
-          const dataProducts = snapshot.docs.map(doc => ({
+          const dataProducts = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
           }));
@@ -66,13 +68,12 @@ function Tienda() {
           console.error("Error al cargar los productos", error);
           toast.error("Error al cargar los productos.");
         }
-
       } else {
         try {
           const productsRef = collection(db, "products");
           const q = query(productsRef, where("categoria", "==", categoria));
           const snapshot = await getDocs(q);
-          const dataProducts = snapshot.docs.map(doc => ({
+          const dataProducts = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
           }));
@@ -84,16 +85,14 @@ function Tienda() {
           toast.error("Error al cargar los productos.");
         }
       }
-    }
+    };
 
     cargarProductos();
-  }, [categoria])
-
-
+  }, [categoria]);
 
   useEffect(() => {
-    isLoading && (toast.success("Cargando productos"))
-  }, [isLoading])
+    isLoading && toast.success("Cargando productos");
+  }, [isLoading]);
 
   const handleSearch = () => setShowSearch(!showSearch);
 
@@ -101,30 +100,38 @@ function Tienda() {
 
   const filterProducts = productos.filter(
     (prod) =>
-      (!prod.membership || (currentUser?.rol === "miembro" || currentUser?.rol === "admin")) &&
+      (!prod.membership ||
+        currentUser?.rol === "miembro" ||
+        currentUser?.rol === "admin") &&
       prod.nombre?.toLowerCase().includes(filter.toLowerCase())
   );
 
-  return (
-    bandera ? <DotLoader size={50} color="#E6293F" /> : (<>
+
+  return bandera ? (
+    <DotLoader size={50} color="#E6293F" />
+  ) : (
+    <>
       <div className={stylesTienda.filtros}>
         <Icon icon="proicons:filter" onClick={handleCategoria} />
         <Icon icon="material-symbols:search" onClick={handleSearch} />
       </div>
-      {showCategorias && (<div className={stylesTienda.categorias}>
-        <p onClick={() => setCategoria("TODO")}>TODO</p>
-        <p onClick={() => setCategoria("Camisetas")}>Camisetas</p>
-        <p onClick={() => setCategoria("Sudaderas")}>Sudaderas</p>
-        <p onClick={() => setCategoria("Jerseys")}>Jerseys</p>
-        <p onClick={() => setCategoria("Pantalones")}>Pantalones</p>
-        <p onClick={() => setCategoria("Gorros")}>Gorros</p>
-      </div>)}
+      {showCategorias && (
+        <div className={stylesTienda.categorias}>
+          <p onClick={() => setCategoria("TODO")}>TODO</p>
+          <p onClick={() => setCategoria("Camisetas")}>Camisetas</p>
+          <p onClick={() => setCategoria("Sudaderas")}>Sudaderas</p>
+          <p onClick={() => setCategoria("Jerseys")}>Jerseys</p>
+          <p onClick={() => setCategoria("Pantalones")}>Pantalones</p>
+          <p onClick={() => setCategoria("Gorros")}>Gorros</p>
+        </div>
+      )}
 
       <div className={stylesTienda.buscador}>
         {showSearch && (
           <div
-            className={`${stylesTienda.search} ${!showSearch ? stylesTienda.hidden : ""
-              }`}
+            className={`${stylesTienda.search} ${
+              !showSearch ? stylesTienda.hidden : ""
+            }`}
           >
             <input
               type="text"
@@ -136,17 +143,18 @@ function Tienda() {
         )}
       </div>
       <section className={stylesTienda.cards}>
-        {(filterProducts.length > 0 ? (
-          filterProducts.map((prod, id) => <Card key={id} card={prod} />)
+        {filterProducts.length > 0 ? (
+          filterProducts.map((prod, id) => (
+            <Card key={id} card={prod} />
+          ))
         ) : (
           <div className={stylesTienda.noProducts}>
             <Icon icon="material-symbols:error" />
             <p>No hay productos para mostrar.</p>
           </div>
-        ))}
+        )}
       </section>
-    </>)
-
+    </>
   );
 }
 

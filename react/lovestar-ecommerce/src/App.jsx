@@ -14,6 +14,7 @@ import Galeria from "./pages/Galeria/Galeria";
 import Perfil from "./pages/Perfil/Perfil";
 import Pedidos from "./pages/Pedidos/Pedidos";
 import Editorial from "./pages/Editorial/Editorial";
+import Detalles from "./pages/Detalles/Detalles";
 
 import PrivateRoute from "./pages/protected/PrivateRoutes";
 import LoginRoute from "./pages/protected/LoginRoutes";
@@ -43,6 +44,7 @@ function App() {
         <Route path="/" element={<BigLayout />}>
           <Route path="/Home" element={<Home />} />
           <Route path="/Tienda" element={<Tienda />} />
+          <Route path="/Tienda/:productID" element={<Detalles />} />
           <Route path="/Contacto" element={<Contacto />} />
           <Route path="/SobreNosotros" element={<AboutUs />} />
           <Route path="/Galeria" element={<Galeria />} />

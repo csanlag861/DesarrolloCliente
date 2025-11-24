@@ -1,0 +1,12 @@
+.container{
+    width: 897px;
+    height: 704px;
+
+    background-color: aqua;
+    img{
+        width: 50%;
+        height: max-content;
+        background-color: black;
+    }
+    
+}
