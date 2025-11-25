@@ -29,16 +29,16 @@
 }
 ```
 
-
 > 👇 Para quitar el padding del primer hijo. En este caso, le quitamos el padding al div hero para que ocupe todo el ancho. 👇
+
 ```css
 & > :first-child {
   margin-inline: -64px;
 }
 ```
 
-
 > 👇 Para mostrar algo una única vez al día. 👇
+
 ```JSX
   useEffect(() => {
     const hasShownToday = localStorage.getItem("showDialog");
@@ -56,11 +56,16 @@
 ```
 
 > 👇 Comprueba si la dirección existe, si no existe pinta lo otro. 👇
+
 ```JSX
 currentUser?.direccion || (<div> Hola</div>)
 ```
 
-
+> 👇 Ordena un array en el orden de la constante.. 👇
+```JS
+const orden = ["XS", "S", "M", "L", "XL", "XXL"];
+sort(([a], [b]) => orden.indexOf(a) - orden.indexOf(b))
+```
 
 ### 🚀 Próximos pasos
 
