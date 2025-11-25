@@ -15,7 +15,7 @@ function Detalles() {
       setLoading(true);
       try {
         const data = await getAllProductoByID(productID);
-        console.log(data);
+        // console.log(data);
         setProducto(data);
       } catch (error) {
         console.error("Error al cargar los productos: ", error);
