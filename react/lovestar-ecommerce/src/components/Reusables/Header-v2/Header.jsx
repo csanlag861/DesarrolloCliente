@@ -10,6 +10,8 @@ import { useContext, useState, useRef, useEffect } from "react";
 
 import { toast } from "react-toastify";
 
+import Carrito from "../../Carrito/Carrito";
+
 const Header = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const stickyRef = useRef(null);
@@ -17,7 +19,7 @@ const Header = () => {
   const [stickyHeight, setStickyHeight] = useState(0); // Placeholder para que no genere salto cuando cambie el Header.
   const [isSticky, setIsSticky] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
-
+  const [openCarrito, setOpenCarrito] = useState(false);
 
   const toggleNav = () => setNavOpen((prev) => !prev);
 
@@ -58,7 +60,6 @@ const Header = () => {
     return () => observer.disconnect();
   }, []);
 
-
   useEffect(() => {
     if (navOpen) {
       document.documentElement.style.overflow = "hidden";
@@ -68,9 +69,26 @@ const Header = () => {
       document.body.style.overflow = "";
     }
 
-    return () => { document.documentElement.style.overflow = ""; document.body.style.overflow = ""; }
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    };
+  }, [navOpen]);
 
-  }, [navOpen])
+  useEffect(() => {
+    if (openCarrito) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    };
+  }, [openCarrito]);
 
   return (
     <header>
@@ -85,7 +103,10 @@ const Header = () => {
         </div>
       </div>
       {isSticky && <div style={{ height: `${stickyHeight}px` }} />}
-      <div ref={stickyRef} className={isSticky ? stylesHeader.sticky : stylesHeader.noSticky}>
+      <div
+        ref={stickyRef}
+        className={isSticky ? stylesHeader.sticky : stylesHeader.noSticky}
+      >
         <div className={`${stylesHeader.centro}`}>
           <div className={stylesHeader.info}>
             <Link to="/Perfil">
@@ -106,18 +127,29 @@ const Header = () => {
                 <Icon icon="eos-icons:admin" />
               </NavLink>
             )}
-            <Icon icon="ion:cart" />
+            <Icon icon="ion:cart" onClick={() => setOpenCarrito(true)} />
             <button className={stylesHeader.btnMobile} onClick={toggleNav}>
-              {navOpen ? (<Icon
-                className={stylesHeader.iconMobile}
-                icon="material-symbols:close"
-                width="24"
-                height="24"
-              />) : (<Icon className={stylesHeader.iconMobile} icon="material-symbols:menu" width="24" height="24" />)}
+              {navOpen ? (
+                <Icon
+                  className={stylesHeader.iconMobile}
+                  icon="material-symbols:close"
+                  width="24"
+                  height="24"
+                />
+              ) : (
+                <Icon
+                  className={stylesHeader.iconMobile}
+                  icon="material-symbols:menu"
+                  width="24"
+                  height="24"
+                />
+              )}
             </button>
           </div>
         </div>
-        <nav className={`${stylesHeader.nav} ${navOpen && stylesHeader.navOpen}`}>
+        <nav
+          className={`${stylesHeader.nav} ${navOpen && stylesHeader.navOpen}`}
+        >
           {navOpen && (
             <Link className={stylesHeader.logo} to="/Home">
               <img src="/img/alt-logo.svg" alt="Logo secundario de Lovestar" />
@@ -195,6 +227,15 @@ const Header = () => {
           )}
         </nav>
       </div>
+      {openCarrito && (
+        <>
+          <div
+            className={stylesHeader.backdrop}
+            onClick={() => setOpenCarrito(false)}
+          />
+          <Carrito closeCarrito={() => setOpenCarrito(false)} />
+        </>
+      )}
     </header>
   );
 };
