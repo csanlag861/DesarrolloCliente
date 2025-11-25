@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 import { getAllProductoByID } from "../../../utils/querys.js";
 import { useEffect, useState } from "react";
 
+import { useContext } from "react";
+import { CartContext } from "../../../context/ContextCart.jsx";
+
 function Detalles() {
   const styleColor = {
     width: "35px",
@@ -12,6 +15,8 @@ function Detalles() {
     borderRadius: "1000px",
     gap: "4px",
   };
+
+  const {añadirCarrito} = useContext(CartContext);
 
   const { productID } = useParams();
   const [product, setProducto] = useState(undefined);
@@ -34,23 +39,6 @@ function Detalles() {
     };
     fetchData();
   }, [productID]);
-
-  const addProductLocalStorage = () => {
-    const carritoLocalStorage = JSON.parse(localStorage.getItem("UserCarrito")) || [];
-    
-    const publicProduct = {
-      id: product.id,
-      nombre: product.nombre,
-      talla: tallaSeleccionada,
-      // color: colorSeleccionado,
-      precio: product.precio_descuento
-        ? product.precio_descuento
-        : product.precio,
-    };
-
-    carritoLocalStorage.push(publicProduct);
-    localStorage.setItem("UserCarrito", JSON.stringify(carritoLocalStorage));
-  };
   
 
   if (loading) return <p>Cargando...</p>;
@@ -111,7 +99,7 @@ function Detalles() {
       )}
 
       <div className={styleInfo.button}>
-        <button type="submit" onClick={addProductLocalStorage}>
+        <button type="submit" onClick={() => añadirCarrito(product, tallaSeleccionada)}>
           AÑADIR AL CARRITO
         </button>
       </div>
