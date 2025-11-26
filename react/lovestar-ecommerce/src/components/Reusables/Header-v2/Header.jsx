@@ -118,7 +118,7 @@ const Header = () => {
           </div>
           <div className={stylesHeader.logo}>
             <Link to="/Home">
-              <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
+              <img src="/img/alt-logo.svg" alt="Logo secundario de Lovestar" />
             </Link>
           </div>
           <div className={stylesHeader["social-links"]}>

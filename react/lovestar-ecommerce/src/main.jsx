@@ -7,13 +7,13 @@ import { CartContextProvider } from "./context/ContextCart.jsx";
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <UserContextProvider>
+/*   <StrictMode>
+ */    <UserContextProvider>
       <CartContextProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </CartContextProvider>
     </UserContextProvider>
-  </StrictMode>,
-)
+/*   </StrictMode>,
+ */)
