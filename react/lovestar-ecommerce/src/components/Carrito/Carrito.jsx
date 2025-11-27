@@ -34,7 +34,7 @@ const Carrito = ({ closeCarrito }) => {
       <hr />
       <img src="/img/favicon.svg" alt="" />
       {carrito ? (
-        <div>
+        <div className={stylesCarrito.cards} >
           {carrito.map((prod, index) => (
             <Card key={index} id={prod.id} nombre={prod.nombre} talla={prod?.talla} precio={prod.precio_descuento ? prod.precio_descuento : prod.precio} cantidad={prod.cantidad} url={prod.url} alt={prod.alt} />
           ))}
