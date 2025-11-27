@@ -48,6 +48,13 @@
             font-family: "Archivo-SemiBold", sans-serif;
         }
     }
+
+    p{
+        color: var(--black-active);
+        font-size: 16px;
+        font-family: "Archivo-Light", sans-serif;
+        cursor: pointer;
+    }
 }
 
 
@@ -83,5 +90,4 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-
 }
