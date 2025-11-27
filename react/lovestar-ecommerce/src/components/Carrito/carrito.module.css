@@ -10,6 +10,8 @@
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
     animation: slideIn .3s ease forwards;
 
+    display: flex;
+    flex-direction: column;
 
     &>[class^="_cards"] {
         margin-inline: -20px;
@@ -54,6 +56,7 @@
         font-size: 16px;
         font-family: "Archivo-Light", sans-serif;
         cursor: pointer;
+        margin: 32px auto;
     }
 }
 

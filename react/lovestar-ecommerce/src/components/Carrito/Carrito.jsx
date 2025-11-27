@@ -33,7 +33,7 @@ const Carrito = ({ closeCarrito }) => {
       <h2>CARRITO</h2>
       <hr />
       <img src="/img/favicon.svg" alt="" />
-      {carrito ? (
+      {carrito.length >0 ? (
         <>
           <div className={stylesCarrito.cards} >
             {carrito.map((prod, index) => (

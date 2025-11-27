@@ -13,16 +13,18 @@ const Card = ({ id, nombre, talla, cantidad, precio, url, alt }) => {
                 <div className={stylesCard.detalles}>
                     <h2>{nombre}</h2>
                     {talla && (<h4>Talla: {talla}</h4>)}
-                    <h4>Cantidad: {cantidad}</h4>
+                    <div className={stylesCard.cantidad}>
+                        <div className={stylesCard.contador}>-</div>
+                        <h3>{cantidad}</h3>
+                        <div className={stylesCard.contador}>+</div>
+                    </div>
                 </div>
                 <div className={stylesCard.extras}>
                     <button className={stylesCard.cerrar}>
                         <Icon icon="material-symbols:close" />
                     </button>
-                    <h2>€{precio}</h2>
+                    <h2>€{precio*cantidad}</h2>
                 </div>
-{/*                 
-                <h4>Cantidad{cantidad}</h4> */}
             </div>
         </div>
     );
