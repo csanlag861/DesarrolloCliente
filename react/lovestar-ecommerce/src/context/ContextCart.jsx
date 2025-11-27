@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "./ContextUser"
 
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
 
 const CartContext = createContext({
@@ -66,8 +66,8 @@ function CartContextProvider({ children }) {
 
                 } else {
                     // Si el usuario no tiene cosas en el local storage:
-/*                     console.log("PRueba de que entra en el else del usuario y no tiene cosas en local storage");
- */
+                    /*                     console.log("PRueba de que entra en el else del usuario y no tiene cosas en local storage");
+                     */
                     try {
                         const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
                         const snapshot = await getDoc(ref);
@@ -87,8 +87,8 @@ function CartContextProvider({ children }) {
     useEffect(() => {
         async function actualizarCarrito() {
             if (ultimoProducto !== null) {
-/*                 console.log("Esto no debería de salir porque no tenemos un Último Producto. Sólo sale cuando se actualice el estado del carrito")
- */
+                /*                 console.log("Esto no debería de salir porque no tenemos un Último Producto. Sólo sale cuando se actualice el estado del carrito")
+                 */
                 if (currentUser === null) {
 /*                     console.log("Producto añadido");
  */                    localStorage.setItem("UserCarrito", JSON.stringify(carrito));
@@ -123,7 +123,7 @@ function CartContextProvider({ children }) {
         let nuevoCarrito;
 
         if (productoExistente) {
-            nuevoCarrito = carrito.map(prod => prod.id === productoExistente.id && (prod?.tallaSeleccionada ?? null) === (productoExistente?.tallaSeleccionada ?? null) ? {...prod, cantidad: prod.cantidad + 1} : prod);
+            nuevoCarrito = carrito.map(prod => prod.id === productoExistente.id && (prod?.tallaSeleccionada ?? null) === (productoExistente?.tallaSeleccionada ?? null) ? { ...prod, cantidad: prod.cantidad + 1 } : prod);
 /*             console.log(nuevoCarrito);
  */        } else {
             nuevoCarrito = [...carrito, productoCarrito];
@@ -133,9 +133,25 @@ function CartContextProvider({ children }) {
         setUltimoProducto(productoCarrito);
     }
 
+    async function vaciarCarrito() {
+        try {
+            const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
+            const snapshot = await getDoc(ref);
+
+            if (snapshot.exists()) {
+                await deleteDoc(ref);
+            }
+        } catch (error) {
+            
+        }
+        localStorage.clear();
+        setCarrito([]);
+    }
+
     const ctxValue = {
         carrito,
         añadirCarrito,
+        vaciarCarrito,
     }
 
     return (
