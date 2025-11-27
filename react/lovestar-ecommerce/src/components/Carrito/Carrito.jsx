@@ -3,8 +3,14 @@ import { Icon } from "@iconify/react";
 
 import { useState } from "react";
 
+import { useContext } from "react";
+import { CartContext } from "../../context/ContextCart";
+
+import Card from "../Cards/Card-Carrito/Card";
+
 const Carrito = ({ closeCarrito }) => {
   const [cerrar, setCerrar] = useState(false);
+  const { carrito } = useContext(CartContext);
 
   const handleClose = () => {
     setCerrar(true);
@@ -15,14 +21,11 @@ const Carrito = ({ closeCarrito }) => {
     }, 300);
   };
 
-  const productsLocalStorage = JSON.parse(localStorage.getItem("UserCarrito"));
-  console.log(productsLocalStorage);
 
   return (
     <div
-      className={`${stylesCarrito.carrito} ${
-        cerrar ? stylesCarrito.closing : ""
-      }`}
+      className={`${stylesCarrito.carrito} ${cerrar ? stylesCarrito.closing : ""
+        }`}
     >
       <button className={stylesCarrito.cerrar} onClick={handleClose}>
         <Icon icon="material-symbols:close" />
@@ -30,15 +33,10 @@ const Carrito = ({ closeCarrito }) => {
       <h2>CARRITO</h2>
       <hr />
       <img src="/img/favicon.svg" alt="" />
-      {productsLocalStorage ? (
+      {carrito ? (
         <div>
-          {productsLocalStorage.map((prod, index) => (
-            <div key={index}>
-              <h4>{prod.id}</h4>
-              <h4>{prod.nombre}</h4>
-              <h4>{prod?.talla}</h4>
-              <h4>{prod.precio}</h4>
-            </div>
+          {carrito.map((prod, index) => (
+            <Card key={index} id={prod.id} nombre={prod.nombre} talla={prod?.talla} precio={prod.precio_descuento ? prod.precio_descuento : prod.precio} cantidad={prod.cantidad} url={prod.url} alt={prod.alt} />
           ))}
         </div>
       ) : (

@@ -26,45 +26,54 @@ function CartContextProvider({ children }) {
             }
             else {
                 // Si tengo usuario, y tengo cosas en el local storage:
-                console.log("PRueba de que entra en el else del usuario");
-                if (carritoLocalStorage.length !== 0) {
-                    console.log("HAY USUARIO Y HAY CARRITO")
+/*                 console.log("PRueba de que entra en el else del usuario");
+ */                if (carritoLocalStorage.length !== 0) {
                     const hasMerge = JSON.parse(localStorage.getItem("Merge"));
                     // SI el usuario aún no ha hecho el merge
                     if (!hasMerge) {
-                        console.log("NO HAY MERGE")
                         try {
                             const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
                             const snapshot = await getDoc(ref);
-
+                            // Si no existe la coleccion
                             if (!snapshot.exists()) {
                                 console.log("Crear carrito en Firebase");
                                 await setDoc(ref, { items: carritoLocalStorage });
                             } else {
+                                await updateDoc(ref, { items: carritoLocalStorage });
 
                             }
                         } catch (error) {
                             console.error("Error al hacer el merge");
                         }
+
+                        localStorage.setItem("Merge", true);
                     } else {
                         // Si el usuario ha hecho el merge: 
-                        console.log("HAY MERGE")
+/*                         console.log("HAY MERGE");
+ */                        try {
+                            const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
+                            const snapshot = await getDoc(ref);
+                            // Si existe la coleccion
+                            if (snapshot.exists()) {
+/*                                 console.log("Actualizar carrito FIrebase cuando recargo");
+ */                                await updateDoc(ref, { items: carrito });
+                            }
+                        } catch (error) {
+                            console.error("Error al hacer el merge");
+                        }
                     }
-                    
 
-                    setCarrito(carritoLocalStorage);
+
                 } else {
                     // Si el usuario no tiene cosas en el local storage:
-                    console.log("PRueba de que entra en el else del usuario y no tiene cosas en local storage");
-
+/*                     console.log("PRueba de que entra en el else del usuario y no tiene cosas en local storage");
+ */
                     try {
                         const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
                         const snapshot = await getDoc(ref);
 
                         if (snapshot.exists()) {
                             setCarrito(snapshot.data().items || []);
-                        } else {
-                            setCarrito([]);
                         }
                     } catch (error) {
                         console.error("Error al acceder a FIrebase", error);
@@ -78,23 +87,23 @@ function CartContextProvider({ children }) {
     useEffect(() => {
         async function actualizarCarrito() {
             if (ultimoProducto !== null) {
-                console.log("Esto no debería de salir porque no tenemos un Último Producto. Sólo sale cuando se actualice el estado del carrito")
-
+/*                 console.log("Esto no debería de salir porque no tenemos un Último Producto. Sólo sale cuando se actualice el estado del carrito")
+ */
                 if (currentUser === null) {
-                    console.log("Producto añadido");
-                    localStorage.setItem("UserCarrito", JSON.stringify(carrito));
+/*                     console.log("Producto añadido");
+ */                    localStorage.setItem("UserCarrito", JSON.stringify(carrito));
                 }
                 else {
-                    console.log("Producto añadido con el usuario registrado");
-                    localStorage.setItem("UserCarrito", JSON.stringify(nuevoCarrito));
+/*                     console.log("Producto añadido con el usuario registrado");
+ */                    localStorage.setItem("UserCarrito", JSON.stringify(carrito));
                     try {
-                        const ref = doc(db, "users", currentUser.uid, "carrito");
-                        const snapshot = getDoc(ref);
+                        const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
+                        const snapshot = await getDoc(ref);
 
                         if (!snapshot.exists()) {
-                            await setDoc(ref, { items: [nuevoCarrito] });
+                            await setDoc(ref, { items: carrito });
                         } else {
-                            await updateDoc(ref, { items: nuevoCarrito });
+                            await updateDoc(ref, { items: carrito });
                         }
                     } catch (error) {
                         console.error("Error al actualizar carrito en a Firebase", error);
@@ -102,7 +111,6 @@ function CartContextProvider({ children }) {
 
                 }
             }
-
         }
         actualizarCarrito();
     }, [carrito])
@@ -111,7 +119,16 @@ function CartContextProvider({ children }) {
 
     async function añadirCarrito(producto, tallaSeleccionada) {
         const productoCarrito = { ...producto, tallaSeleccionada, cantidad: 1 };
-        const nuevoCarrito = [...carrito, productoCarrito];
+        const productoExistente = carrito?.find(prod => prod.id === productoCarrito.id && (prod?.tallaSeleccionada ?? null) === (productoCarrito?.tallaSeleccionada ?? null));
+        let nuevoCarrito;
+
+        if (productoExistente) {
+            nuevoCarrito = carrito.map(prod => prod.id === productoExistente.id && (prod?.tallaSeleccionada ?? null) === (productoExistente?.tallaSeleccionada ?? null) ? {...prod, cantidad: prod.cantidad + 1} : prod);
+/*             console.log(nuevoCarrito);
+ */        } else {
+            nuevoCarrito = [...carrito, productoCarrito];
+        }
+
         setCarrito(nuevoCarrito);
         setUltimoProducto(productoCarrito);
     }

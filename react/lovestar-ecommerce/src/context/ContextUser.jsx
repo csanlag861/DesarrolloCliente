@@ -16,7 +16,7 @@ function UserContextProvider({ children }) {
         if (user) {
           try {
             const userData = await getUser(user.uid);
-            setCurrentUser(userData);
+            setCurrentUser({...userData, uid: user.uid});
           } catch (error) {
             console.error("Error al obtener datos del usuario:", error);
           }

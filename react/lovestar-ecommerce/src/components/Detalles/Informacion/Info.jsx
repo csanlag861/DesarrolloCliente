@@ -15,9 +15,9 @@ function Detalles() {
     borderRadius: "1000px",
     gap: "4px",
   };
-
+  
   const {añadirCarrito} = useContext(CartContext);
-
+  
   const { productID } = useParams();
   const [product, setProducto] = useState(undefined);
   const [loading, setLoading] = useState(true);
