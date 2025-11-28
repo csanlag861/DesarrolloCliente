@@ -11,13 +11,16 @@ const Card = () => {
   const { currentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
+  console.log(currentUser);
+  
+
   const navigatePedidos = () => (navigate("/Pedidos"));
   return (
     <div className={stylesCard.perfil}>
       <div className={stylesCard.user}>
         <div className={stylesCard.info}>
           <p className={stylesCard.titulo}>Nombre</p>
-          <p>{currentUser?.displayName}</p>
+          <p>{currentUser?.displayName || currentUser?.username}</p>
         </div>
         <div className={stylesCard.info}>
           <p className={stylesCard.titulo}>Email</p>

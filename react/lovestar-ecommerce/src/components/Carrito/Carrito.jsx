@@ -33,12 +33,20 @@ const Carrito = ({ closeCarrito }) => {
       <h2>CARRITO</h2>
       <hr />
       <img src="/img/favicon.svg" alt="" />
-      {carrito.length >0 ? (
+      {carrito.length > 0 ? (
         <>
           <div className={stylesCarrito.cards} >
             {carrito.map((prod, index) => (
               <Card key={index} id={prod.id} nombre={prod.nombre} talla={prod?.tallaSeleccionada} precio={prod.precio_descuento ? prod.precio_descuento : prod.precio} cantidad={prod.cantidad} url={prod.url} alt={prod.alt} />
             ))}
+          </div>
+          <div className={stylesCarrito.checkout}>
+            <p>Total: €{carrito.reduce((total, producto) => { return total + (producto.precio_descuento ? (Number(producto.precio_descuento)) : (Number(producto.precio))) * Number(producto.cantidad) }, 0)}</p>
+            <div className={stylesCarrito.button}>
+              <button type="submit">
+                CHECKOUT
+              </button>
+            </div>
           </div>
           <p onClick={() => vaciarCarrito()}>Vaciar carrito....</p>
         </>

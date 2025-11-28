@@ -140,20 +140,18 @@ function CartContextProvider({ children }) {
       (prod) =>
         prod.id === productoCarrito.id &&
         (prod?.tallaSeleccionada ?? null) ===
-          (productoCarrito?.tallaSeleccionada ?? null)
+        (productoCarrito?.tallaSeleccionada ?? null)
     );
     let nuevoCarrito;
 
     if (productoExistente) {
       nuevoCarrito = carrito.map((prod) =>
         prod.id === productoExistente.id &&
-        (prod?.tallaSeleccionada ?? null) ===
+          (prod?.tallaSeleccionada ?? null) ===
           (productoExistente?.tallaSeleccionada ?? null)
           ? { ...prod, cantidad: prod.cantidad + 1 }
           : prod
       );
-      /*             console.log(nuevoCarrito);
-       */
     } else {
       nuevoCarrito = [...carrito, productoCarrito];
     }
@@ -177,36 +175,101 @@ function CartContextProvider({ children }) {
     setCarrito([]);
   }
 
-//   async function borrarItemCarrito() {
-//     const productoCarrito = { ...producto, tallaSeleccionada, cantidad: 1 };
-//     const productoExistente = carrito?.find(
-//       (prod) =>
-//         prod.id === productoCarrito.id &&
-//         (prod?.tallaSeleccionada ?? null) ===
-//           (productoCarrito?.tallaSeleccionada ?? null)
-//     );
-//     let nuevoCarrito;
+  async function borrarItemCarrito(id, tallaSeleccionada) {
+    const nuevoCarrito = carrito?.filter(
+      (prod) =>
+        prod.id !== id ||
+        (prod?.tallaSeleccionada ?? null) !==
+        (tallaSeleccionada ?? null)
+    );
 
-//     if (productoExistente) {
-//       nuevoCarrito = carrito.map((prod) =>
-//         prod.id === productoExistente.id &&
-//         (prod?.tallaSeleccionada ?? null) ===
-//           (productoExistente?.tallaSeleccionada ?? null)
-//           ? { ...prod, cantidad: prod.cantidad + 1 }
-//           : prod
-//       );
-//     } else {
-//       nuevoCarrito = [...carrito, productoCarrito];
-//     }
 
-//     setCarrito(nuevoCarrito);
-//     setUltimoProducto(productoCarrito);
-//   }
+    setCarrito(nuevoCarrito);
+    localStorage.setItem("UserCarrito", JSON.stringify(nuevoCarrito));
+  }
+
+  async function restarCantidad(id, tallaSeleccionada) {
+    const productoExistente = carrito?.find(
+      (prod) =>
+        prod.id === id &&
+        (prod?.tallaSeleccionada ?? null) ===
+        (tallaSeleccionada ?? null)
+    );
+    let nuevoCarrito;
+
+    if (productoExistente && productoExistente.cantidad === 1) {
+      borrarItemCarrito(id, tallaSeleccionada);
+    }
+
+    if (productoExistente && productoExistente.cantidad > 1) {
+      nuevoCarrito = carrito.map((prod) =>
+        prod.id === productoExistente.id &&
+          (prod?.tallaSeleccionada ?? null) ===
+          (productoExistente?.tallaSeleccionada ?? null)
+          ? { ...prod, cantidad: prod.cantidad > 1 && prod.cantidad - 1 }
+          : prod
+      );
+
+      try {
+        const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
+        const snapshot = await getDoc(ref);
+
+        if (snapshot.exists()) {
+          await updateDoc(ref, { items: nuevoCarrito });
+        }
+      } catch (error) {
+        console.error("Error al vaciar el carrito", error);
+      }
+
+      setCarrito(nuevoCarrito);
+      localStorage.setItem("UserCarrito", JSON.stringify(nuevoCarrito))
+    }
+  }
+
+  async function sumarCantidad(id, tallaSeleccionada) {
+    const productoExistente = carrito?.find(
+      (prod) =>
+        prod.id === id &&
+        (prod?.tallaSeleccionada ?? null) ===
+        (tallaSeleccionada ?? null)
+    );
+    let nuevoCarrito;
+
+    if (productoExistente) {
+      const talla = productoExistente.tallaSeleccionada;
+      const stockMaximo = productoExistente.tallas[talla]?.stock ?? 0;
+      nuevoCarrito = carrito.map((prod) =>
+        prod.id === productoExistente.id &&
+          (prod?.tallaSeleccionada ?? null) ===
+          (productoExistente?.tallaSeleccionada ?? null)
+          ? { ...prod, cantidad: prod.cantidad < stockMaximo ? prod.cantidad + 1 : prod.cantidad }
+          : prod
+      );
+
+      try {
+        const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
+        const snapshot = await getDoc(ref);
+
+        if (snapshot.exists()) {
+          await updateDoc(ref, { items: nuevoCarrito });
+        }
+      } catch (error) {
+        console.error("Error al vaciar el carrito", error);
+      }
+
+      setCarrito(nuevoCarrito);
+      localStorage.setItem("UserCarrito", JSON.stringify(nuevoCarrito))
+    }
+
+  }
 
   const ctxValue = {
     carrito,
     añadirCarrito,
     vaciarCarrito,
+    borrarItemCarrito,
+    restarCantidad,
+    sumarCantidad,
   };
 
   return (
