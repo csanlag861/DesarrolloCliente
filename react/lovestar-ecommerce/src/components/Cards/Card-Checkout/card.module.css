@@ -1,0 +1,72 @@
+.container {
+    width: 410px;
+    height: fit-content;
+    padding: 12px 18px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .imagen {
+        width: 50px;
+        height: 50px;
+        border: 1px solid var(--white-color);
+        border-radius: .2rem;
+        box-shadow: 0px 1px 5px 0px var(--black-color-opacity);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .cantidad {
+            position: absolute;
+
+            width: 15px;
+            height: 15px;
+            background-color: var(--black-color);
+            border-radius: .2rem;
+
+            top: -8px;
+            right: -8px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            h3 {
+                font-family: "Archivo-Light", sans-serif;
+                font-size: 10px;
+                color: var(--white-color);
+                font-weight: 400;
+            }
+        }
+    }
+
+    .info {
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        padding-left: 12px;
+        gap: 4px;
+
+        h3 {
+            text-transform: uppercase;
+            font-weight: 400;
+            font-family: "Archivo-Normal", sans-serif;
+            font-size: 16px;
+        }
+
+        .talla{
+            color: var(--white-color-dark);
+        }
+    }
+}

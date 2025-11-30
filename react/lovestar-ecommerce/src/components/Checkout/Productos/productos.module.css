@@ -1,0 +1,6 @@
+.section{
+    min-width: 688px ;
+    height: 100vh;
+    background-color: var(--white-color-hover);
+    border-left: 1px solid var(--white-color-active);
+}

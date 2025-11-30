@@ -15,6 +15,7 @@ import Perfil from "./pages/Perfil/Perfil";
 import Pedidos from "./pages/Pedidos/Pedidos";
 import Editorial from "./pages/Editorial/Editorial";
 import Detalles from "./pages/Detalles/Detalles";
+import Checkout from "./pages/Checkout/Checkout";
 
 import PrivateRoute from "./pages/protected/PrivateRoutes";
 import LoginRoute from "./pages/protected/LoginRoutes";
@@ -77,6 +78,8 @@ function App() {
             }
           />
         </Route>
+
+        <Route path="/Checkout" element={<Checkout />} />
 
         <Route path="/" element={<LovestarLayout />}>
           <Route path="/Login" element={<Login />} />

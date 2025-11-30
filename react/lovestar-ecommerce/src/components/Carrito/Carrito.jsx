@@ -6,11 +6,15 @@ import { useState } from "react";
 import { useContext } from "react";
 import { CartContext } from "../../context/ContextCart";
 
+import { useNavigate } from "react-router-dom";
+
 import Card from "../Cards/Card-Carrito/Card";
 
 const Carrito = ({ closeCarrito }) => {
   const [cerrar, setCerrar] = useState(false);
   const { carrito, vaciarCarrito } = useContext(CartContext);
+
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setCerrar(true);
@@ -43,7 +47,7 @@ const Carrito = ({ closeCarrito }) => {
           <div className={stylesCarrito.checkout}>
             <p>Total: €{carrito.reduce((total, producto) => { return total + (producto.precio_descuento ? (Number(producto.precio_descuento)) : (Number(producto.precio))) * Number(producto.cantidad) }, 0)}</p>
             <div className={stylesCarrito.button}>
-              <button type="submit">
+              <button type="submit" onClick={() => navigate("/Checkout")}>
                 CHECKOUT
               </button>
             </div>
