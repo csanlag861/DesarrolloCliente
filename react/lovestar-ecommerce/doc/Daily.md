@@ -2,12 +2,11 @@
 
 ### 🚧 Pendiente / Por hacer
 
-- Filtro en la tienda.
-- Cargar más (en la tienda).
-- Grid Shop Responsive y Accesible.
+- Merge carrito
+- Checkout
+- CRUD admin
 
-- Que el usuario que no tenga el descuento tenga otro footer.
-- Refactorizar los distintos botones que hay.
+- Refactorizar lógica del carrito.
 
 -- Organizar:
 
