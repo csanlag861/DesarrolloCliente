@@ -13,7 +13,9 @@ const Card = ({ url, talla, precio, nombre, alt, cantidad }) => {
         <h3>{nombre}</h3>
         <h3 className={stylesCard.talla}>{talla}</h3>
       </div>
-      <h3>{precio}</h3>
+      <div className={stylesCard.precio}>
+        <h3>€{precio}</h3>
+      </div>
     </div>
   );
 };

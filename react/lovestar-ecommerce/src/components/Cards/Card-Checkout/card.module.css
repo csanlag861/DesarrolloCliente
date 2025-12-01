@@ -1,11 +1,11 @@
 .container {
-    width: 410px;
+    width: 500px;
     height: fit-content;
-    padding: 12px 18px;
-
+    padding: 12px 0;
     display: flex;
-    justify-content: center;
+    justify-content: baseline;
     align-items: center;
+    border-bottom: 1px solid var(--white-color-active);
 
     .imagen {
         width: 50px;
@@ -54,6 +54,8 @@
         height: fit-content;
         display: flex;
         flex-direction: column;
+        margin-right: 48px;
+        /* background-color: blueviolet; */
 
         padding-left: 12px;
         gap: 4px;
@@ -61,12 +63,28 @@
         h3 {
             text-transform: uppercase;
             font-weight: 400;
-            font-family: "Archivo-Normal", sans-serif;
+            font-family: "Archivo-Medium", sans-serif;
             font-size: 16px;
         }
 
-        .talla{
+        .talla {
             color: var(--white-color-dark);
         }
     }
+
+    .precio {
+        display: flex;
+        height: 60%;
+        width: fit-content;
+        align-items: end;
+        /* background-color: aqua; */
+        justify-content: end;
+
+        h3 {
+            font-weight: 400;
+            font-family: "Archivo-Medium", sans-serif;
+            font-size: 16px;
+        }
+    }
+
 }
