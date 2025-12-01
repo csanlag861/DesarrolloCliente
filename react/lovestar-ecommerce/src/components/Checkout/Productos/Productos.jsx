@@ -2,8 +2,8 @@ import stylesProductos from "./productos.module.css";
 
 import Card from "../../../components/Cards/Card-Checkout/Card";
 
-import { useContext } from "react";
 import { CartContext } from "../../../context/ContextCart";
+import { useContext } from "react";
 import { UserContext } from "../../../context/ContextUser";
 
 const Productos = () => {
