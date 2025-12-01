@@ -45,7 +45,9 @@ function CartContextProvider({ children }) {
                 console.log("Crear carrito en Firebase");
                 await setDoc(ref, { items: carritoLocalStorage });
               } else {
-                await updateDoc(ref, { items: carritoLocalStorage });
+                const carritoFirebase = snapshot.data().items;
+                const carritoMerge = [...carritoFirebase, ...carritoLocalStorage];
+                await updateDoc(ref, { items: carritoMerge });
               }
             } catch (error) {
               console.error("Error al hacer el merge");
@@ -65,6 +67,7 @@ function CartContextProvider({ children }) {
               );
               const snapshot = await getDoc(ref);
               // Si existe la coleccion
+              
               if (snapshot.exists()) {
                 /*                                 console.log("Actualizar carrito FIrebase cuando recargo");
                  */ await updateDoc(ref, { items: carrito });
@@ -188,7 +191,7 @@ function CartContextProvider({ children }) {
     localStorage.setItem("UserCarrito", JSON.stringify(nuevoCarrito));
   }
 
-  async function restarCantidad(id, tallaSeleccionada) {
+  async function restarCantidad(id, tallaSeleccionada, currentUser) {
     const productoExistente = carrito?.find(
       (prod) =>
         prod.id === id &&
@@ -210,15 +213,17 @@ function CartContextProvider({ children }) {
           : prod
       );
 
-      try {
-        const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
-        const snapshot = await getDoc(ref);
+      if (currentUser) {
+        try {
+          const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
+          const snapshot = await getDoc(ref);
 
-        if (snapshot.exists()) {
-          await updateDoc(ref, { items: nuevoCarrito });
+          if (snapshot.exists()) {
+            await updateDoc(ref, { items: nuevoCarrito });
+          }
+        } catch (error) {
+          console.error("Error al vaciar el carrito", error);
         }
-      } catch (error) {
-        console.error("Error al vaciar el carrito", error);
       }
 
       setCarrito(nuevoCarrito);
@@ -226,7 +231,7 @@ function CartContextProvider({ children }) {
     }
   }
 
-  async function sumarCantidad(id, tallaSeleccionada) {
+  async function sumarCantidad(id, tallaSeleccionada, currentUser) {
     const productoExistente = carrito?.find(
       (prod) =>
         prod.id === id &&
@@ -245,16 +250,17 @@ function CartContextProvider({ children }) {
           ? { ...prod, cantidad: prod.cantidad < stockMaximo ? prod.cantidad + 1 : prod.cantidad }
           : prod
       );
+      if (currentUser) {
+        try {
+          const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
+          const snapshot = await getDoc(ref);
 
-      try {
-        const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
-        const snapshot = await getDoc(ref);
-
-        if (snapshot.exists()) {
-          await updateDoc(ref, { items: nuevoCarrito });
+          if (snapshot.exists()) {
+            await updateDoc(ref, { items: nuevoCarrito });
+          }
+        } catch (error) {
+          console.error("Error al vaciar el carrito", error);
         }
-      } catch (error) {
-        console.error("Error al vaciar el carrito", error);
       }
 
       setCarrito(nuevoCarrito);
