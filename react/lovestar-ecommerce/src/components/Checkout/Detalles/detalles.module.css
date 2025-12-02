@@ -1,6 +1,7 @@
 .section {
     min-width: 752px;
     height: 100%;
+    padding: 0px 32px;
 
     a {
         display: flex;
@@ -12,20 +13,68 @@
         }
     }
 
+    h2 {
+        font-size: 24px;
+        font-family: "Archivo-Medium", sans-serif;
+        font-weight: 400;
+    }
+
     .entrega {
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 12px;
         }
 
-
         h2 {
-            font-size: 24px;
-            font-family: "Archivo-Medium", sans-serif;
-            font-weight: 400;
             margin-bottom: 12px;
+        }
+    }
+
+    .pago {
+        .text {
+            h2 {
+                margin-top: 24px;
+                margin-bottom: 8px;
+            }
+
+            p {
+                font-size: 12px;
+                font-family: "Archivo-Light", sans-serif;
+                color: var(--black-active);
+                margin-bottom: 12px;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+    }
+
+    .button {
+        margin-top: 24px;
+        display: flex;
+        width: 100%;
+
+        button {
+            background-color: var(--primary-color);
+            border: none;
+            cursor: pointer;
+            padding: 8px 12px;
+            font-size: 16px;
+            font-family: "Archivo-Normal", sans-serif;
+            letter-spacing: .1rem;
+            color: var(--white-color);
+
+            display: block;
+            flex: 1;
+
+            &:hover {
+                background-color: var(--cta-color);
+            }
         }
     }
 }
