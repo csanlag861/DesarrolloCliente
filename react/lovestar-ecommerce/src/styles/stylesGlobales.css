@@ -118,7 +118,6 @@ body {
 
 .Toastify__toast--error {
   background: var(--lovestar-light) !important;
-  /* rojo personalizado */
   color: var(--black-color) !important;
 }
 
