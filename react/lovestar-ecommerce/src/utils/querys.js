@@ -12,3 +12,15 @@ export const getAllProductoByID = async (productId) => {
 
     return { id: snapshot.id, ...snapshot.data() };
 }
+
+export const getPedidosByUser = async (userUID) => {
+    const ref = doc(db, "users", userUID, "pedidos", "pedidosUsuario");
+    const snapshot = await getDoc(ref);
+
+    let pedidosUsuario = [];
+
+    if(snapshot.exists()){
+        pedidosUsuario.push(await snapshot.data().pedido);
+    }
+    return pedidosUsuario;
+}
