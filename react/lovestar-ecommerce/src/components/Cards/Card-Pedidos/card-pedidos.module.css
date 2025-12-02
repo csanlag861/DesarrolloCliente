@@ -1,34 +1,22 @@
-.pedidos {
-    width: 1280px;
-    height: fit-content;
+td{
+    border-bottom: 1px solid var(--white-color-dark);
+    img{
+        width: 75px;
+        height: 75px;
+    }
 
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
-
-    .user {
+    .text{
         display: flex;
         flex-direction: column;
-        gap: 24px;
-        background-color: var(--white-color-light);
-        padding: 24px 24px;
-        border-radius: 12px;
-        border: 1px solid var(--white-color-active);
-        position: relative;
+        gap: 6px;
 
-        .info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            align-items: center;
+        h3{
+            font-size: 16px;
         }
 
-        .titulo {
-            font-family: "Archivo-SemiBold", sans-serif;
-        }
-
-        .texto{
-            font-family: "Archivo-Light", sans-serif;
+        p{
+            font-family: "Archivo-Ligth", sans-serif;
+            font-weight: 400;
             color: var(--white-color-dark);
         }
     }
