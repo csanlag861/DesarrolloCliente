@@ -14,16 +14,31 @@ import { toast } from "react-toastify";
 
 import { useState } from "react";
 
-const Detalles = () => {
-  const [direccion, setDireccion] = useState("");
-  const [codigoPostal, setCodigoPostal] = useState("");
-  const [ciudad, setCiudad] = useState("");
-  const [provincia, setProvincia] = useState("");
+import { useNavigate } from "react-router-dom";
 
-  const { currentUser } = useContext(UserContext);
+const Detalles = () => {
+  const { currentUser } = useContext(UserContext);  
+  const [direccion, setDireccion] = useState(() => (currentUser?.direccion || ""));
+  const [codigoPostal, setCodigoPostal] = useState(() => (currentUser?.codigoPostal || ""));
+  const [ciudad, setCiudad] = useState(() => (currentUser?.ciudad || ""));
+  const [provincia, setProvincia] = useState(() => (currentUser?.provincia || ""));
+
   const { carrito, vaciarCarrito } = useContext(CartContext);
 
+  const navigate = useNavigate();
+
   const confirmarPedido = async () => {
+    const idPedido = `LOV-${Date.now()}`;
+
+    const pedido = {
+      id: idPedido,
+      items: carrito,
+      fecha: new Date(),
+      direccion: {direccion, codigoPostal, ciudad, provincia},
+      estado: "En preparación",
+      total: carrito.reduce((total, producto) => { return total + (producto.precio_descuento ? (Number(producto.precio_descuento)) : (Number(producto.precio))) * Number(producto.cantidad) }, 0)
+    }
+    
     try {
       const ref = doc(
         db,
@@ -35,9 +50,9 @@ const Detalles = () => {
       const snapshot = await getDoc(ref);
 
       if (!snapshot.exists()) {
-        await setDoc(ref, { pedido: carrito });
+        await setDoc(ref, {pedido: pedido});
       } else {
-        await updateDoc(ref, { pedido: carrito });
+        await updateDoc(ref, {pedido: pedido});
       }
 
       const userDoc = doc(db, "users", currentUser.uid);
@@ -45,6 +60,7 @@ const Detalles = () => {
 
       vaciarCarrito();
       toast.success("Pedido realizado y dirección guardada");
+      navigate("/Home");
     } catch (error) {
       console.error("Error al crear el pedido", error);
       toast.error("Error al realizar el pedido, porfavor, inténtalo de nuevo.");

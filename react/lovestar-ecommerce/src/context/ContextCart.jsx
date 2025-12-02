@@ -55,9 +55,7 @@ function CartContextProvider({ children }) {
 
             localStorage.setItem("Merge", true);
           } else {
-            // Si el usuario ha hecho el merge:
-            /*                         console.log("HAY MERGE");
-             */ try {
+            try {
               const ref = doc(
                 db,
                 "users",
@@ -66,20 +64,15 @@ function CartContextProvider({ children }) {
                 "carritoActual"
               );
               const snapshot = await getDoc(ref);
-              // Si existe la coleccion
-              
+
               if (snapshot.exists()) {
-                /*                                 console.log("Actualizar carrito FIrebase cuando recargo");
-                 */ await updateDoc(ref, { items: carrito });
+                await updateDoc(ref, { items: carrito });
               }
             } catch (error) {
               console.error("Error al hacer el merge");
             }
           }
         } else {
-          // Si el usuario no tiene cosas en el local storage:
-          /*                     console.log("PRueba de que entra en el else del usuario y no tiene cosas en local storage");
-           */
           try {
             const ref = doc(
               db,
