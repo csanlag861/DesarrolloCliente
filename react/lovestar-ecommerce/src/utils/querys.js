@@ -22,5 +22,6 @@ export const getPedidosByUser = async (userUID) => {
     if(snapshot.exists()){
         pedidosUsuario.push(await snapshot.data().pedido);
     }
-    return pedidosUsuario;
+    
+    return pedidosUsuario.flat();
 }
