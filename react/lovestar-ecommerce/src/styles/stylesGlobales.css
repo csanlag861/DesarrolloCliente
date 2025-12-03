@@ -55,6 +55,8 @@ h3: 18
   padding: 0;
   box-sizing: border-box;
   /* outline: 2px solid aqua; */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--black-color);
 }
 
 html {
@@ -66,7 +68,7 @@ body {
   font-family: "Archivo-Normal", sans-serif;
   line-height: 1;
   font-weight: 400;
-  color: var(--black-color)
+  color: var(--black-color);
 }
 
 :root {

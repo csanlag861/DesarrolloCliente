@@ -20,15 +20,19 @@
     .cards {
         display: flex;
         flex-direction: column;
+        overflow-x: auto;
+        scrollbar-color: var(--primary-color) var(--white-color);
+        scrollbar-width: thin;
     }
 
     .checkout {
-        p{
+        p {
             font-size: 16px;
             font-family: "Archivo-SemiBold", sans-serif;
             color: var(--black-color);
-            cursor:auto;
+            cursor: auto;
         }
+
         .button {
             margin-top: 24px;
             display: flex;
