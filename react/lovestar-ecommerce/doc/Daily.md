@@ -2,9 +2,12 @@
 
 ### 🚧 Pendiente / Por hacer
 
-- Merge carrito
-- Checkout
 - CRUD admin
+- Restar cantidad al hacer checkout
+- Renderizar Tallas de la tienda.
+
+- Cambiar imagenes cada X dia.
+- Script para cambiar estado en la BBDD.
 
 - Refactorizar lógica del carrito.
 
