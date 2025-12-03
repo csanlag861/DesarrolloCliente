@@ -46,8 +46,19 @@ function CartContextProvider({ children }) {
                 await setDoc(ref, { items: carritoLocalStorage });
               } else {
                 const carritoFirebase = snapshot.data().items;
-                const carritoMerge = [...carritoFirebase, ...carritoLocalStorage];
+                const carritoMerge = [...carritoFirebase];
+
+                carritoLocalStorage.forEach((itemLS) => {
+                  const existente = carritoFirebase.find((item) => item.id === itemLS.id && (item.tallaSeleccionada ?? null) === (itemLS.tallaSeleccionada ?? null))
+
+                  if (existente) {
+                    existente.cantidad += itemLS.cantidad;
+                  } else {
+                    carritoMerge.push(itemLS);
+                  }
+                })
                 await updateDoc(ref, { items: carritoMerge });
+                setCarrito(carritoMerge);
               }
             } catch (error) {
               console.error("Error al hacer el merge");
