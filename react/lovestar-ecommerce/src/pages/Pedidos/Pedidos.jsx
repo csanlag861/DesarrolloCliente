@@ -17,6 +17,7 @@ function Pedidos() {
 
       const getPedidos = async () => {
         const pedidos = await getPedidosByUser(currentUser.uid)
+        
         setPedidosUsuario(pedidos);
       }
 
@@ -32,7 +33,7 @@ function Pedidos() {
     <section className={stylesPedidos.main}>
       <h1>Pedidos</h1>
       <div className={stylesPedidos.form}>
-        {!pedidosUsuario ? (
+        {(pedidosUsuario === null) || (pedidosUsuario === 0) ? (
           <div className={stylesPedidos.noPedidos}>
             <div className={stylesPedidos.info}>
               <p className={stylesPedidos.titulo}>No hay pedidos aún.</p>
@@ -52,6 +53,7 @@ function Pedidos() {
 
             <tbody>
               {pedidosUsuario.map((pedido, index) => (<tr>
+                {console.log(pedido)}
                 <Card key={index} idPedido={pedido.id} total={pedido.total} fecha={pedido.fecha} estado={pedido.estado} url={pedido.items[0].url} items={pedido.items.length}/>
               </tr>))}
             </tbody>
