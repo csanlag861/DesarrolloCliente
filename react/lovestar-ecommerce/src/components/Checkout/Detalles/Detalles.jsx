@@ -1,13 +1,13 @@
 import stylesDetalles from "./detalles.module.css";
 
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../../context/ContextUser";
 import { CartContext } from "../../../context/ContextCart";
 
 import FormInput from "../../Forms/Input/Input";
 
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../../utils/firebase";
 
 import { toast } from "react-toastify";
@@ -17,15 +17,27 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Detalles = () => {
-  const { currentUser } = useContext(UserContext);  
-  const [direccion, setDireccion] = useState(() => (currentUser?.direccion || ""));
-  const [codigoPostal, setCodigoPostal] = useState(() => (currentUser?.codigoPostal || ""));
-  const [ciudad, setCiudad] = useState(() => (currentUser?.ciudad || ""));
-  const [provincia, setProvincia] = useState(() => (currentUser?.provincia || ""));
+  const { currentUser } = useContext(UserContext);
+  const [direccion, setDireccion] = useState(() => (""));
+  const [codigoPostal, setCodigoPostal] = useState(() => (""));
+  const [ciudad, setCiudad] = useState(() => (""));
+  const [provincia, setProvincia] = useState(() => (""));
+
+  console.log(direccion);
+
 
   const { carrito, vaciarCarrito } = useContext(CartContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser) {
+      setDireccion(currentUser?.direccion || "");
+      setCodigoPostal(currentUser?.codigoPostal || "");
+      setCiudad(currentUser?.ciudad || "");
+      setProvincia(currentUser?.provincia || "");
+    }
+  }, [currentUser])
 
   const confirmarPedido = async () => {
     const idPedido = `LOV-${Date.now()}`;
@@ -34,11 +46,11 @@ const Detalles = () => {
       id: idPedido,
       items: carrito,
       fecha: new Date(),
-      direccion: {direccion, codigoPostal, ciudad, provincia},
+      direccion: { direccion, codigoPostal, ciudad, provincia },
       estado: "En preparación",
       total: carrito.reduce((total, producto) => { return total + (producto.precio_descuento ? (Number(producto.precio_descuento)) : (Number(producto.precio))) * Number(producto.cantidad) }, 0)
     }
-    
+
     try {
       const ref = doc(
         db,
@@ -50,14 +62,18 @@ const Detalles = () => {
       const snapshot = await getDoc(ref);
 
       if (!snapshot.exists()) {
-        await setDoc(ref, {pedido: pedido});
+        await setDoc(ref, { pedido: [pedido] });
       } else {
-        await updateDoc(ref, {pedido: pedido});
+        const pedidosRealizados = snapshot.data().pedido || [];
+        const nuevosPedidos = [...pedidosRealizados, pedido];
+        await updateDoc(ref, { pedido: nuevosPedidos });
       }
 
       const userDoc = doc(db, "users", currentUser.uid);
       await updateDoc(userDoc, { direccion, codigoPostal, ciudad, provincia });
 
+
+      restarStockFireBase();
       vaciarCarrito();
       toast.success("Pedido realizado y dirección guardada");
       navigate("/Home");
@@ -66,6 +82,29 @@ const Detalles = () => {
       toast.error("Error al realizar el pedido, porfavor, inténtalo de nuevo.");
     }
   };
+
+  const restarStockFireBase = async () => {
+    try {
+
+      const productsRef = collection(db, "products");
+      const snapshot = await getDocs(productsRef);
+
+      const carritoFirebase = snapshot.data();
+      const carritoActualizado = [...carritoFirebase];
+
+      carrito.forEach((itemCarrito) => {
+        const existente = carritoFirebase.find((item) => item.id === itemCarrito.id && (item.tallaSeleccionada ?? null) === (itemCarrito.tallaSeleccionada ?? null))
+
+        if (existente) {
+          existente.cantidad -= itemCarrito.cantidad;
+        }
+      })
+      await updateDoc(ref, { items: carritoActualizado });
+    } catch (error) {
+
+    }
+
+  }
 
   return (
     <section className={stylesDetalles.section}>
@@ -97,6 +136,7 @@ const Detalles = () => {
             type="text"
             placeholder="Direccion"
             onChange={(event) => setDireccion(event.target.value)}
+            value={direccion}
             required
           />
           <FormInput
@@ -104,6 +144,7 @@ const Detalles = () => {
             type="text"
             placeholder="Código Postal"
             onChange={(event) => setCodigoPostal(event.target.value)}
+            value={codigoPostal}
             required
           />
           <FormInput
@@ -111,6 +152,7 @@ const Detalles = () => {
             type="text"
             placeholder="Ciudad"
             onChange={(event) => setCiudad(event.target.value)}
+            value={ciudad}
             required
           />
           <FormInput
@@ -118,6 +160,7 @@ const Detalles = () => {
             type="text"
             placeholder="Provincia"
             onChange={(event) => setProvincia(event.target.value)}
+            value={provincia}
             required
           />
         </form>
