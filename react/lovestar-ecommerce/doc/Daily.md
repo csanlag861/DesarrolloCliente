@@ -3,17 +3,22 @@
 ### 🚧 Pendiente / Por hacer
 
 - CRUD admin
-- Restar cantidad al hacer checkout
-- Renderizar Tallas de la tienda.
 
-- Cambiar imagenes cada X dia.
+-- Usuario:
+Cambiar nombre, eliminar usuario, editar rol
+-- Producto:
+Editar producto, crear producto, eliminar producto
+
+- Pintar novedad en las cards de la tienda.
+
 - Script para cambiar estado en la BBDD.
 
 - Refactorizar lógica del carrito.
 
+- (Cambiar imagenes cada X dia).
 -- Organizar:
 
-- Decidir un día para sólo hacer responsive.
+- Decidir un día para sólo hacer responsive. (vista admin responsive)
 - Decidir un día para sólo hacer lógica.
 
 ### 💡 Ideas / Notas
