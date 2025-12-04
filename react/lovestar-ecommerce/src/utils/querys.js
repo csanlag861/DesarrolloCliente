@@ -1,4 +1,4 @@
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js"; // tu instancia
 
 
@@ -19,9 +19,21 @@ export const getPedidosByUser = async (userUID) => {
 
     let pedidosUsuario = [];
 
-    if(snapshot.exists()){
+    if (snapshot.exists()) {
         pedidosUsuario.push(await snapshot.data().pedido);
     }
-    
+
     return pedidosUsuario.flat();
+}
+
+export const getAllUsers = async () => {
+    const ref = await getDocs(collection(db, "users"));
+    const usuarios = ref.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    return usuarios;
+}
+
+export const getAllProducts = async () => {
+    const ref = await getDocs(collection(db, "products"));
+    const productos = ref.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    return productos;
 }
