@@ -8,12 +8,16 @@ const Card = ({ card }) => {
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
 
+
   const styleColor = {
     width: "10px",
     height: "10px",
     borderRadius: "1000px",
     gap: "4px",
   };
+
+  const orden = ["XS", "S", "M", "L", "XL"];
+
 
   const handleDetail = (id) => {
     navigate(`/Tienda/${id}`);
@@ -35,7 +39,15 @@ const Card = ({ card }) => {
       <div className={styleCard.text}>
         <h3>{card.nombre}</h3>
         <p className={styleCard.precio}>€{card.precio}</p>
-        <p className={styleCard.talla}>{card.talla}</p>
+        <p className={styleCard.talla}>
+          {orden
+            .filter((talla) => card.tallas?.[talla] && card.tallas[talla].stock > 0)
+            .map((talla) => (
+              <span key={talla} className={styleCard.tallaItem}>
+                {talla}
+              </span>
+            ))}
+        </p>
         <div className={styleCard.colores}>
           {card.colores.map((color, id) => (
             <div
