@@ -142,6 +142,25 @@ function CartContextProvider({ children }) {
   }, [carrito]);
 
   async function añadirCarrito(producto, tallaSeleccionada) {
+    if (producto.tallas && !tallaSeleccionada) {
+      alert("Selecciona una talla.");
+      return;
+    }
+
+    const productoEnCarrito = carrito?.find(
+      (prod) =>
+        prod.id === producto.id &&
+        prod.tallaSeleccionada === tallaSeleccionada
+    );
+
+    const stockDisponible = producto.tallas[tallaSeleccionada].stock;
+    const cantidadEnCarrito = productoEnCarrito?.cantidad ?? 0;
+
+    if (cantidadEnCarrito >= stockDisponible) {
+      alert("No hay suficiente stock para esta talla");
+      return;
+    }
+
     const productoCarrito = { ...producto, tallaSeleccionada, cantidad: 1 };
     const productoExistente = carrito?.find(
       (prod) =>
@@ -213,7 +232,7 @@ function CartContextProvider({ children }) {
         prod.id === productoExistente.id &&
           (prod?.tallaSeleccionada ?? null) ===
           (productoExistente?.tallaSeleccionada ?? null)
-          ? { ...prod, cantidad: prod.cantidad > 1 && prod.cantidad - 1 }
+          ? { ...prod, cantidad: prod.cantidad > 1 ? prod.cantidad - 1 : prod.cantidad }
           : prod
       );
 
