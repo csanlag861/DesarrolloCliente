@@ -86,24 +86,31 @@ const Detalles = () => {
   const restarStockFireBase = async () => {
     try {
 
-      const productsRef = collection(db, "products");
-      const snapshot = await getDocs(productsRef);
+      for (const itemCarrito of carrito) {
+        const productsRef = doc(db, "products", `prod ${String(itemCarrito.id)}`);
+        const snapshot = await getDoc(productsRef);
 
-      const carritoFirebase = snapshot.data();
-      const carritoActualizado = [...carritoFirebase];
-
-      carrito.forEach((itemCarrito) => {
-        const existente = carritoFirebase.find((item) => item.id === itemCarrito.id && (item.tallaSeleccionada ?? null) === (itemCarrito.tallaSeleccionada ?? null))
-
-        if (existente) {
-          existente.cantidad -= itemCarrito.cantidad;
+        if (!snapshot.exists()) {
+          console.warn(`Producto ${itemCarrito.id} no existe en Firebase`);
+          continue;
         }
-      })
-      await updateDoc(ref, { items: carritoActualizado });
+
+        const productData = snapshot.data();
+        const talla = String(itemCarrito.tallaSeleccionada);
+
+        if (productData.tallas?.[talla]) {
+          const stockActual = Number(productData.tallas[talla].stock ?? 0);
+          const nuevoStock = Math.max(0, Number(stockActual) - Number(itemCarrito.cantidad));
+
+          await updateDoc(productsRef, {
+            [`tallas.${talla}.stock`]: nuevoStock
+          });
+        }
+
+      }
     } catch (error) {
-
+      console.error("Error al restar el stock en FireBase", error);
     }
-
   }
 
   return (
