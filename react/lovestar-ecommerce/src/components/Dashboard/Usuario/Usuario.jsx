@@ -3,6 +3,8 @@ import stylesUsuario from "./usuario.module.css";
 import {getAllUsers} from "../../../utils/querys";
 import { useEffect, useState } from "react";
 
+import Card from "../../Cards/Card-Usuario/Card";
+
 const Usuario = () => {
     const [usuarios, setUsuarios] = useState([]);
 
@@ -13,14 +15,16 @@ const Usuario = () => {
         }
 
         fetchUsuarios();
-    }, [])
-
-    console.log(usuarios);
-    
+    }, [])    
 
     return (
     <div className={stylesUsuario.container}>
-        {usuarios.map((user) => (<p>{user?.displayName || user?.username}</p>))}
+        <div className={stylesUsuario.titulo}>
+            <p>Nombre</p>
+            <p>Rol</p>
+            <p>Eliminar usuario</p>
+        </div>
+        {usuarios.map((user, index) => (<Card key={index} displayName={user.displayName} username={user.username} rol={user.rol} />))}
     </div>)
 }
 

@@ -1,0 +1,33 @@
+.card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    margin: 8px 0;
+
+    .nombre {
+        display: flex;
+
+        svg {
+            cursor: pointer;
+        }
+
+        input {
+            background-color: transparent;
+            border: 1px solid var(--white-color-active);
+            font-size: 16px;
+            padding: 2px;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:disabled {
+                background-color: transparent;
+                border: none;
+                font-size: 16px;
+                color: var(--black-color);
+            }
+        }
+    }
+}
