@@ -15,7 +15,7 @@ const Usuario = () => {
         }
 
         fetchUsuarios();
-    }, [])    
+    }, [usuarios])    
 
     return (
     <div className={stylesUsuario.container}>
@@ -24,7 +24,7 @@ const Usuario = () => {
             <p>Rol</p>
             <p>Eliminar usuario</p>
         </div>
-        {usuarios.map((user, index) => (<Card key={index} displayName={user.displayName} username={user.username} rol={user.rol} />))}
+        {usuarios.map((user, index) => (<Card key={index} id={user.id} displayName={user.displayName} username={user.username} rol={user.rol} />))}
     </div>)
 }
 
