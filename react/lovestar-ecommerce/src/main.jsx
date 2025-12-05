@@ -4,16 +4,20 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { UserContextProvider } from "./context/ContextUser";
 import { CartContextProvider } from "./context/ContextCart.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
 /*   <StrictMode>
  */    <UserContextProvider>
-      <CartContextProvider>
-        <BrowserRouter>
+    <CartContextProvider>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
           <App />
-        </BrowserRouter>
-      </CartContextProvider>
-    </UserContextProvider>
+        </QueryClientProvider>
+      </BrowserRouter>
+    </CartContextProvider>
+  </UserContextProvider>
 /*   </StrictMode>,
  */)
