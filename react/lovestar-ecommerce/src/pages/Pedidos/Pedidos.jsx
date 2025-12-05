@@ -25,15 +25,12 @@ function Pedidos() {
     };
   }, [currentUser])
 
-  console.log(pedidosUsuario);
-
-
 
   return (
     <section className={stylesPedidos.main}>
       <h1>Pedidos</h1>
       <div className={stylesPedidos.form}>
-        {(pedidosUsuario === null) || (pedidosUsuario === 0) ? (
+        {(pedidosUsuario == null) || (pedidosUsuario.length === 0) ? (
           <div className={stylesPedidos.noPedidos}>
             <div className={stylesPedidos.info}>
               <p className={stylesPedidos.titulo}>No hay pedidos aún.</p>
