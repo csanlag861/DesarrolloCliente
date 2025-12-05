@@ -30,4 +30,31 @@
             }
         }
     }
+
+    .rol {
+        display: flex;
+        gap: 8px;
+
+        svg {
+            cursor: pointer;
+        }
+
+        select {
+            background-color: transparent;
+            border: 1px solid var(--white-color-active);
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        option {
+            background-color: transparent;
+            border: 1px solid var(--white-color-active);
+
+            &:hover {
+                background-color: var(--primary-color);
+            }
+        }
+    }
 }
