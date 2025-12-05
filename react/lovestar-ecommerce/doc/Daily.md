@@ -1,5 +1,10 @@
 # 🧾 Daily Log - Proyecto Ecommerce
 
+## Dudas:
+
+- ¿Por qué cuando inicio sesión y entro a pedidos no me carga el usuario? Hay que hacer un useEffect que escuche currentUser?
+- Cuando elimino un usuario, luego del useEffect no me lo pinta bien.
+
 ### 🚧 Pendiente / Por hacer
 
 - CRUD admin
@@ -16,6 +21,7 @@ Editar producto, crear producto, eliminar producto
 - Refactorizar lógica del carrito.
 
 - (Cambiar imagenes cada X dia).
+- View Editorial
 -- Organizar:
 
 - Decidir un día para sólo hacer responsive. (vista admin responsive)
