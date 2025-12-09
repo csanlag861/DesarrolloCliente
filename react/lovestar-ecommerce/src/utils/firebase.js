@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDoc, doc, setDoc } from "firebase/firestore";
+import { getFirestore, getDoc, doc, setDoc, updateDoc } from "firebase/firestore";
 import {
   GoogleAuthProvider,
   getAuth,
@@ -118,3 +118,15 @@ export async function uploadProductImage(file, folder = "") {
   const {data: publicData} = supabase.storage.from(BUCKET).getPublicUrl(data.path);
   return publicData.publicUrl
 };
+
+export const aplicarDescuento = async (userID) => {
+  try {
+    const ref = doc(db, "users", userID);
+
+    await updateDoc(ref, {
+      descuento: false
+    })
+  } catch (error) {
+    console.error("Error al aplicar descuento", error);
+  }
+}

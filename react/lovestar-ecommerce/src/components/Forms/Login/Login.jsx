@@ -1,9 +1,10 @@
 import stylesLogin from "./login.module.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../../utils/firebase";
 
 import FormInput from "../Input/Input";
 import { useNavigate, Link } from "react-router-dom";
+import { UserContext } from "../../../context/ContextUser";
 
 import { Icon } from "@iconify/react";
 import { toast } from "react-toastify";
@@ -16,10 +17,13 @@ const LoginForm = () => {
 
   const [serverError, setServerError] = useState(null);
 
+  const {setCurrentUser} = useContext(UserContext);
+
   const handleGoogle = async () => {
     try {
       const { user } = await signInWithGooglePopup();
-      await createUserDocumentFromAuth(user);
+      const res = await createUserDocumentFromAuth(user);
+      setCurrentUser(res);n
       
       setTimeout(() => {
         navigate("/home")
@@ -34,7 +38,9 @@ const LoginForm = () => {
     try {
       const email = emailRef.current.value;
       const password = passwordRef.current.value;
-      await signInAuthUserWithEmailAndPassword(email, password);
+      const res = await signInAuthUserWithEmailAndPassword(email, password);
+      setCurrentUser(res);
+      
       toast.success("Usuario logeado con éxito.")
 
       setTimeout(() => {

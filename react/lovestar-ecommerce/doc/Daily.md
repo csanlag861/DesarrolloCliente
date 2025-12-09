@@ -3,7 +3,7 @@
 ## Dudas:
 
 - ¿Por qué cuando inicio sesión y entro a pedidos no me carga el usuario? Hay que hacer un useEffect que escuche currentUser?
-- Cuando elimino un usuario, luego del useEffect no me lo pinta bien.
+- Por qué ocurre un bucle en el crud de productos?¿
 
 ### 🚧 Pendiente / Por hacer
 

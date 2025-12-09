@@ -213,6 +213,9 @@
             >svg {
                 display: none;
             }
+            >a{
+               display: none; 
+            }
         }
     }
 

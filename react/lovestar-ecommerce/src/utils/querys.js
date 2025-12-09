@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, updateDoc, deleteDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, updateDoc, deleteDoc, onSnapshot } from "firebase/firestore";
 import { db } from "./firebase.js"; // tu instancia
 
 
@@ -32,11 +32,20 @@ export const getAllUsers = async () => {
     return usuarios;
 }
 
-export const getAllProducts = async () => {
-    const ref = await getDocs(collection(db, "products"));
-    const productos = ref.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-    return productos;
-}
+export const getAllProducts = (callback) => {
+    const ref = collection(db, "products");
+
+    // Suscripción
+    const unsubscribe = onSnapshot(ref, (snapshot) => {
+        const productos = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+        }));
+        callback(productos);
+    });
+
+    return unsubscribe;
+};
 
 export const updateUserName = async (uid, displayName) => {
     try {

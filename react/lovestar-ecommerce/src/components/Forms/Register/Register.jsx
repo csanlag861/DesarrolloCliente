@@ -6,10 +6,12 @@ import { validation } from "../../../utils/validationForm";
 
 import { useNavigate } from "react-router-dom";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+
+import { UserContext } from "../../../context/ContextUser";
 
 import FormInput from "../Input/Input";
 
@@ -19,6 +21,8 @@ function RegisterForm() {
   const emailRef = useRef(null);
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
+
+  const {setCurrentUser} = useContext(UserContext);
 
   const [serverError, setServerError] = useState(null);
 
@@ -65,9 +69,11 @@ function RegisterForm() {
         passwordRef.current.value
       );
 
-      await createUserDocumentFromAuth(user, {
+      const res = await createUserDocumentFromAuth(user, {
         displayName: userNameRef.current.value,
       });
+
+      setCurrentUser(res);
 
       setTimeout(() => {
         navigate("/home")
@@ -89,7 +95,8 @@ function RegisterForm() {
   const handleGoogle = async () => {
     try {
       const {user} = await signInWithGooglePopup();
-      await createUserDocumentFromAuth(user);
+      const res = await createUserDocumentFromAuth(user);
+      setCurrentUser(res);
       
       setTimeout(() => {
         navigate("/home")
