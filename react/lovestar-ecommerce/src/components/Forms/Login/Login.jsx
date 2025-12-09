@@ -55,6 +55,7 @@ const LoginForm = () => {
           <FormInput
             label="Email"
             id="email"
+            placeholder="Email"
             type="text"
             ref={emailRef}
             required
@@ -62,6 +63,7 @@ const LoginForm = () => {
 
           <FormInput
             label="Password"
+            placeholder="Password"
             id="password"
             type="password"
             ref={passwordRef}
