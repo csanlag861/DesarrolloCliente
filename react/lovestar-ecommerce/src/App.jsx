@@ -16,6 +16,7 @@ import Pedidos from "./pages/Pedidos/Pedidos";
 import Editorial from "./pages/Editorial/Editorial";
 import Detalles from "./pages/Detalles/Detalles";
 import Checkout from "./pages/Checkout/Checkout";
+import Crear from "./pages/Crear/Crear";
 
 import PrivateRoute from "./pages/protected/PrivateRoutes";
 import LoginRoute from "./pages/protected/LoginRoutes";
@@ -77,6 +78,17 @@ function App() {
               </PrivateRoute>
             }
           />
+
+          <Route
+            path="/crearProducto"
+            element={
+              <PrivateRoute>
+                <Crear />
+              </PrivateRoute>
+            }
+          />
+
+          
         </Route>
 
         <Route path="/Checkout" element={<Checkout />} />
