@@ -32,7 +32,10 @@ Editar producto, crear producto, eliminar producto ✅
 -- Organizar:
 
 - Decidir un día para sólo hacer responsive. (vista admin responsive)
-- Decidir un día para sólo hacer lógica.
+- Decidir un día para sólo hacer lógica:
+--> Descuento para miembros, y aplicarselo en el carrito.
+--> Desde la pestaña Membership que se haga miembro el usuario, y si no está registrado pues ese formulario sirve para registrarse.
+--> Descuento desde el dialog.
 
 ### 💡 Ideas / Notas
 
