@@ -10,18 +10,25 @@
 - CRUD admin
 
 -- Usuario:
-Cambiar nombre, eliminar usuario, editar rol
+Cambiar nombre, eliminar usuario, editar rol ✅
 -- Producto:
-Editar producto, crear producto, eliminar producto
+Editar producto, crear producto, eliminar producto ✅
+
+-- Solo me quedaría del CRUD el crear producto (view). ✅
 
 - Pintar novedad en las cards de la tienda.
+
+- View Editorial
+
+- isLoading
 
 - Script para cambiar estado en la BBDD.
 
 - Refactorizar lógica del carrito.
 
 - (Cambiar imagenes cada X dia).
-- View Editorial
+
+
 -- Organizar:
 
 - Decidir un día para sólo hacer responsive. (vista admin responsive)
