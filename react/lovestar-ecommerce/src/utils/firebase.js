@@ -1,15 +1,25 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDoc, doc, setDoc } from 'firebase/firestore';
-import { GoogleAuthProvider, getAuth, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { getFirestore, getDoc, doc, setDoc } from "firebase/firestore";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
+
+import { supabase } from "./supabaseClient";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAHGbi5Tv95LkAFN1bsOV3PiRIDcAQbvrI",
-    authDomain: "lovestar-ecommerce.firebaseapp.com",
-    projectId: "lovestar-ecommerce",
-    storageBucket: "lovestar-ecommerce.firebasestorage.app",
-    messagingSenderId: "360171213211",
-    appId: "1:360171213211:web:96cfa3fb33ec701682d13e",
-    measurementId: "G-YGVKVS892C"
+  apiKey: "AIzaSyAHGbi5Tv95LkAFN1bsOV3PiRIDcAQbvrI",
+  authDomain: "lovestar-ecommerce.firebaseapp.com",
+  projectId: "lovestar-ecommerce",
+  storageBucket: "lovestar-ecommerce.firebasestorage.app",
+  messagingSenderId: "360171213211",
+  appId: "1:360171213211:web:96cfa3fb33ec701682d13e",
+  measurementId: "G-YGVKVS892C",
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -18,13 +28,15 @@ export const auth = getAuth();
 /* patrón singleton // instancia singleton que se usan durante todo el ciclo de vida */
 export const db = getFirestore(firebaseApp);
 
+const BUCKET = "Products";
+
 /* conexion a google */
 const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export const signInWithGooglePopup = () =>
-    signInWithPopup(auth, googleProvider);
+  signInWithPopup(auth, googleProvider);
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   try {
@@ -91,3 +103,18 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+export async function uploadProductImage(file, folder = "") {
+  const filePath = `${folder ? folder + "/" : ""}${Date.now()}-${file.name}`;
+
+  const { data, error: uploadError } = await supabase.storage
+    .from(BUCKET)
+    .upload(filePath, file, { cacheControl: "3600", upsert: false });
+
+  if (uploadError) throw uploadError;
+  if (!data || !data.path)
+    throw new Error("No se obtuvo la ruta del archivo subido.");
+
+  const {data: publicData} = supabase.storage.from(BUCKET).getPublicUrl(data.path);
+  return publicData.publicUrl
+};
