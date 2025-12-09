@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import { Icon } from "@iconify/react";
+
 const Card = ({ card }) => {
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
@@ -36,6 +38,10 @@ const Card = ({ card }) => {
           alt={card.alt}
         />
       </div>
+      {card.informacion && (<div className={styleCard.detalles}>
+        <Icon icon="material-symbols:star" />
+        <p>{card.informacion}</p>
+      </div>)}
       <div className={styleCard.text}>
         <h3>{card.nombre}</h3>
         <p className={styleCard.precio}>€{card.precio}</p>
