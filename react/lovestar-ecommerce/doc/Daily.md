@@ -16,7 +16,9 @@ Editar producto, crear producto, eliminar producto ✅
 
 -- Solo me quedaría del CRUD el crear producto (view). ✅
 
-- Pintar novedad en las cards de la tienda.
+- Pintar novedad en las cards de la tienda. ✅
+
+- Comprobar las keys
 
 - View Editorial
 
