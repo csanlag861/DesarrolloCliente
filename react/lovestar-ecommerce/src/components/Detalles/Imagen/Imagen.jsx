@@ -31,8 +31,8 @@ function Detalles() {
 
   return (
     <div className={stylesImagen.container}>
-      {product && <img src={`/${product?.url}`} alt={product?.alt} />}
-      {product && <img src={`/${product?.url_r}`} alt={product?.alt} />}
+      {product && <img src={`${product?.url}`} alt={product?.alt} />}
+      {product && <img src={`${product?.url_r}`} alt={product?.alt} />}
     </div>
   );
 }

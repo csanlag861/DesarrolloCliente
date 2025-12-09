@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 function Crear() {
   const [file, setFile] = useState(null);
+  const [fileReverso, setFileReverso] = useState(null);
   const [nombre, setNombre] = useState("");
   const [precio, setPrecio] = useState("");
   const [categoria, setCategoria] = useState("");
@@ -25,6 +26,7 @@ function Crear() {
 
     try {
       const imageURL = file ? await uploadProductImage(file, "products") : null;
+      const imageURL_R = file ? await uploadProductImage(fileReverso, "products") : null;
 
       const products = await getAllProducts();
       const totalProductos = products.length;
@@ -33,10 +35,12 @@ function Crear() {
         id: totalProductos + 1,
         nombre: nombre,
         url: imageURL,
+        url_r: imageURL_R,
         precio: precio,
         categoria: categoria,
         activo: true,
         membership: true,
+        informacion: "Novedad",
         tallas: {
           XS: { stock: 10 },
           S: { stock: 10 },
@@ -71,10 +75,18 @@ function Crear() {
         <div className={stylesCrear.imagen}>
           <FormInput
             type="file"
+            label="Frontal"
             accept="image/*"
             onChange={(evento) => setFile(evento.target.files[0])}
           />
           {file && <img src={URL.createObjectURL(file)}></img>}
+          <FormInput
+            type="file"
+            label="Dorsal"
+            accept="image/*"
+            onChange={(evento) => setFileReverso(evento.target.files[0])}
+          />
+          {fileReverso && <img src={URL.createObjectURL(file)}></img>}
         </div>
 
         <FormInput
