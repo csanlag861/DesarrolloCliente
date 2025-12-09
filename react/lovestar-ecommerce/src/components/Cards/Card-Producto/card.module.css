@@ -1,0 +1,58 @@
+.card {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  align-items: center;
+  margin: 8px 0;
+
+  img {
+    width: 50%;
+  }
+
+  input {
+    background-color: transparent;
+    border: 1px solid var(--white-color-active);
+    font-size: 16px;
+    padding: 4px;
+
+    field-sizing: content;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border: none;
+      font-size: 16px;
+      color: var(--black-color);
+    }
+  }
+
+  select {
+    background-color: transparent;
+    border: 1px solid var(--white-color-active);
+    font-size: 16px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  option {
+    background-color: transparent;
+    border: 1px solid var(--white-color-active);
+
+    &:hover {
+      background-color: var(--primary-color);
+    }
+  }
+
+  .opciones {
+    display: flex;
+    gap: 12px;
+    svg {
+      cursor: pointer;
+    }
+  }
+}
