@@ -23,7 +23,7 @@ const LoginForm = () => {
     try {
       const { user } = await signInWithGooglePopup();
       const res = await createUserDocumentFromAuth(user);
-      setCurrentUser(res);n
+      setCurrentUser(res);
       
       setTimeout(() => {
         navigate("/home")
