@@ -2,9 +2,6 @@
 
 ## Dudas:
 
-- ¿Por qué cuando inicio sesión y entro a pedidos no me carga el usuario? Hay que hacer un useEffect que escuche currentUser?
-- Por qué ocurre un bucle en el crud de productos?¿
-
 ### 🚧 Pendiente / Por hacer
 
 - CRUD admin
@@ -20,24 +17,28 @@ Editar producto, crear producto, eliminar producto ✅
 
 - Comprobar las keys ✅
 
-- View Editorial
+- Al miembro no le cargan todos los productos.
+- Cargar al miembro el cumpleaños y el telefono.
 
-- isLoading
+
+- View Editorial
+- Responsive
+- useLLM
 
 - Script para cambiar estado en la BBDD.
-
-- Refactorizar lógica del carrito.
-
 - (Cambiar imagenes cada X dia).
 
+- Refactorizar lógica del carrito.
 
 -- Organizar:
 
 - Decidir un día para sólo hacer responsive. (vista admin responsive)
+
+
 - Decidir un día para sólo hacer lógica:
 --> Descuento para miembros, y aplicarselo en el carrito. ✅
---> Desde la pestaña Membership que se haga miembro el usuario, y si no está registrado pues ese formulario sirve para registrarse.
---> Descuento desde el dialog.
+--> Desde la pestaña Membership que se haga miembro el usuario, y si no está registrado pues ese formulario sirve para registrarse.✅
+--> Descuento desde el dialog. ✅
 
 ### 💡 Ideas / Notas
 
