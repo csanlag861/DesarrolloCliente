@@ -2,7 +2,7 @@ import stylesCard from "./card.module.css";
 
 import { Icon } from "@iconify/react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useUpdateProduct, useDeleteProduct } from "../../../utils/react-query";
 
@@ -15,6 +15,12 @@ const Card = ({ producto }) => {
   const [categoriaProducto, setCategoriaProducto] = useState(
     producto.categoria
   );
+
+  useEffect(() => {
+    setNombreProduct(producto.nombre);
+    setPrecioProducto(producto.precio);
+    setCategoriaProducto(producto.categoria);
+  }, [producto]);
 
   const updateProduct = useUpdateProduct();
 

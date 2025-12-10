@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
-import { getAllProducts } from "../utils/querys"; // ajusta la ruta
+import { useQuery } from "@tanstack/react-query";
+import { getAllProducts } from "../utils/querys";
 
 export const useProductos = () => {
-    const [productos, setProductos] = useState([]);
-
-    useEffect(() => {
-        const unsubscribe = getAllProducts((productosActualizados) => {
-            setProductos(productosActualizados);
-        });
-
-        return () => unsubscribe();
-    }, []);
-
-    return { productos };
+  return useQuery({
+    queryKey: ["products"],
+    queryFn: getAllProducts,
+    staleTime: 1000 * 60,
+  });
 };

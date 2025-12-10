@@ -5,10 +5,9 @@ import { useCreateProduct } from "../../utils/react-query";
 import { uploadProductImage } from "../../utils/firebase";
 import { toast } from "react-toastify";
 
-import { getAllProducts } from "../../utils/querys";
-
 import FormInput from "../../components/Forms/Input/Input";
 import { useNavigate } from "react-router-dom";
+import { useProductos } from "../../hooks/useProducts";
 
 function Crear() {
   const [file, setFile] = useState(null);
@@ -18,6 +17,7 @@ function Crear() {
   const [categoria, setCategoria] = useState("");
 
   const createProduct = useCreateProduct();
+  const { data: productos } = useProductos();
 
   const navigate = useNavigate();
 
@@ -26,10 +26,11 @@ function Crear() {
 
     try {
       const imageURL = file ? await uploadProductImage(file, "products") : null;
-      const imageURL_R = file ? await uploadProductImage(fileReverso, "products") : null;
+      const imageURL_R = fileReverso
+        ? await uploadProductImage(fileReverso, "products")
+        : null;
 
-      const products = await getAllProducts();
-      const totalProductos = products.length;
+      const totalProductos = productos.length;
 
       const producto = {
         id: totalProductos + 1,
@@ -86,7 +87,7 @@ function Crear() {
             accept="image/*"
             onChange={(evento) => setFileReverso(evento.target.files[0])}
           />
-          {fileReverso && <img src={URL.createObjectURL(file)}></img>}
+          {fileReverso && <img src={URL.createObjectURL(fileReverso)}></img>}
         </div>
 
         <FormInput

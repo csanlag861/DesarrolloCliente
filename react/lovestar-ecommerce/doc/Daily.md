@@ -18,7 +18,7 @@ Editar producto, crear producto, eliminar producto ✅
 
 - Pintar novedad en las cards de la tienda. ✅
 
-- Comprobar las keys
+- Comprobar las keys ✅
 
 - View Editorial
 
@@ -35,7 +35,7 @@ Editar producto, crear producto, eliminar producto ✅
 
 - Decidir un día para sólo hacer responsive. (vista admin responsive)
 - Decidir un día para sólo hacer lógica:
---> Descuento para miembros, y aplicarselo en el carrito.
+--> Descuento para miembros, y aplicarselo en el carrito. ✅
 --> Desde la pestaña Membership que se haga miembro el usuario, y si no está registrado pues ese formulario sirve para registrarse.
 --> Descuento desde el dialog.
 

@@ -5,7 +5,7 @@ import { useProductos } from "../../../hooks/useProducts";
 import Card from "../../Cards/Card-Producto/Card";
 
 const Producto = () => {
-    const { productos } = useProductos();
+    const { data: productos } = useProductos();
 
     return (
         <div className={stylesProducto.container}>
@@ -16,7 +16,7 @@ const Producto = () => {
                 <p>Precio</p>
                 <p>Opciones</p>
             </div>
-            {productos.map((prod, index) => (<Card key={index} producto={prod} />))}
+            {productos?.map((prod, index) => (<Card key={index} producto={prod} />))}
         </div>)
 }
 
