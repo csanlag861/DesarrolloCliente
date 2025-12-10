@@ -153,7 +153,7 @@ function CartContextProvider({ children }) {
         prod.tallaSeleccionada === tallaSeleccionada
     );
 
-    const stockDisponible = producto.tallas[tallaSeleccionada].stock;
+    const stockDisponible = producto.tallas ? producto.tallas[tallaSeleccionada].stock : 10;
     const cantidadEnCarrito = productoEnCarrito?.cantidad ?? 0;
 
     if (cantidadEnCarrito >= stockDisponible) {

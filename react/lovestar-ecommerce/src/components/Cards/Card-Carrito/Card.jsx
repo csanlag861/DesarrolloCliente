@@ -13,7 +13,7 @@ const Card = ({ id, nombre, talla, cantidad, precio, url, alt }) => {
     return (
         <div className={stylesCard.card}>
             <div className={stylesCard.imagen}>
-                <img src={`/${url}`} alt={alt} />
+                <img src={`${url}`} alt={alt} />
             </div>
             <div className={stylesCard.info}>
                 <div className={stylesCard.detalles}>

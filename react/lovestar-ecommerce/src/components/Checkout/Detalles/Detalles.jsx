@@ -7,7 +7,7 @@ import { CartContext } from "../../../context/ContextCart";
 
 import FormInput from "../../Forms/Input/Input";
 
-import { doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../../utils/firebase";
 
 import { toast } from "react-toastify";
