@@ -1,5 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDoc, doc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  getDoc,
+  doc,
+  setDoc,
+  updateDoc,
+  addDoc,
+} from "firebase/firestore";
 import {
   GoogleAuthProvider,
   getAuth,
@@ -115,18 +122,75 @@ export async function uploadProductImage(file, folder = "") {
   if (!data || !data.path)
     throw new Error("No se obtuvo la ruta del archivo subido.");
 
-  const {data: publicData} = supabase.storage.from(BUCKET).getPublicUrl(data.path);
-  return publicData.publicUrl
-};
+  const { data: publicData } = supabase.storage
+    .from(BUCKET)
+    .getPublicUrl(data.path);
+  return publicData.publicUrl;
+}
 
 export const aplicarDescuento = async (userID) => {
   try {
     const ref = doc(db, "users", userID);
 
     await updateDoc(ref, {
-      descuento: false
-    })
+      descuento: false,
+    });
   } catch (error) {
     console.error("Error al aplicar descuento", error);
   }
-}
+};
+
+export const crearDescuento = async (userID) => {
+  try {
+    const ref = doc(db, "users", userID);
+
+    await updateDoc(ref, {
+      descuentoDialog: true,
+    });
+  } catch (error) {
+    console.error("Error al aplicar descuento", error);
+  }
+};
+
+export const registrarMiembro = async ({
+  email,
+  password,
+  username,
+  additionalData = {},
+}) => {
+  try {
+    // 1️⃣ Creamos el usuario en Firebase Auth
+    const userCredential = await createAuthUserWithEmailAndPassword(
+      email,
+      password
+    );
+    const userAuth = userCredential.user;
+
+    // 2️⃣ Creamos el documento en Firestore con rol "miembro"
+    const userDocRef = await createUserDocumentFromAuth(userAuth, {
+      displayName: username,
+      rol: "miembro",
+      ...additionalData, // otros campos que quieras añadir
+    });
+
+    return userDocRef; // devuelves la referencia al documento
+  } catch (error) {
+    console.error("Error registrando usuario miembro:", error);
+    throw error;
+  }
+};
+
+export const actualizarMiembro = async (uid, additionalData = {}) => {
+  try {
+    const userRef = doc(db, "users", uid);
+
+    await updateDoc(userRef, {
+      rol: "miembro",
+      ...additionalData, // otros campos que quieras actualizar
+    });
+
+  } catch (error) {
+    console.error("Error actualizando rol a miembro:", error);
+    throw error;
+  }
+};
