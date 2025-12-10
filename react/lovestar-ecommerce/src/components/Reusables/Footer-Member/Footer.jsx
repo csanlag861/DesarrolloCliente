@@ -17,8 +17,6 @@ const FooterMember = () => {
     evento.preventDefault();
 
     const emailForm = evento.target.email.value;
-    console.log(emailForm);
-
 
     if (emailForm !== currentUser.email) {
       toast.error("El email introducido no es válido.")
@@ -29,7 +27,7 @@ const FooterMember = () => {
       aplicarDescuento(currentUser.uid);
       toast.success(`Has obtenido el descuento de miembro, ${currentUser?.username || currentUser?.displayName}`)
     } catch (error) {
-      toast.error("Error al aplicar descuento", error)
+      toast.error("Error al aplicar descuento")
     }
 
   }
