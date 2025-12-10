@@ -1,16 +1,18 @@
 import Hero from "../../components/Home/Hero/Hero";
 import Dialog from "../../components/Dialog/Dialog";
 import Inpsiracion from "../../components/Home/Inspiracion/Inspiracion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../../context/ContextUser";
 
 function Home() {
+  const {currentUser} = useContext(UserContext);
   const [showDialog, setShowDialog] = useState(false);
 
   useEffect(() => {
     const hasShownToday = localStorage.getItem("showDialog");
     const hoy = new Date().toDateString();
 
-    if (hasShownToday !== hoy) {
+    if (hasShownToday !== hoy && !currentUser?.descuentoDialog) {
       const time = setTimeout(() => {
         setShowDialog(true);
         localStorage.setItem("showDialog", hoy);
@@ -18,7 +20,7 @@ function Home() {
 
       return () => clearTimeout(time);
     }
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     if (showDialog) {
@@ -39,7 +41,7 @@ function Home() {
     <>
       <Hero />
       <Inpsiracion />
-      {showDialog && <Dialog />}
+      {showDialog && <Dialog onClose={() => setShowDialog(false)} />}
     </>
   );
 }
