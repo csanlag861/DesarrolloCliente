@@ -1,13 +1,13 @@
 import { collection, setDoc, doc } from "firebase/firestore";
 import { db } from "./firebase";
-import  productos  from "../data/productos";
+import  articulos  from "../data/articulos";
 
 export const uploadProducts = async () => {
     try {
-        const productsRef = collection(db, "products");
+        const productsRef = collection(db, "articulos");
 
-        for (const prod of productos) {
-            const docRef = doc(productsRef, `prod ${String(prod.id)}`);
+        for (const prod of articulos) {
+            const docRef = doc(productsRef, `art ${String(prod.id)}`);
             await setDoc(docRef, prod);
         }
     } catch (error) {
