@@ -21,7 +21,7 @@
             flex-direction: column;
             gap: 6px;
 
-            .noDireccion{
+            .noDireccion {
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
@@ -35,14 +35,14 @@
             }
         }
 
-        .pedidos{
+        .pedidos {
             position: absolute;
             top: 17%;
             right: 2%;
             color: var(--white-color-dark);
             cursor: pointer;
 
-            &:hover{
+            &:hover {
                 color: var(--dark-color);
             }
         }
@@ -51,5 +51,25 @@
             font-family: "Archivo-Light", sans-serif;
             color: var(--white-color-dark);
         }
+    }
+}
+
+@media (max-width: 1200px) {
+    .perfil {
+        width: 100%;
+        gap: 48px;
+
+        .user {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .perfil {
+        width: 100%;
+        gap: 48px;
+
+        font-size: 14px;
     }
 }

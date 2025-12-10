@@ -12,7 +12,7 @@ function Home() {
     const hasShownToday = localStorage.getItem("showDialog");
     const hoy = new Date().toDateString();
 
-    if (hasShownToday !== hoy && !currentUser?.descuentoDialog) {
+    if (hasShownToday !== hoy && !currentUser?.descuentoDialog && window.innerWidth> 700) {
       const time = setTimeout(() => {
         setShowDialog(true);
         localStorage.setItem("showDialog", hoy);
@@ -23,7 +23,7 @@ function Home() {
   }, [currentUser]);
 
   useEffect(() => {
-    if (showDialog) {
+    if (showDialog && window.innerWidth > 700) {
       document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
     } else {

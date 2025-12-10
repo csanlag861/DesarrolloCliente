@@ -114,3 +114,9 @@ dialog:focus {
     background: var(--black-color-opacity-8);
   }
 }
+
+@media (max-width: 700px){
+  .dialog{
+    display: none;
+  }
+}

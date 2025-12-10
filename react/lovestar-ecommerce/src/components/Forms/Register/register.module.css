@@ -95,3 +95,22 @@
         }
     }
 }
+
+
+@media (max-width: 600px) {
+    .form {
+        width: 332px;
+        height: 560px;
+
+        .logo {
+            margin-top: 24px;
+            margin-bottom: 24px;
+            width: 50%;
+        }
+
+        .inputs {
+            gap: 12px;
+        }
+
+    }
+}

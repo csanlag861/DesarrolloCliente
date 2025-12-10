@@ -31,11 +31,12 @@ const Card = ({ id, displayName, username, rol }) => {
       {displayName ? (
         <div className={stylesCard.nombre}>
           <input
-            name="username"
+            
             type="text"
             onChange={(evento) => { setName(evento.target.value) }}
             value={name}
             disabled={isDisabled}
+            autoComplete="username"
           ></input>
           <Icon
             icon="ri:edit-fill"

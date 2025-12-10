@@ -3,7 +3,6 @@
    ============================================ */
 .container {
   min-height: 100vh;
-  background-color: #fafafa;
 }
 
 /* ============================================
@@ -11,8 +10,7 @@
    ============================================ */
 .header {
   padding: 6rem 2rem 4rem;
-  background-color: white;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--white-color-active);
 }
 
 .headerContent {

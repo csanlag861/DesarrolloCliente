@@ -1,4 +1,6 @@
 .input {
+  display: flex;
+  flex-direction: column;
   label {
     font-family: "Archivo-Light", sans-serif;
     font-size: 16px;

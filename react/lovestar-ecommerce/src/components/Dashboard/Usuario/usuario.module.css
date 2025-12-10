@@ -16,3 +16,11 @@
     }
 
 }
+
+@media (max-width: 600px) {
+    .container{
+        .titulo{
+            font-size: 14px;
+        }
+    }
+}

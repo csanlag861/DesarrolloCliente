@@ -105,9 +105,9 @@ body {
 
 /* Cambiar color de fondo de los toasts */
 .Toastify__toast--success {
-  background: var(--black-color) !important;
+  background: var(--white-color) !important;
   /* verde personalizado */
-  color: var(--white-color) !important;
+  color: var(--primary-color) !important;
 }
 
 .Toastify__toast--success .Toastify__toast-icon svg {

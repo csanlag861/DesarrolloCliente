@@ -198,36 +198,6 @@ const EditorialArticles = () => {
           ))}
         </div>
       </main>
-
-      {/* Newsletter Section */}
-      <section className={styles.newsletter}>
-        <div className={styles.newsletterContent}>
-          <h2 className={styles.newsletterTitle}>Sigue la historia</h2>
-          <p className={styles.newsletterText}>
-            Recibe nuestras últimas historias, colaboraciones y lanzamientos directamente en tu inbox.
-          </p>
-          <div className={styles.newsletterForm}>
-            <input 
-              type="email" 
-              placeholder="tu@email.com"
-              className={styles.newsletterInput}
-            />
-            <button className={styles.newsletterButton}>Suscribirme</button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <p>© 2024 Lovestar</p>
-          <div className={styles.footerLinks}>
-            <a href="#">Instagram</a>
-            <a href="#">Newsletter</a>
-            <a href="#">Contacto</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

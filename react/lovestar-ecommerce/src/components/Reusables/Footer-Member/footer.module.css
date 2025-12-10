@@ -194,30 +194,9 @@ footer {
             gap: 16px;
             margin: 0px 40px 32px 40px;
 
+
             .form {
-                width: 75%;
-
-                h3 {
-                    font-size: 18px;
-                    text-align: center;
-                }
-
-                button {
-                    font-size: 12px;
-                }
-
-                .member {
-                    p {
-                        font-size: 10px;
-                    }
-                }
-
-
-                .form__policy {
-                    p {
-                        font-size: 12px;
-                    }
-                }
+                display: none;
             }
 
             .logo {
@@ -232,7 +211,7 @@ footer {
                 justify-items: center;
 
                 a {
-                    font-size: 14px;
+                    font-size: 16px;
                 }
             }
         }

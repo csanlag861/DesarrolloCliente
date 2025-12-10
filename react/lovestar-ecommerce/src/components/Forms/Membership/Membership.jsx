@@ -19,6 +19,8 @@ const MembershipForm = () => {
         ...prev,
         username: currentUser.username || currentUser.displayName || "",
         email: currentUser.email || "",
+        birthday: currentUser.birthday || "",
+        telefono: currentUser.telefono || "",
       }));
     }
   }, [currentUser, setCardData]);
@@ -75,7 +77,7 @@ const MembershipForm = () => {
           label="Nombre de Usuario"
           id="username"
           type="text"
-          value={currentUser?.username || currentUser?.displayName}
+          value={currentUser?.username || currentUser?.displayName || ""}
           /*                 ref={emailRef}
            */
           onChange={handleChange}
@@ -86,7 +88,7 @@ const MembershipForm = () => {
           label="Email"
           id="email"
           type="text"
-          value={currentUser?.email}
+          value={currentUser?.email || ""}
           /*                 ref={emailRef}
            */
           onChange={handleChange}
@@ -100,7 +102,7 @@ const MembershipForm = () => {
             type="password"
             /*                 ref={emailRef}
              */
-            value={cardData?.password}
+            value={cardData?.password || ""}
             onChange={handleChange}
             placeholder="Password"
             required
@@ -113,7 +115,7 @@ const MembershipForm = () => {
           type="date"
           /*                 ref={emailRef}
            */
-          value={cardData?.birthday}
+          value={cardData?.birthday || ""}
           onChange={handleChange}
           required
         />
@@ -123,7 +125,7 @@ const MembershipForm = () => {
           type="tel"
           /*                 ref={emailRef}
            */
-          value={cardData?.telefono}
+          value={cardData?.telefono || ""}
           onChange={handleChange}
           placeholder="Teléfono"
           required

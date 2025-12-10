@@ -20,5 +20,20 @@
     .main {
         display: flex;
         align-items: center;
+
+        .form {
+            width: 100%;
+        }
+    }
+}
+
+
+@media (max-width: 600px) {
+    .main {
+
+        h1{
+            font-size: 24px;
+        }
+
     }
 }

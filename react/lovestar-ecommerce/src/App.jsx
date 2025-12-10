@@ -28,15 +28,15 @@ import LovestarLayout from "./pages/LovestarLayout/LovestarLayout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// import { useEffect } from "react";
-// import { uploadProducts } from "./utils/uploadProducts";
+/* import { useEffect } from "react";
+import { uploadProducts } from "./utils/uploadProducts"; */
 
 function App() {
-  // useEffect(() => {
-  //   const upload = async () => uploadProducts();
+/*   useEffect(() => {
+    const upload = async () => uploadProducts();
 
-  //   upload();
-  // }, [])
+    upload();
+  }, []) */
 
   return (
     <>

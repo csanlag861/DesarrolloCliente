@@ -17,12 +17,14 @@ Editar producto, crear producto, eliminar producto ✅
 
 - Comprobar las keys ✅
 
-- Al miembro no le cargan todos los productos.
-- Cargar al miembro el cumpleaños y el telefono.
-
+- Al miembro no le cargan todos los productos. ✅
+- Cargar al miembro el cumpleaños y el telefono. ✅
 
 - View Editorial
-- Responsive
+
+
+- Validaciones de email
+- Responsive ✅
 - useLLM
 
 - Script para cambiar estado en la BBDD.
@@ -30,9 +32,9 @@ Editar producto, crear producto, eliminar producto ✅
 
 - Refactorizar lógica del carrito.
 
--- Organizar:
+-- Organizar: ✅
 
-- Decidir un día para sólo hacer responsive. (vista admin responsive)
+- Decidir un día para sólo hacer responsive. (vista admin responsive) ✅
 
 
 - Decidir un día para sólo hacer lógica:

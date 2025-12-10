@@ -16,3 +16,26 @@
     }
 
 }
+
+@media (max-width: 900px) {
+    .container {
+        .titulo {
+            p {
+
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .container {
+        .titulo {
+            align-items: center;
+            p {
+
+                font-size: 10px;
+            }
+        }
+    }
+}

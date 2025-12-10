@@ -72,8 +72,8 @@ function Crear() {
 
   return (
     <form className={stylesCrear.container} onSubmit={handleSubmit}>
-      <div className={stylesCrear.form}>
-        <div className={stylesCrear.imagen}>
+      <div className={stylesCrear.imagen}>
+        <div className={stylesCrear.eleccion}>
           <FormInput
             type="file"
             label="Frontal"
@@ -81,6 +81,8 @@ function Crear() {
             onChange={(evento) => setFile(evento.target.files[0])}
           />
           {file && <img src={URL.createObjectURL(file)}></img>}
+        </div>
+        <div className={stylesCrear.eleccion}>
           <FormInput
             type="file"
             label="Dorsal"
@@ -89,6 +91,8 @@ function Crear() {
           />
           {fileReverso && <img src={URL.createObjectURL(fileReverso)}></img>}
         </div>
+      </div>
+      <div className={stylesCrear.form}>
 
         <FormInput
           type="text"

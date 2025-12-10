@@ -28,7 +28,7 @@ const Card = ({ producto }) => {
 
   const handleSave = () => {
     updateProduct.mutate(
-      { id: producto.id, data: { nombre: nombreProducto } },
+      { id: producto.id, data: { nombre: nombreProducto, precio: precioProducto, categoria: categoriaProducto } },
       {
         onSuccess: () => {
           toast.success("Producto actualizado correctamente");

@@ -12,13 +12,13 @@
 
 @media (max-width: 1200px) {
     .cards {
-        grid-template-columns: repeat(4, 284px);
+        grid-template-columns: repeat(3, 284px);
     }
 }
 
 @media (max-width: 900px) {
     .cards {
-        grid-template-columns: repeat(3, 284px);
+        grid-template-columns: repeat(2, 284px);
     }
 }
 
