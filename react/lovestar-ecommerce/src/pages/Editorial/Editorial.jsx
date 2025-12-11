@@ -1,23 +1,35 @@
-import { useState, useEffect, useRef } from 'react';
-import styles from './editorial.module.css';
+import { useState, useEffect, useRef } from "react";
+import styles from "./editorial.module.css";
+import { getAllArticulos } from "../../utils/querys";
 
-const EditorialArticles = () => {
+const Editorial = () => {
   const [visibleCards, setVisibleCards] = useState(new Set());
+  const [articulos, setArticulos] = useState(null);
   const observerRef = useRef(null);
+
+  useEffect(() => {
+    const fetchArticulos = async () => {
+      const data = await getAllArticulos();
+      setArticulos(data);
+    };
+    fetchArticulos();
+  }, []);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisibleCards((prev) => new Set([...prev, entry.target.dataset.id]));
+            setVisibleCards(
+              (prev) => new Set([...prev, entry.target.dataset.id])
+            );
           }
         });
       },
-      { threshold: 0.15, rootMargin: '50px' }
+      { threshold: 0.15, rootMargin: "50px" }
     );
 
-    const cards = document.querySelectorAll('[data-id]');
+    const cards = document.querySelectorAll("[data-id]");
     cards.forEach((card) => observerRef.current.observe(card));
 
     return () => {
@@ -27,74 +39,83 @@ const EditorialArticles = () => {
     };
   }, []);
 
-  return (
-    <div className={styles.container}>
-      {/* Header Editorial */}
-      <header className={styles.header}>
-        <div className={styles.headerContent}>
-          <p className={styles.headerLabel}>EDITORIAL</p>
-          <h1 className={styles.headerTitle}>Historias de Lovestar</h1>
-          <p className={styles.headerSubtitle}>
-            Las personas, procesos y momentos que dan forma a nuestra visión
-          </p>
-        </div>
-      </header>
+  const articuloHero = articulos?.find((art) => art.type === "featured");
 
-      {/* Grid Editorial con ritmo visual */}
-      <main className={styles.main}>
-        {/* FEATURED ARTICLE - Hero */}
-        <article 
-          data-id={articles[0].id}
-          className={`${styles.articleFeatured} ${
-            visibleCards.has(String(articles[0].id)) ? styles.visible : ''
+  if (!articulos) return <p>Cargando...</p>;
+
+  return (
+    <section className={styles.section}>
+      <div className={styles.lovestar}>
+        <h2>LoveEditorial*</h2>
+        <h3>by Lovestar.</h3>
+      </div>
+
+      <div className={styles.hero}>
+        <article
+          data-id={articuloHero.id}
+          className={`${styles.articuloHero} ${
+            visibleCards.has(String(articuloHero.id)) ? styles.visible : ""
           }`}
         >
           <div className={styles.featuredImageWrapper}>
-            <img 
-              src={articles[0].image} 
-              alt={articles[0].title}
+            <img
+              src={articuloHero.image}
+              alt={articuloHero.title}
               className={styles.featuredImage}
             />
             <div className={styles.featuredOverlay}></div>
           </div>
           <div className={styles.featuredContent}>
-            <span className={styles.featuredBadge}>{articles[0].category}</span>
-            <h2 className={styles.featuredTitle}>{articles[0].title}</h2>
-            <p className={styles.featuredTagline}>{articles[0].tagline}</p>
-            <p className={styles.featuredDescription}>{articles[0].description}</p>
+            <span className={styles.featuredBadge}>
+              {articuloHero.category}
+            </span>
+            <h2 className={styles.featuredTitle}>{articuloHero.title}</h2>
+            <p className={styles.featuredTagline}>{articuloHero.tagline}</p>
+            <p className={styles.featuredDescription}>
+              {articuloHero.description}
+            </p>
             <div className={styles.featuredMeta}>
-              <span>{articles[0].date}</span>
+              <span>{articuloHero.date}</span>
               <span>•</span>
-              <span>{articles[0].readTime} lectura</span>
+              <span>{articuloHero.readTime} lectura</span>
             </div>
           </div>
         </article>
+      </div>
+
+      {/* Grid Editorial con ritmo visual */}
+      <main className={styles.main}>
+
 
         {/* Grid con ritmo visual variado */}
-        <div className={styles.articlesGrid}>
-          {articles.slice(1).map((article, index) => (
+        <div className={styles.articulosGrid}>
+          {articulos.slice(1).map((article, index) => (
             <article
               key={article.id}
               data-id={article.id}
               className={`${styles.article} ${styles[article.type]} ${
-                visibleCards.has(String(article.id)) ? styles.visible : ''
+                visibleCards.has(String(article.id)) ? styles.visible : ""
               }`}
               style={{ transitionDelay: `${index * 80}ms` }}
             >
               <div className={styles.articleImageWrapper}>
-                <img 
-                  src={article.image} 
+                <img
+                  src={article.image}
                   alt={article.title}
                   className={styles.articleImage}
                 />
                 <div className={styles.articleOverlay}></div>
               </div>
               <div className={styles.articleContent}>
-                <span className={styles.articleCategory}>{article.category}</span>
+                <span className={styles.articleCategory}>
+                  {article.category}
+                </span>
                 <h3 className={styles.articleTitle}>{article.title}</h3>
                 <p className={styles.articleTagline}>{article.tagline}</p>
-                {article.type !== 'small' && (
-                  <p className={styles.articleDescription}>{article.description}</p>
+                {article.type !== "small" && (
+                  <p className={styles.articleDescription}>
+                    {article.description}
+                  </p>
                 )}
                 <div className={styles.articleMeta}>
                   <span>{article.date}</span>
@@ -106,8 +127,8 @@ const EditorialArticles = () => {
           ))}
         </div>
       </main>
-    </div>
+    </section>
   );
 };
 
-export default EditorialArticles;
+export default Editorial;

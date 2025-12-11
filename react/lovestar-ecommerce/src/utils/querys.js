@@ -38,6 +38,12 @@ export const getAllProducts = async () => {
     return productos;
 }
 
+export const getAllArticulos = async () => {
+    const ref = await getDocs(collection(db, "articulos"));
+    const productos = ref.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+    return productos;
+}
+
 export const updateUserName = async (uid, displayName) => {
     try {
         const ref = doc(db, "users", uid);

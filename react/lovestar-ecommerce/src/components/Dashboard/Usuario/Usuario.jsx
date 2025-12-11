@@ -7,6 +7,7 @@ import Card from "../../Cards/Card-Usuario/Card";
 
 const Usuario = () => {
     const [usuarios, setUsuarios] = useState([]);
+    const [updateUsuario, setUpdateUsuario] = useState(false);
 
     useEffect(() => {
         const fetchUsuarios = async () => {
@@ -15,7 +16,7 @@ const Usuario = () => {
         }
 
         fetchUsuarios();
-    }, [usuarios])    
+    }, [updateUsuario]) 
 
     return (
     <div className={stylesUsuario.container}>
@@ -24,7 +25,7 @@ const Usuario = () => {
             <p>Rol</p>
             <p>Eliminar usuario</p>
         </div>
-        {usuarios.map((user, index) => (<Card key={index} id={user.id} displayName={user.displayName} username={user.username} rol={user.rol} />))}
+        {usuarios.map((user, index) => (<Card key={index} id={user.id} displayName={user.displayName} username={user.username} rol={user.rol} update={() => setUpdateUsuario(true)} />))}
     </div>)
 }
 
