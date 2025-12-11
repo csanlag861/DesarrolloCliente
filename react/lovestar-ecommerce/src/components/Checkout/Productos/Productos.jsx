@@ -37,6 +37,6 @@ function calcularTotal(currentUser, carrito){
   const totalCarrito = carrito.reduce((total, producto) => { return total + (producto.precio_descuento ? (Number(producto.precio_descuento)) : (Number(producto.precio))) * Number(producto.cantidad) }, 0)
   const descuento = (currentUser?.descuento ===false ? 0.10 : 0) + (currentUser?.descuentoDialog === true ? 0.10 : 0); 
   
-  const total = currentUser?.rol === "miembro" ? (totalCarrito * (1-descuento)) : totalCarrito;
+  const total = (currentUser?.rol === "miembro" || currentUser?.rol === "admin") ? (totalCarrito * (1-descuento)) : totalCarrito;
   return total
 }

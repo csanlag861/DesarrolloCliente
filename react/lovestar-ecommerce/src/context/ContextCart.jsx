@@ -17,36 +17,50 @@ function CartContextProvider({ children }) {
 
   const { currentUser } = useContext(UserContext);
 
+  console.log(currentUser, "Hay usuario o no?");
+  
+
   useEffect(() => {
     async function cargarCarrito() {
-      const carritoLocalStorage =
-        JSON.parse(localStorage.getItem("UserCarrito")) || [];
+      console.log("=== Cargando carrito ===");
+
+      const carritoLocalStorage = JSON.parse(localStorage.getItem("UserCarrito")) || [];
+      console.log("Carrito localStorage:", carritoLocalStorage);
+
       // Si no tengo usuario:
       if (currentUser === null) {
+        console.log("No hay usuario, uso carrito localStorage");
         setCarrito(carritoLocalStorage || []);
       } else {
-        // Si tengo usuario, y tengo cosas en el local storage:
-        /*                 console.log("PRueba de que entra en el else del usuario");
-         */ if (carritoLocalStorage.length !== 0) {
+        if (carritoLocalStorage.length !== 0) {
+          console.log("TENGO COSAS EN EL CARRITO");
+
           const hasMerge = JSON.parse(localStorage.getItem("Merge"));
           // SI el usuario aún no ha hecho el merge
           if (!hasMerge) {
+            console.log("NO HE HECHO EL MERGE");
             try {
               const ref = doc(
                 db,
                 "users",
-                currentUser.uid,
+                currentUser?.uid,
                 "carrito",
                 "carritoActual"
               );
+              console.log("Obtengo la coleccion");
               const snapshot = await getDoc(ref);
+
               // Si no existe la coleccion
               if (!snapshot.exists()) {
-                console.log("Crear carrito en Firebase");
+                console.log("NO EXISTE LA COLECCION");
+
                 await setDoc(ref, { items: carritoLocalStorage });
               } else {
-                const carritoFirebase = snapshot.data().items;
+                console.log("LA COLECCIÓN EXISTE");
+
+                const carritoFirebase = snapshot.data().items || [];
                 const carritoMerge = [...carritoFirebase];
+                console.log("Carrito Firebase:", carritoFirebase);
 
                 carritoLocalStorage.forEach((itemLS) => {
                   const existente = carritoFirebase.find((item) => item.id === itemLS.id && (item.tallaSeleccionada ?? null) === (itemLS.tallaSeleccionada ?? null))
@@ -57,11 +71,12 @@ function CartContextProvider({ children }) {
                     carritoMerge.push(itemLS);
                   }
                 })
-                await updateDoc(ref, { items: carritoMerge });
+                await setDoc(ref, { items: carritoMerge });
                 setCarrito(carritoMerge);
+                localStorage.setItem("UserCarrito", JSON.stringify(carritoMerge));
               }
             } catch (error) {
-              console.error("Error al hacer el merge");
+              console.error("Error al hacer el merge por primera vez", error);
             }
 
             localStorage.setItem("Merge", true);
@@ -70,7 +85,7 @@ function CartContextProvider({ children }) {
               const ref = doc(
                 db,
                 "users",
-                currentUser.uid,
+                currentUser?.uid,
                 "carrito",
                 "carritoActual"
               );
@@ -80,7 +95,7 @@ function CartContextProvider({ children }) {
                 await updateDoc(ref, { items: carrito });
               }
             } catch (error) {
-              console.error("Error al hacer el merge");
+              console.error("Error al hacer el merge cuando ya hice el merge una vez.", error);
             }
           }
         } else {
@@ -88,7 +103,7 @@ function CartContextProvider({ children }) {
             const ref = doc(
               db,
               "users",
-              currentUser.uid,
+              currentUser?.uid,
               "carrito",
               "carritoActual"
             );
@@ -109,14 +124,10 @@ function CartContextProvider({ children }) {
   useEffect(() => {
     async function actualizarCarrito() {
       if (ultimoProducto !== null) {
-        /*                 console.log("Esto no debería de salir porque no tenemos un Último Producto. Sólo sale cuando se actualice el estado del carrito")
-         */
         if (currentUser === null) {
-          /*                     console.log("Producto añadido");
-           */ localStorage.setItem("UserCarrito", JSON.stringify(carrito));
+          localStorage.setItem("UserCarrito", JSON.stringify(carrito));
         } else {
-          /*                     console.log("Producto añadido con el usuario registrado");
-           */ localStorage.setItem("UserCarrito", JSON.stringify(carrito));
+          localStorage.setItem("UserCarrito", JSON.stringify(carrito));
           try {
             const ref = doc(
               db,
@@ -187,8 +198,14 @@ function CartContextProvider({ children }) {
   }
 
   async function vaciarCarrito() {
+    localStorage.clear();
+    setCarrito([]);
+    if (currentUser === null) {
+      return;
+    }
+
     try {
-      const ref = doc(db, "users", currentUser.uid, "carrito", "carritoActual");
+      const ref = doc(db, "users", currentUser?.uid, "carrito", "carritoActual");
       const snapshot = await getDoc(ref);
 
       if (snapshot.exists()) {
@@ -197,8 +214,7 @@ function CartContextProvider({ children }) {
     } catch (error) {
       console.error("Error al vaciar el carrito", error);
     }
-    localStorage.clear();
-    setCarrito([]);
+
   }
 
   async function borrarItemCarrito(id, tallaSeleccionada) {

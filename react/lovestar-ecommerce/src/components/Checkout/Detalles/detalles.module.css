@@ -1,5 +1,5 @@
 .section {
-    min-width: 752px;
+    width: 752px;
     height: 100%;
     padding: 0px 32px;
 
@@ -75,6 +75,35 @@
             &:hover {
                 background-color: var(--cta-color);
             }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .section {
+        width: 80%;
+        padding: 0 12px;
+
+        .entrega {
+            form {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .pago {
+            form {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}
+
+@media (max-width: 530px) {
+    .section {
+        h2{
+            font-size: 18px;
         }
     }
 }

@@ -1,5 +1,5 @@
 .section {
-    min-width: 688px;
+    width: 688px;
     height: 100vh;
     background-color: var(--white-color-hover);
     border-left: 1px solid var(--white-color-active);
@@ -14,22 +14,53 @@
         display: flex;
         justify-content: space-between;
         align-items: baseline;
+
         p {
             color: var(--primary-color);
             font-family: "Archivo-Normal", sans-serif;
-            font-size: 16px;
-        }
-    }
-
-    .total{
-        display: flex;
-        width: 500px;
-        justify-content: space-between;
-
-        p{
-            font-family: "Archivo-SemiBold", sans-serif;
             font-size: 1rem;
         }
     }
 
+    .total {
+        display: flex;
+        width: 500px;
+        justify-content: space-between;
+
+        p {
+            font-family: "Archivo-SemiBold", sans-serif;
+            font-size: 1rem;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .section {
+        width: 100%;
+        padding: 0 12px;
+        align-items: center;
+    }
+}
+
+@media (max-width: 530px) {
+    .section {
+        .descuento {
+            width: 100%;
+            justify-content: space-around;
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        .total {
+            width: 100%;
+            justify-content: space-around;
+
+            p {
+                font-size: 14px;
+            }
+
+        }
+    }
 }

@@ -17,14 +17,13 @@ const LoginForm = () => {
 
   const [serverError, setServerError] = useState(null);
 
-  const {setCurrentUser} = useContext(UserContext);
+  const { setCurrentUser } = useContext(UserContext);
 
   const handleGoogle = async () => {
     try {
       const { user } = await signInWithGooglePopup();
       const res = await createUserDocumentFromAuth(user);
-      setCurrentUser(res);
-      
+
       setTimeout(() => {
         navigate("/home")
       }, 1000)
@@ -34,25 +33,23 @@ const LoginForm = () => {
   }
 
   const handleSubmit = async (event) => {
-    /*     event.preventDefault(); */
+    event.preventDefault();
     try {
       const email = emailRef.current.value;
       const password = passwordRef.current.value;
       const res = await signInAuthUserWithEmailAndPassword(email, password);
-      setCurrentUser(res);
       
-      toast.success("Usuario logeado con éxito.")
+      //setCurrentUser(res);
 
-      setTimeout(() => {
-        navigate("/home")
-      }, 1000)
+      toast.success("Usuario logeado con éxito.")
+      navigate("/home")
     } catch (error) {
       console.error("Error al hacer login con email y passwd", error);
     }
   }
 
   return (
-    <form action={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className={stylesLogin.form}>
         <div className={stylesLogin.logo}>
           <img src="img/alt-logo.svg" alt="Logo secundario de Lovestar" />
@@ -76,7 +73,7 @@ const LoginForm = () => {
             required
           />
 
-          <button className="sheen" type="submit" onClick={handleSubmit}>
+          <button className="sheen" type="submit">
             ENTRAR
           </button>
         </div>

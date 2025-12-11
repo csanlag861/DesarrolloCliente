@@ -27,7 +27,7 @@ const Header = () => {
     try {
       const res = await signOutUser();
       setCurrentUser(null);
-      localStorage.setItem("Merge", false);
+      localStorage.removeItem("Merge");
       toast.success("Sesión cerrada correctamente.");
     } catch (error) {
       toast.error("Error al cerrar sesión.");
