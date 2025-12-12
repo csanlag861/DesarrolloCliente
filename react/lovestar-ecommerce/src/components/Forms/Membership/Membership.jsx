@@ -77,7 +77,7 @@ const MembershipForm = () => {
           label="Nombre de Usuario"
           id="username"
           type="text"
-          value={currentUser?.username || currentUser?.displayName || ""}
+          value={cardData?.username || cardData?.displayName || ""}
           /*                 ref={emailRef}
            */
           onChange={handleChange}
@@ -88,7 +88,7 @@ const MembershipForm = () => {
           label="Email"
           id="email"
           type="text"
-          value={currentUser?.email || ""}
+          value={cardData?.email || ""}
           /*                 ref={emailRef}
            */
           onChange={handleChange}

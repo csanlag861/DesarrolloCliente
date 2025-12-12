@@ -39,8 +39,6 @@ const LoginForm = () => {
       const password = passwordRef.current.value;
       const res = await signInAuthUserWithEmailAndPassword(email, password);
       
-      //setCurrentUser(res);
-
       toast.success("Usuario logeado con éxito.")
       navigate("/home")
     } catch (error) {

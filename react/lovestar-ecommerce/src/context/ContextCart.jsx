@@ -5,6 +5,7 @@ import { UserContext } from "./ContextUser";
 
 import { doc, getDoc, setDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../utils/firebase";
+import { toast } from "react-toastify";
 
 const CartContext = createContext({
   productos: null,
@@ -182,6 +183,7 @@ function CartContextProvider({ children }) {
 
     setCarrito(nuevoCarrito);
     setUltimoProducto(productoCarrito);
+    toast.success("Producto añadido al carrito");
   }
 
   async function vaciarCarrito() {
