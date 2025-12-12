@@ -17,28 +17,19 @@ function CartContextProvider({ children }) {
 
   const { currentUser } = useContext(UserContext);
 
-  console.log(currentUser, "Hay usuario o no?");
-  
-
   useEffect(() => {
     async function cargarCarrito() {
-      console.log("=== Cargando carrito ===");
-
       const carritoLocalStorage = JSON.parse(localStorage.getItem("UserCarrito")) || [];
-      console.log("Carrito localStorage:", carritoLocalStorage);
 
       // Si no tengo usuario:
       if (currentUser === null) {
-        console.log("No hay usuario, uso carrito localStorage");
         setCarrito(carritoLocalStorage || []);
       } else {
         if (carritoLocalStorage.length !== 0) {
-          console.log("TENGO COSAS EN EL CARRITO");
 
           const hasMerge = JSON.parse(localStorage.getItem("Merge"));
           // SI el usuario aún no ha hecho el merge
           if (!hasMerge) {
-            console.log("NO HE HECHO EL MERGE");
             try {
               const ref = doc(
                 db,
@@ -47,20 +38,16 @@ function CartContextProvider({ children }) {
                 "carrito",
                 "carritoActual"
               );
-              console.log("Obtengo la coleccion");
               const snapshot = await getDoc(ref);
 
               // Si no existe la coleccion
               if (!snapshot.exists()) {
-                console.log("NO EXISTE LA COLECCION");
 
                 await setDoc(ref, { items: carritoLocalStorage });
               } else {
-                console.log("LA COLECCIÓN EXISTE");
 
                 const carritoFirebase = snapshot.data().items || [];
                 const carritoMerge = [...carritoFirebase];
-                console.log("Carrito Firebase:", carritoFirebase);
 
                 carritoLocalStorage.forEach((itemLS) => {
                   const existente = carritoFirebase.find((item) => item.id === itemLS.id && (item.tallaSeleccionada ?? null) === (itemLS.tallaSeleccionada ?? null))

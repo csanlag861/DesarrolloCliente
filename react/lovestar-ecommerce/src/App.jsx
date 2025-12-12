@@ -14,6 +14,7 @@ import Galeria from "./pages/Galeria/Galeria";
 import Perfil from "./pages/Perfil/Perfil";
 import Pedidos from "./pages/Pedidos/Pedidos";
 import Editorial from "./pages/Editorial/Editorial";
+import Edit from "./pages/Editorial/Edit";
 import Detalles from "./pages/Detalles/Detalles";
 import Checkout from "./pages/Checkout/Checkout";
 import Crear from "./pages/Crear/Crear";

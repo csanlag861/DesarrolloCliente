@@ -208,7 +208,7 @@ const Header = () => {
           {navOpen && (
             <>
               <div className={stylesHeader.info}>
-                <Link to="/Login">
+                <Link to="/Perfil">
                   <Icon icon="ic:baseline-account-circle" />
                 </Link>
                 {currentUser && (
@@ -222,7 +222,7 @@ const Header = () => {
                     <Icon icon="eos-icons:admin" />
                   </NavLink>
                 )}
-                <Icon icon="ion:cart" />
+                <Icon icon="ion:cart" onClick={() => setOpenCarrito(true)}/>
               </div>
             </>
           )}
