@@ -73,6 +73,8 @@ function RegisterForm() {
         displayName: userNameRef.current.value,
       });
 
+      console.log(res);
+      
       setCurrentUser(res);
 
       setTimeout(() => {
@@ -96,6 +98,7 @@ function RegisterForm() {
     try {
       const {user} = await signInWithGooglePopup();
       const res = await createUserDocumentFromAuth(user);
+      
       setCurrentUser(res);
       
       setTimeout(() => {

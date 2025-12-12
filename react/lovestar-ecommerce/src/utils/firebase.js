@@ -103,7 +103,11 @@ export const createUserDocumentFromAuth = async (
       console.log("error creating user", error.message);
     }
   }
-  return userDocRef;
+
+   const userDoc = await getUser(userAuth.uid);
+
+  console.log("userDoc", userDoc);
+    return userDoc;
 };
 
 export const signOutUser = async () => await signOut(auth);

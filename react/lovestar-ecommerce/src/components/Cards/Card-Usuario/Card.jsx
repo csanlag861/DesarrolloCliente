@@ -4,10 +4,10 @@ import { Icon } from "@iconify/react";
 
 import { useState } from "react";
 
-import { updateUserName, updateUserRole, deleteUser } from "../../../utils/querys";
+import { updateUserName, updateUserRole, deleteUser} from "../../../utils/querys";
 import { toast } from "react-toastify";
 
-const Card = ({ id, displayName, username, rol, update }) => {
+const Card = ({ id, displayName, username, rol, setUpdateUsuario }) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [editRol, setEditRol] = useState(false);
   const [rolSeleccionado, setRolSeleccionado] = useState(rol);
@@ -17,23 +17,29 @@ const Card = ({ id, displayName, username, rol, update }) => {
   const confirmName = async () => {
     await updateUserName(id, name);
     setIsDisabled(true);
-    update();
+    setUpdateUsuario(true);
     toast.success("Nombre de usuario cambiado correctamente.")
   }
 
   const confirmRol = async () => {
     await updateUserRole(id, rolSeleccionado);
     setEditRol(false);
-    update();
+    setUpdateUsuario(true);
     toast.success("Rol del usuario cambiado correctamente.")
   }
 
+
+  const deleteUsuario = async () => {
+    await deleteUser(id);
+      setUpdateUsuario(true);
+     toast.success("Usuario eliminado con éxito.")
+  }
   return (
     <div className={stylesCard.card}>
       {displayName ? (
         <div className={stylesCard.nombre}>
           <input
-            
+
             type="text"
             onChange={(evento) => { setName(evento.target.value) }}
             value={name}
@@ -68,7 +74,7 @@ const Card = ({ id, displayName, username, rol, update }) => {
         <Icon icon="ri:edit-fill" onClick={() => setEditRol(!editRol)} />
         {editRol && (<Icon icon="line-md:confirm-circle-filled" onClick={confirmRol} />)}
       </div>
-      <Icon icon="streamline-block:basic-ui-delete-user" onClick={async ()  => {await deleteUser(id); update(); toast.success("Usuario eliminado con éxito.")}}/>
+      <Icon icon="streamline-block:basic-ui-delete-user" onClick={deleteUsuario} />
     </div>
   );
 };

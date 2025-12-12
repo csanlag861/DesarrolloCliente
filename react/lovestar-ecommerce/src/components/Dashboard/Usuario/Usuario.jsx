@@ -11,7 +11,9 @@ const Usuario = () => {
 
     useEffect(() => {
         const fetchUsuarios = async () => {
+            console.log("ejecutandose el useEffect");
             const usuarios = await getAllUsers();
+            console.log(usuarios);
             setUsuarios(usuarios);
         }
 
@@ -25,7 +27,7 @@ const Usuario = () => {
             <p>Rol</p>
             <p>Eliminar usuario</p>
         </div>
-        {usuarios.map((user, index) => (<Card key={index} id={user.id} displayName={user.displayName} username={user.username} rol={user.rol} update={() => setUpdateUsuario(true)} />))}
+        {usuarios.map((user, index) => (<Card key={user.id} id={user.id} displayName={user.displayName} username={user.username} rol={user.rol} setUpdateUsuario={setUpdateUsuario} />))}
     </div>)
 }
 
